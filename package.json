@@ -171,6 +171,11 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
+  "husky": {
+    "hooks": {
+      "post-checkout": "npm install"
+    }
+  },
   "metadata": {
     "graphql": {
       "schema": "./saleor/static/schema.json"
