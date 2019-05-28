@@ -185,7 +185,8 @@
     "linters": {
       "*.{ts,tsx}": [
         "prettier --write",
-        "tslint --fix"
+        "tslint --fix",
+        "git add"
       ]
     },
     "ignore": [
