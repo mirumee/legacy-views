@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 
+from django.utils import timezone
 from prices import Money, TaxedMoney
 
 import pytest
@@ -80,7 +81,7 @@ def test_percentage_discounts(product):
 def test_voucher_queryset_active(voucher):
     vouchers = Voucher.objects.all()
     assert len(vouchers) == 1
-    active_vouchers = Voucher.objects.active(date=date.today() - timedelta(days=1))
+    active_vouchers = Voucher.objects.active(date=timezone.now() - timedelta(days=1))
     assert len(active_vouchers) == 0
 
 
