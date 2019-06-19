@@ -1,14 +1,10 @@
 import json
-from datetime import date
 from decimal import Decimal
 from unittest.mock import Mock
 
-
-from django.urls import reverse
-from django.utils import timezone
-from prices import Money, TaxedMoney
-
 import pytest
+from django.urls import reverse
+from prices import Money, TaxedMoney
 
 from saleor.dashboard.order.utils import get_voucher_discount_for_order
 from saleor.discount import DiscountValueType, VoucherType
