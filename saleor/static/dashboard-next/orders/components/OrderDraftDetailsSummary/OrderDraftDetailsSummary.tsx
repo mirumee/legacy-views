@@ -8,7 +8,7 @@ import React from "react";
 
 import Link from "@saleor/components/Link";
 import Money from "@saleor/components/Money";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";
 import { OrderDetails_order } from "../../types/OrderDetails";

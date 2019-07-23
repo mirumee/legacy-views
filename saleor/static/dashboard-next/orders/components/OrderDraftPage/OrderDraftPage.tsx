@@ -15,7 +15,7 @@ import { DateTime } from "@saleor/components/Date";
 import Grid from "@saleor/components/Grid";
 import PageHeader from "@saleor/components/PageHeader";
 import SaveButtonBar from "@saleor/components/SaveButtonBar";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import { SearchCustomers_customers_edges_node } from "../../../containers/SearchCustomers/types/SearchCustomers";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";

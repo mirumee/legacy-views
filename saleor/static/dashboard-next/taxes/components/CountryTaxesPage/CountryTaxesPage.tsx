@@ -11,7 +11,7 @@ import AppHeader from "@saleor/components/AppHeader";
 import { Container } from "@saleor/components/Container";
 import Grid from "@saleor/components/Grid";
 import PageHeader from "@saleor/components/PageHeader";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe, renderCollection, translatedTaxRates } from "../../../misc";
 import { CountryList_shop_countries_vat_reducedRates } from "../../types/CountryList";

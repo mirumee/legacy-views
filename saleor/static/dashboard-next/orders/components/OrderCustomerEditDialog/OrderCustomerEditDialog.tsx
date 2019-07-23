@@ -14,8 +14,8 @@ import React from "react";
 import ConfirmButton, {
   ConfirmButtonTransitionState
 } from "@saleor/components/ConfirmButton";
-import { SingleAutocompleteSelectField } from "@saleor/components/SingleAutocompleteSelectField";
-import i18n from "../../../i18n";
+import SingleAutocompleteSelectField from "@saleor/components/SingleAutocompleteSelectField";
+import i18n from "@saleor/i18n";
 
 const styles = (theme: Theme) =>
   createStyles({

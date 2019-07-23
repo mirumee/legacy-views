@@ -13,7 +13,7 @@ import TableRow from "@material-ui/core/TableRow";
 import React from "react";
 
 import Checkbox from "@saleor/components/Checkbox";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import TableHead from "@saleor/components/TableHead";
 import TablePagination from "@saleor/components/TablePagination";
 import i18n from "../../../i18n";

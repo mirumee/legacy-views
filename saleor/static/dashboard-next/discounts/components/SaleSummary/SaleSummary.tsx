@@ -10,7 +10,7 @@ import FormSpacer from "@saleor/components/FormSpacer";
 import Hr from "@saleor/components/Hr";
 import Money from "@saleor/components/Money";
 import Percent from "@saleor/components/Percent";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";
 import { SaleType } from "../../../types/globalTypes";

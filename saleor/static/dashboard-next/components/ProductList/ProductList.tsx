@@ -18,10 +18,11 @@ import { maybe, renderCollection } from "../../misc";
 import { ListActions, ListProps } from "../../types";
 import Checkbox from "../Checkbox";
 import Money from "../Money";
-import Skeleton from "../Skeleton";
 import StatusLabel from "../StatusLabel";
 import TableHead from "../TableHead";
 import TablePagination from "../TablePagination";
+
+import Skeleton from "@ui/Skeleton";
 
 const styles = (theme: Theme) =>
   createStyles({

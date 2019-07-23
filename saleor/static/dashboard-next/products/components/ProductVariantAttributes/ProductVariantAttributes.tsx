@@ -7,7 +7,7 @@ import Grid from "@saleor/components/Grid";
 import SingleAutocompleteSelectField, {
   SingleAutocompleteChoiceType
 } from "@saleor/components/SingleAutocompleteSelectField";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import { FormsetAtomicData, FormsetChange } from "@saleor/hooks/useFormset";
 import i18n from "../../../i18n";
 import { ProductVariant_attributes_attribute_values } from "../../types/ProductVariant";

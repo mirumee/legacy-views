@@ -86,7 +86,7 @@ const OrderAddressEditDialog = withStyles(styles, {
                 <DialogContent className={classes.overflow}>
                   <AddressEdit
                     countries={countryChoices}
-                    countryDisplayValue={countryDisplayName}
+                    countryPickerDisplayValue={countryDisplayName}
                     data={data}
                     errors={errors}
                     onChange={change}

@@ -7,7 +7,7 @@ import {
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 
 const styles = (theme: Theme) =>

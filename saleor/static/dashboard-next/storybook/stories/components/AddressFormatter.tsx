@@ -1,15 +1,14 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import AddressFormatter from "@saleor/components/AddressFormatter";
 import { customer } from "../../../customers/fixtures";
 import CardDecorator from "../../CardDecorator";
 import Decorator from "../../Decorator";
 
-storiesOf("Generics / AddressFormatter", module)
+import Address from "@ui/Address";
+
+storiesOf("Generics / Address", module)
   .addDecorator(CardDecorator)
   .addDecorator(Decorator)
-  .add("default", () => (
-    <AddressFormatter address={customer.defaultBillingAddress} />
-  ))
-  .add("when loading", () => <AddressFormatter />);
+  .add("default", () => <Address address={customer.defaultBillingAddress} />)
+  .add("when loading", () => <Address address={undefined} />);

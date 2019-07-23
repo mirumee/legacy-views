@@ -8,7 +8,7 @@ import makeStyles from "@material-ui/styles/makeStyles";
 import React from "react";
 
 import Checkbox from "@saleor/components/Checkbox";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import TableHead from "@saleor/components/TableHead";
 import TablePagination from "@saleor/components/TablePagination";
 import i18n from "@saleor/i18n";

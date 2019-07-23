@@ -15,7 +15,7 @@ import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import React from "react";
 
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import TablePagination from "@saleor/components/TablePagination";
 import i18n from "../../../i18n";
 import {

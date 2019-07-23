@@ -10,7 +10,7 @@ import CardSpacer from "@saleor/components/CardSpacer";
 import Container from "@saleor/components/Container";
 import Grid from "@saleor/components/Grid";
 import Money from "@saleor/components/Money";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import Orders from "../../../icons/Orders";
 import Sales from "../../../icons/Sales";
 import {

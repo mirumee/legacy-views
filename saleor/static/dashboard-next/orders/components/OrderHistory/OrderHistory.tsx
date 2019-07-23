@@ -9,7 +9,7 @@ import React from "react";
 
 import Form from "@saleor/components/Form";
 import Hr from "@saleor/components/Hr";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import {
   Timeline,
   TimelineAddNote,

@@ -105,7 +105,7 @@ const CustomerAddressDialog = withStyles(styles, {})(
                   <AddressEdit
                     countries={countryChoices}
                     data={data}
-                    countryDisplayValue={countryDisplayName}
+                    countryPickerDisplayValue={countryDisplayName}
                     errors={errors}
                     onChange={change}
                     onCountryChange={handleCountrySelect}

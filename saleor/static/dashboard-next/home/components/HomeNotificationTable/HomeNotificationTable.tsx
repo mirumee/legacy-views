@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import React from "react";
 
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 
 const styles = (theme: Theme) =>

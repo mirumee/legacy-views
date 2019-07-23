@@ -47,7 +47,7 @@ import TaxesSection from "./taxes";
 import TranslationsSection from "./translations";
 import { PermissionEnum } from "./types/globalTypes";
 
-import SduiThemeProvider from "@ui/ThemeProvider";
+import SduiThemeProvider from "@ui/styles/ThemeProvider";
 
 interface ResponseError extends ErrorResponse {
   networkError?: Error & {

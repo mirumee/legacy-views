@@ -17,7 +17,7 @@ import React from "react";
 import SortableTree, { NodeRendererProps, TreeItem } from "react-sortable-tree";
 
 import CardTitle from "@saleor/components/CardTitle";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import useTheme from "@saleor/hooks/useTheme";
 import i18n from "../../../i18n";
 import Draggable from "../../../icons/Draggable";

@@ -18,7 +18,7 @@ import React from "react";
 import { DebounceForm } from "@saleor/components/DebounceForm";
 import Form from "@saleor/components/Form";
 import Money from "@saleor/components/Money";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import TableCellAvatar from "@saleor/components/TableCellAvatar";
 import i18n from "../../../i18n";
 import { maybe, renderCollection } from "../../../misc";

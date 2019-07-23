@@ -26,7 +26,9 @@ storiesOf("Generics / AddressEdit", module)
             label: c.label,
             value: c.code
           }))}
-          countryDisplayValue={customer.defaultBillingAddress.country.country}
+          countryPickerDisplayValue={
+            customer.defaultBillingAddress.country.country
+          }
           onChange={undefined}
           onCountryChange={() => undefined}
         />

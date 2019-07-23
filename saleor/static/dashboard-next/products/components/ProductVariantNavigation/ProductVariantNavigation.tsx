@@ -14,7 +14,7 @@ import classNames from "classnames";
 import React from "react";
 
 import CardTitle from "@saleor/components/CardTitle";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import TableCellAvatar from "@saleor/components/TableCellAvatar";
 import i18n from "../../../i18n";
 import { maybe, renderCollection } from "../../../misc";

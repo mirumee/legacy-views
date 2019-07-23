@@ -16,7 +16,7 @@ import Form from "@saleor/components/Form";
 import Hr from "@saleor/components/Hr";
 import Link from "@saleor/components/Link";
 import SingleAutocompleteSelectField from "@saleor/components/SingleAutocompleteSelectField";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import useStateFromProps from "@saleor/hooks/useStateFromProps";
 import createSingleAutocompleteSelectHandler from "@saleor/utils/handlers/singleAutocompleteSelectChangeHandler";
 import { SearchCustomers_customers_edges_node } from "../../../containers/SearchCustomers/types/SearchCustomers";

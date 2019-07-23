@@ -14,7 +14,7 @@ import React from "react";
 import CardTitle from "@saleor/components/CardTitle";
 import { ControlledCheckbox } from "@saleor/components/ControlledCheckbox";
 import { FormSpacer } from "@saleor/components/FormSpacer";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { CustomerDetails_user } from "../../types/CustomerDetails";
 

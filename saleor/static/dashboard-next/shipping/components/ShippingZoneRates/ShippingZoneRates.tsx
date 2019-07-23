@@ -19,7 +19,7 @@ import CardTitle from "@saleor/components/CardTitle";
 import IconButtonTableCell from "@saleor/components/IconButtonTableCell";
 import Money from "@saleor/components/Money";
 import MoneyRange from "@saleor/components/MoneyRange";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import WeightRange from "@saleor/components/WeightRange";
 import i18n from "../../../i18n";
 import { maybe, renderCollection } from "../../../misc";

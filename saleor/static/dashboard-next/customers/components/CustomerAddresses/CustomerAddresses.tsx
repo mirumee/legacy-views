@@ -10,12 +10,13 @@ import {
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import AddressFormatter from "@saleor/components/AddressFormatter";
 import CardTitle from "@saleor/components/CardTitle";
 import { Hr } from "@saleor/components/Hr";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";
 import { CustomerDetails_user } from "../../types/CustomerDetails";
+
+import Address from "@ui/Address";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -60,9 +61,7 @@ const CustomerAddresses = withStyles(styles, { name: "CustomerAddresses" })(
               <Typography className={classes.label}>
                 {i18n.t("Billing address")}
               </Typography>
-              <AddressFormatter
-                address={maybe(() => customer.defaultBillingAddress)}
-              />
+              <Address address={maybe(() => customer.defaultBillingAddress)} />
             </CardContent>
           )}
           {maybe(
@@ -74,9 +73,7 @@ const CustomerAddresses = withStyles(styles, { name: "CustomerAddresses" })(
               <Typography className={classes.label}>
                 {i18n.t("Shipping address")}
               </Typography>
-              <AddressFormatter
-                address={maybe(() => customer.defaultShippingAddress)}
-              />
+              <Address address={maybe(() => customer.defaultShippingAddress)} />
             </CardContent>
           )}
         </>
@@ -90,9 +87,7 @@ const CustomerAddresses = withStyles(styles, { name: "CustomerAddresses" })(
       ) : (
         <CardContent>
           <Typography className={classes.label}>{i18n.t("Address")}</Typography>
-          <AddressFormatter
-            address={maybe(() => customer.defaultBillingAddress)}
-          />
+          <Address address={maybe(() => customer.defaultBillingAddress)} />
         </CardContent>
       )}
     </Card>

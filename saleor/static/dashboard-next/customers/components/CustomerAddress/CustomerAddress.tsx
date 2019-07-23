@@ -6,13 +6,14 @@ import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import AddressFormatter from "@saleor/components/AddressFormatter";
 import CardMenu from "@saleor/components/CardMenu";
 import CardTitle from "@saleor/components/CardTitle";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { AddressTypeEnum } from "../../../types/globalTypes";
 import { CustomerAddresses_user_addresses } from "../../types/CustomerAddresses";
+
+import Address from "@ui/Address";
 
 export interface CustomerAddressProps {
   address: CustomerAddresses_user_addresses;
@@ -96,7 +97,7 @@ const CustomerAddress = withStyles(styles, { name: "CustomerAddress" })(
         }
       />
       <CardContent>
-        <AddressFormatter address={address} />
+        <Address address={address} />
       </CardContent>
       <div className={classes.actionsContainer}>
         <CardActions className={classes.actions}>

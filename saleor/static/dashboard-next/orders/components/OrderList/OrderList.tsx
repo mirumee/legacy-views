@@ -14,7 +14,7 @@ import React from "react";
 import Checkbox from "@saleor/components/Checkbox";
 import { DateTime } from "@saleor/components/Date";
 import Money from "@saleor/components/Money";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import StatusLabel from "@saleor/components/StatusLabel";
 import TableHead from "@saleor/components/TableHead";
 import TablePagination from "@saleor/components/TablePagination";

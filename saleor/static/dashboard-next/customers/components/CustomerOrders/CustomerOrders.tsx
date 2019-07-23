@@ -11,7 +11,7 @@ import React from "react";
 import CardTitle from "@saleor/components/CardTitle";
 import { DateTime } from "@saleor/components/Date";
 import Money from "@saleor/components/Money";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import StatusLabel from "@saleor/components/StatusLabel";
 import i18n from "../../../i18n";
 import { maybe, renderCollection, transformPaymentStatus } from "../../../misc";

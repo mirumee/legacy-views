@@ -8,7 +8,7 @@ import React from "react";
 
 import CardTitle from "@saleor/components/CardTitle";
 import { DateTime } from "@saleor/components/Date";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { renderCollection } from "../../../misc";
 import { Home_activities_edges_node } from "../../types/Home";

@@ -20,7 +20,7 @@ import ControlledSwitch from "@saleor/components/ControlledSwitch";
 import Form from "@saleor/components/Form";
 import FormSpacer from "@saleor/components/FormSpacer";
 import Hr from "@saleor/components/Hr";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";
 import { FormErrors, UserError } from "../../../types";

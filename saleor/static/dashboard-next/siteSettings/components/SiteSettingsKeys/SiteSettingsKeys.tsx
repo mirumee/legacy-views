@@ -16,7 +16,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import React from "react";
 
 import CardTitle from "@saleor/components/CardTitle";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import {
   maybe,

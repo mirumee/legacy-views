@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import CardTitle from "@saleor/components/CardTitle";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 
 interface OrderCustomerNoteProps {

@@ -14,7 +14,7 @@ import CardTitle from "@saleor/components/CardTitle";
 import Hr from "@saleor/components/Hr";
 import ImageTile from "@saleor/components/ImageTile";
 import ImageUpload from "@saleor/components/ImageUpload";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { CategoryDetails_category_backgroundImage } from "../../types/CategoryDetails";
 import { FormData } from "../CategoryUpdatePage";

@@ -5,7 +5,7 @@ import { MessageManager } from "../components/messages";
 import ThemeProvider from "../components/Theme";
 import { TimezoneProvider } from "../components/Timezone";
 
-import SduiThemeProvider from "@ui/ThemeProvider";
+import SduiThemeProvider from "@ui/styles/ThemeProvider";
 
 export const Decorator = storyFn => (
   <DateProvider value={+new Date("2018-08-07T14:30:44+00:00")}>

@@ -1,187 +1,59 @@
-import {
-  createStyles,
-  Theme,
-  withStyles,
-  WithStyles
-} from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
 import React from "react";
 
-import { AddressTypeInput } from "../../customers/types";
-import i18n from "../../i18n";
-import { FormErrors } from "../../types";
-import FormSpacer from "../FormSpacer";
-import SingleAutocompleteSelectField, {
-  SingleAutocompleteChoiceType
-} from "../SingleAutocompleteSelectField";
+import i18n from "@saleor/i18n";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      display: "grid",
-      gridColumnGap: `${theme.spacing.unit * 2}px`,
-      gridTemplateColumns: "1fr 1fr"
-    }
-  });
+import EditAddress, { EditAddressProps } from "@ui/EditAddress";
 
-interface AddressEditProps extends WithStyles<typeof styles> {
-  countries: SingleAutocompleteChoiceType[];
-  countryDisplayValue: string;
-  data: AddressTypeInput;
-  disabled?: boolean;
-  errors: FormErrors<keyof AddressTypeInput>;
-  onChange(event: React.ChangeEvent<any>);
-  onCountryChange(event: React.ChangeEvent<any>);
-}
+export type AddressEditProps = Omit<
+  EditAddressProps,
+  "countryPickerLabels" | "labels"
+>;
 
-const AddressEdit = withStyles(styles, { name: "AddressEdit" })(
-  ({
-    classes,
-    countries,
-    countryDisplayValue,
-    data,
-    disabled,
-    errors,
-    onChange,
-    onCountryChange
-  }: AddressEditProps) => (
-    <>
-      <div className={classes.root}>
-        <div>
-          <TextField
-            disabled={disabled}
-            error={!!errors.firstName}
-            helperText={errors.firstName}
-            label={i18n.t("First name")}
-            name="firstName"
-            onChange={onChange}
-            value={data.firstName}
-            fullWidth
-          />
-        </div>
-        <div>
-          <TextField
-            disabled={disabled}
-            error={!!errors.lastName}
-            helperText={errors.lastName}
-            label={i18n.t("Last name")}
-            name="lastName"
-            onChange={onChange}
-            value={data.lastName}
-            fullWidth
-          />
-        </div>
-      </div>
-      <FormSpacer />
-      <div className={classes.root}>
-        <div>
-          <TextField
-            disabled={disabled}
-            error={!!errors.companyName}
-            helperText={errors.companyName}
-            label={i18n.t("Company")}
-            name="companyName"
-            onChange={onChange}
-            value={data.companyName}
-            fullWidth
-          />
-        </div>
-        <div>
-          <TextField
-            disabled={disabled}
-            error={!!errors.phone}
-            fullWidth
-            helperText={errors.phone}
-            label={i18n.t("Phone")}
-            name="phone"
-            value={data.phone}
-            onChange={onChange}
-          />
-        </div>
-      </div>
-      <FormSpacer />
-      <TextField
-        disabled={disabled}
-        error={!!errors.streetAddress1}
-        helperText={errors.streetAddress1}
-        label={i18n.t("Address line 1")}
-        name="streetAddress1"
-        onChange={onChange}
-        value={data.streetAddress1}
-        fullWidth
-      />
-      <FormSpacer />
-      <TextField
-        disabled={disabled}
-        error={!!errors.streetAddress2}
-        helperText={errors.streetAddress2}
-        label={i18n.t("Address line 2")}
-        name="streetAddress2"
-        onChange={onChange}
-        value={data.streetAddress2}
-        fullWidth
-      />
-      <FormSpacer />
-      <div className={classes.root}>
-        <div>
-          <TextField
-            disabled={disabled}
-            error={!!errors.city}
-            helperText={errors.city}
-            label={i18n.t("City")}
-            name="city"
-            onChange={onChange}
-            value={data.city}
-            fullWidth
-          />
-        </div>
-        <div>
-          <TextField
-            disabled={disabled}
-            error={!!errors.postalCode}
-            helperText={errors.postalCode}
-            label={i18n.t("ZIP / Postal code")}
-            name="postalCode"
-            onChange={onChange}
-            value={data.postalCode}
-            fullWidth
-          />
-        </div>
-      </div>
-
-      <FormSpacer />
-      <div className={classes.root}>
-        <div>
-          <SingleAutocompleteSelectField
-            disabled={disabled}
-            displayValue={countryDisplayValue}
-            error={!!errors.country}
-            helperText={errors.country}
-            label={i18n.t("Country")}
-            name="country"
-            onChange={onCountryChange}
-            value={data.country}
-            choices={countries}
-            InputProps={{
-              autoComplete: "off"
-            }}
-          />
-        </div>
-        <div>
-          <TextField
-            disabled={disabled}
-            error={!!errors.countryArea}
-            helperText={errors.countryArea}
-            label={i18n.t("Country area")}
-            name="countryArea"
-            onChange={onChange}
-            value={data.countryArea}
-            fullWidth
-          />
-        </div>
-      </div>
-    </>
-  )
+export const AddressEdit: React.ComponentType<AddressEditProps> = props => (
+  <EditAddress
+    countryPickerLabels={{
+      addCustomValueText: inputValue =>
+        i18n.t("Add new value: {{ value }}", {
+          context: "add custom option",
+          value: inputValue
+        }),
+      noResultsLabel: i18n.t("No results found")
+    }}
+    labels={{
+      city: i18n.t("City", {
+        context: "address form"
+      }),
+      companyName: i18n.t("Company", {
+        context: "address form"
+      }),
+      country: i18n.t("Country", {
+        context: "address form"
+      }),
+      countryArea: i18n.t("Country Area", {
+        context: "address form"
+      }),
+      firstName: i18n.t("First Name", {
+        context: "address form"
+      }),
+      lastName: i18n.t("Last Name", {
+        context: "address form"
+      }),
+      phoneNumber: i18n.t("Phone", {
+        context: "address form"
+      }),
+      postalCode: i18n.t("ZIP / Postal Code", {
+        context: "address form"
+      }),
+      streetAddress1: i18n.t("Address Line 1", {
+        context: "address form"
+      }),
+      streetAddress2: i18n.t("Address Line 2", {
+        context: "address form"
+      })
+    }}
+    {...props}
+  />
 );
+
 AddressEdit.displayName = "AddressEdit";
 export default AddressEdit;

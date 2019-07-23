@@ -14,7 +14,7 @@ import CardTitle from "@saleor/components/CardTitle";
 import { ConfirmButtonTransitionState } from "@saleor/components/ConfirmButton";
 import Grid from "@saleor/components/Grid";
 import Hr from "@saleor/components/Hr";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import classNames from "classnames";
 import React from "react";
 import i18n from "../../../i18n";

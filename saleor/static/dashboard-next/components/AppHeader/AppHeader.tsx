@@ -9,7 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import React from "react";
 import AppHeaderContext from "../AppLayout/AppHeaderContext";
-import Skeleton from "../Skeleton";
+
+import Skeleton from "@ui/Skeleton";
 
 export interface AppHeaderProps {
   children: React.ReactNode;

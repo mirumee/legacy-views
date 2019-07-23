@@ -11,7 +11,7 @@ import React from "react";
 
 import CardTitle from "@saleor/components/CardTitle";
 import { ControlledCheckbox } from "@saleor/components/ControlledCheckbox";
-import Skeleton from "@saleor/components/Skeleton";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { StaffMemberDetails_shop_permissions } from "../../types/StaffMemberDetails";
 

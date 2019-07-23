@@ -8,7 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import ExtendedPageHeader from "../ExtendedPageHeader";
-import Skeleton from "../Skeleton";
+
+import Skeleton from "@ui/Skeleton";
 
 const styles = (theme: Theme) =>
   createStyles({
