@@ -142,7 +142,9 @@ module.exports = (env, argv) => {
     resolve: {
       alias: {
         jquery: resolve('node_modules/jquery/dist/jquery.js'),
-        '@ui': resolve('../saleor-dashboard-ui/build')
+        '@ui': resolve('../saleor-dashboard-ui/build'),
+        react: resolve('node_modules/react'),
+        'react-dom': resolve('node_modules/react-dom')
       },
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
       plugins: [
