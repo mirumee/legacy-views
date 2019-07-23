@@ -1,4 +1,4 @@
-import { IMenu, IMenuItem } from "../../utils/menu";
+import { IMenu, IMenuItem } from "@ui/utils/menu";
 
 export enum FieldType {
   date,

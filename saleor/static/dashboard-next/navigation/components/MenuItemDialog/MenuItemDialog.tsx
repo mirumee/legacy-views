@@ -12,11 +12,12 @@ import ConfirmButton, {
   ConfirmButtonTransitionState
 } from "@saleor/components/ConfirmButton";
 import FormSpacer from "@saleor/components/FormSpacer";
-import { SearchCategories_categories_edges_node } from "../../../containers/SearchCategories/types/SearchCategories";
-import { SearchCollections_collections_edges_node } from "../../../containers/SearchCollections/types/SearchCollections";
-import { SearchPages_pages_edges_node } from "../../../containers/SearchPages/types/SearchPages";
-import i18n from "../../../i18n";
-import { getMenuItemByValue, IMenu } from "../../../utils/menu";
+import { SearchCategories_categories_edges_node } from "@saleor/containers/SearchCategories/types/SearchCategories";
+import { SearchCollections_collections_edges_node } from "@saleor/containers/SearchCollections/types/SearchCollections";
+import { SearchPages_pages_edges_node } from "@saleor/containers/SearchPages/types/SearchPages";
+import i18n from "@saleor/i18n";
+
+import { getMenuItemByValue, IMenu } from "@ui/utils/menu";
 
 export type MenuItemType = "category" | "collection" | "link" | "page";
 export interface MenuItemData {
@@ -229,7 +230,7 @@ const MenuItemDialog: React.StatelessComponent<MenuItemDialogProps> = ({
           name="id"
           helperText=""
           label={i18n.t("Link")}
-          displayValue={displayValue}
+          displayLabel={displayValue}
           loading={loading}
           error={false}
           options={options}

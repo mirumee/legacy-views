@@ -4,11 +4,12 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/styles";
 import i18n from "../../i18n";
-import { getMenuItemByValue, isLeaf, walkToRoot } from "../../utils/menu";
 import FormSpacer from "../FormSpacer";
 import SingleSelectField from "../SingleSelectField";
 import FilterElement from "./FilterElement";
 import { IFilter } from "./types";
+
+import { getMenuItemByValue, isLeaf, walkToRoot } from "@ui/utils/menu";
 
 export interface FilterContentSubmitData {
   name: string;

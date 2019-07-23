@@ -7,8 +7,9 @@ import AutocompleteSelectMenu, {
   AutocompleteSelectMenuProps
 } from "@saleor/components/AutocompleteSelectMenu";
 import Form from "@saleor/components/Form";
-import { getMenuItemByValue, IMenu } from "../../../utils/menu";
 import Decorator from "../../Decorator";
+
+import { getMenuItemByValue, IMenu } from "@ui/utils/menu";
 
 const menu: IMenu = [
   {
@@ -69,7 +70,7 @@ const menu: IMenu = [
 
 const props: AutocompleteSelectMenuProps = {
   disabled: false,
-  displayValue: menu[1].children[1].label.toString(),
+  displayLabel: menu[1].children[1].label.toString(),
   error: false,
   helperText: undefined,
   label: "Autocomplete Menu",
@@ -107,7 +108,7 @@ storiesOf("Generics / Autocomplete Menu", module)
       {({ change, data }) => (
         <AutocompleteSelectMenu
           {...props}
-          displayValue={getMenuItemByValue(menu, data.menu).label.toString()}
+          displayLabel={getMenuItemByValue(menu, data.menu).label.toString()}
           onChange={change}
         />
       )}
