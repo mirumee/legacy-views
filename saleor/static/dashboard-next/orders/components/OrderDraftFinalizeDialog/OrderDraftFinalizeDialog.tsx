@@ -53,7 +53,7 @@ const OrderDraftFinalizeDialog: React.StatelessComponent<
     title={i18n.t("Finalize draft order", {
       context: "modal title"
     })}
-    confirmButtonLabel={
+    confirmLabel={
       warnings.length > 0 ? i18n.t("Finalize anyway") : i18n.t("Finalize")
     }
     confirmButtonState={confirmButtonState}
