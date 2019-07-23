@@ -15,13 +15,13 @@ import TableRow from "@material-ui/core/TableRow";
 import DeleteIcon from "@material-ui/icons/Delete";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
-import Checkbox from "@ui/Checkbox";
-import Skeleton from "@ui/Skeleton";
 import StatusLabel from "@saleor/components/StatusLabel";
 import TableCellAvatar from "@saleor/components/TableCellAvatar";
 import TableHead from "@saleor/components/TableHead";
 import TablePagination from "@saleor/components/TablePagination";
+import CardTitle from "@ui/CardTitle";
+import Checkbox from "@ui/Checkbox";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe, renderCollection } from "../../../misc";
 import { ListActions, PageListProps } from "../../../types";

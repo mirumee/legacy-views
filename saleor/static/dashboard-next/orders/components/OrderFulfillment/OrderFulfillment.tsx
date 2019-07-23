@@ -15,13 +15,13 @@ import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import Money from "@saleor/components/Money";
 import StatusLabel from "@saleor/components/StatusLabel";
 import TableCellAvatar from "@saleor/components/TableCellAvatar";
 import i18n from "@saleor/i18n";
 import { maybe, renderCollection } from "@saleor/misc";
 import { FulfillmentStatus } from "@saleor/types/globalTypes";
+import CardTitle from "@ui/CardTitle";
 import { OrderDetails_order_fulfillments } from "../../types/OrderDetails";
 
 import CardMenu from "@ui/CardMenu";

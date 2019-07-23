@@ -12,9 +12,10 @@ import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import React from "react";
 
-import i18n from "../../i18n";
-import CardTitle from "../CardTitle";
-import FormSpacer from "../FormSpacer";
+import i18n from "@saleor/i18n";
+
+import CardTitle from "@ui/CardTitle";
+import FormSpacer from "@ui/utils/FormSpacer";
 
 const styles = (theme: Theme) =>
   createStyles({

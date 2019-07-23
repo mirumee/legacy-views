@@ -9,13 +9,13 @@ import React from "react";
 
 import Form from "@saleor/components/Form";
 import Hr from "@saleor/components/Hr";
-import Skeleton from "@ui/Skeleton";
 import {
   Timeline,
   TimelineAddNote,
   TimelineEvent,
   TimelineNote
 } from "@saleor/components/Timeline";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import {
   OrderEventsEmailsEnum,

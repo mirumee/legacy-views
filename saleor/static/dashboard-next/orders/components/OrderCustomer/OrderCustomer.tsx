@@ -10,15 +10,15 @@ import {
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import ExternalLink from "@saleor/components/ExternalLink";
 import Form from "@saleor/components/Form";
 import Hr from "@saleor/components/Hr";
 import Link from "@saleor/components/Link";
 import SingleAutocompleteSelectField from "@saleor/components/SingleAutocompleteSelectField";
-import Skeleton from "@ui/Skeleton";
 import useStateFromProps from "@saleor/hooks/useStateFromProps";
 import createSingleAutocompleteSelectHandler from "@saleor/utils/handlers/singleAutocompleteSelectChangeHandler";
+import CardTitle from "@ui/CardTitle";
+import Skeleton from "@ui/Skeleton";
 import { SearchCustomers_customers_edges_node } from "../../../containers/SearchCustomers/types/SearchCustomers";
 import { customerUrl } from "../../../customers/urls";
 import i18n from "../../../i18n";

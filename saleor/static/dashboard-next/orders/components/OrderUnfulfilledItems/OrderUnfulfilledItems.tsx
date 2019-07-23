@@ -9,11 +9,11 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import Money from "@saleor/components/Money";
-import Skeleton from "@ui/Skeleton";
 import StatusLabel from "@saleor/components/StatusLabel";
 import TableCellAvatar from "@saleor/components/TableCellAvatar";
+import CardTitle from "@ui/CardTitle";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";
 import { OrderDetails_order_lines } from "../../types/OrderDetails";

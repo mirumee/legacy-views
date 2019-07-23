@@ -3,9 +3,9 @@ import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import * as React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import { ControlledCheckbox } from "@saleor/components/ControlledCheckbox";
 import Grid from "@saleor/components/Grid";
+import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
 import { FormErrors } from "../../../types";
 import { FormData } from "../VoucherDetailsPage";

@@ -10,7 +10,6 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import makeStyles from "@material-ui/styles/makeStyles";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import {
   SortableTableBody,
   SortableTableRow
@@ -20,6 +19,7 @@ import { maybe, renderCollection } from "@saleor/misc";
 import { ReorderAction } from "@saleor/types";
 import { AttributeDetailsFragment_values } from "../../types/AttributeDetailsFragment";
 
+import CardTitle from "@ui/CardTitle";
 import Skeleton from "@ui/Skeleton";
 import { stopPropagation } from "@ui/utils/events";
 

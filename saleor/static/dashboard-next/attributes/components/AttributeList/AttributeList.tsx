@@ -7,14 +7,14 @@ import TableRow from "@material-ui/core/TableRow";
 import makeStyles from "@material-ui/styles/makeStyles";
 import React from "react";
 
-import Checkbox from "@ui/Checkbox";
-import Skeleton from "@ui/Skeleton";
 import TableHead from "@saleor/components/TableHead";
 import TablePagination from "@saleor/components/TablePagination";
 import i18n from "@saleor/i18n";
 import { renderCollection } from "@saleor/misc";
 import { ListActions, ListProps } from "@saleor/types";
 import { translateBoolean } from "@saleor/utils/i18n";
+import Checkbox from "@ui/Checkbox";
+import Skeleton from "@ui/Skeleton";
 import { AttributeList_attributes_edges_node } from "../../types/AttributeList";
 
 export interface AttributeListProps extends ListProps, ListActions {

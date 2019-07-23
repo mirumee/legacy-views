@@ -11,13 +11,13 @@ import TableFooter from "@material-ui/core/TableFooter";
 import TableRow from "@material-ui/core/TableRow";
 import React from "react";
 
-import Checkbox from "@ui/Checkbox";
 import { DateTime } from "@saleor/components/Date";
 import Money from "@saleor/components/Money";
-import Skeleton from "@ui/Skeleton";
 import StatusLabel from "@saleor/components/StatusLabel";
 import TableHead from "@saleor/components/TableHead";
 import TablePagination from "@saleor/components/TablePagination";
+import Checkbox from "@ui/Checkbox";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import {
   maybe,

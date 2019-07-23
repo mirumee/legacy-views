@@ -3,12 +3,12 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import ControlledSwitch from "@saleor/components/ControlledSwitch";
 import { FormSpacer } from "@saleor/components/FormSpacer";
 import Hr from "@saleor/components/Hr";
 import RadioGroupField from "@saleor/components/RadioGroupField";
 import TextFieldWithChoice from "@saleor/components/TextFieldWithChoice";
+import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
 import { FormErrors } from "../../../types";
 import { DiscountValueTypeEnum } from "../../../types/globalTypes";

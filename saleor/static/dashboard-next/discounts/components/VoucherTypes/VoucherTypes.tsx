@@ -2,9 +2,9 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import * as React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import Grid from "@saleor/components/Grid";
 import RadioGroupField from "@saleor/components/RadioGroupField";
+import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
 import { FormErrors } from "../../../types";
 import { DiscountValueTypeEnum } from "../../../types/globalTypes";

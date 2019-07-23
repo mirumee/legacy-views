@@ -3,9 +3,9 @@ import CardContent from "@material-ui/core/CardContent";
 import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import SingleAutocompleteSelectField from "@saleor/components/SingleAutocompleteSelectField";
 import { ProductTypeDetails_taxTypes } from "@saleor/productTypes/types/ProductTypeDetails";
+import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";
 import { ProductTypeForm } from "../ProductTypeDetailsPage/ProductTypeDetailsPage";

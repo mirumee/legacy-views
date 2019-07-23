@@ -11,9 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import moment from "moment-timezone";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import { ControlledCheckbox } from "@saleor/components/ControlledCheckbox";
 import { FormSpacer } from "@saleor/components/FormSpacer";
+import CardTitle from "@ui/CardTitle";
 import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { CustomerDetails_user } from "../../types/CustomerDetails";

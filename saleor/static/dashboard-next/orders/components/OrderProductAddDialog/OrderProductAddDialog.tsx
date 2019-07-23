@@ -18,7 +18,6 @@ import TextField from "@material-ui/core/TextField";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
 
-import Checkbox from "@ui/Checkbox";
 import ConfirmButton, {
   ConfirmButtonTransitionState
 } from "@saleor/components/ConfirmButton";
@@ -28,6 +27,7 @@ import useSearchQuery from "@saleor/hooks/useSearchQuery";
 import i18n from "@saleor/i18n";
 import { maybe, renderCollection } from "@saleor/misc";
 import { FetchMoreProps } from "@saleor/types";
+import Checkbox from "@ui/Checkbox";
 import {
   SearchOrderVariant_products_edges_node,
   SearchOrderVariant_products_edges_node_variants

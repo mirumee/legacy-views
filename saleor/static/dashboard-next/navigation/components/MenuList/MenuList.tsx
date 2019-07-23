@@ -13,11 +13,11 @@ import TableRow from "@material-ui/core/TableRow";
 import DeleteIcon from "@material-ui/icons/Delete";
 import React from "react";
 
-import Checkbox from "@ui/Checkbox";
 import IconButtonTableCell from "@saleor/components/IconButtonTableCell";
-import Skeleton from "@ui/Skeleton";
 import TableHead from "@saleor/components/TableHead";
 import TablePagination from "@saleor/components/TablePagination";
+import Checkbox from "@ui/Checkbox";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe, renderCollection } from "../../../misc";
 import { ListActions, ListProps } from "../../../types";

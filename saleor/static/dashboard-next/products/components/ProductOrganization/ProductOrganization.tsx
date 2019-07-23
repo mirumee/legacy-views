@@ -10,7 +10,6 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import CardSpacer from "@saleor/components/CardSpacer";
-import CardTitle from "@saleor/components/CardTitle";
 import { FormSpacer } from "@saleor/components/FormSpacer";
 import Hr from "@saleor/components/Hr";
 import MultiAutocompleteSelectField, {
@@ -23,6 +22,7 @@ import { ChangeEvent } from "@saleor/hooks/useForm";
 import i18n from "@saleor/i18n";
 import { maybe } from "@saleor/misc";
 import { FormErrors } from "@saleor/types";
+import CardTitle from "@ui/CardTitle";
 
 interface ProductType {
   hasVariants: boolean;

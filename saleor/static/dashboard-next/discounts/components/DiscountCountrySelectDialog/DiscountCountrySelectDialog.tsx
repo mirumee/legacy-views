@@ -18,7 +18,6 @@ import Typography from "@material-ui/core/Typography";
 import { filter } from "fuzzaldrin";
 import React from "react";
 
-import Checkbox from "@ui/Checkbox";
 import ConfirmButton, {
   ConfirmButtonTransitionState
 } from "@saleor/components/ConfirmButton";
@@ -27,6 +26,7 @@ import FormSpacer from "@saleor/components/FormSpacer";
 import Hr from "@saleor/components/Hr";
 // tslint:disable no-submodule-imports
 import { ShopInfo_shop_countries } from "@saleor/components/Shop/types/ShopInfo";
+import Checkbox from "@ui/Checkbox";
 import i18n from "../../../i18n";
 
 interface FormData {

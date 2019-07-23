@@ -17,7 +17,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import classNames from "classnames";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
+import CardTitle from "@ui/CardTitle";
 import Skeleton from "@ui/Skeleton";
 import i18n from "../../i18n";
 import { maybe, renderCollection } from "../../misc";

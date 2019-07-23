@@ -3,8 +3,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import { ControlledCheckbox } from "@saleor/components/ControlledCheckbox";
+import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
 
 interface StaffStatusProps {

@@ -10,8 +10,8 @@ import classNames from "classnames";
 import React from "react";
 import { ListProps } from "../../../types";
 
-import Skeleton from "@ui/Skeleton";
 import TablePagination from "@saleor/components/TablePagination";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe, renderCollection } from "../../../misc";
 

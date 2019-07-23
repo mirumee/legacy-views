@@ -10,7 +10,6 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardTitle from "@saleor/components/CardTitle";
 import Hr from "@saleor/components/Hr";
 import ImageTile from "@saleor/components/ImageTile";
 import ImageUpload from "@saleor/components/ImageUpload";
@@ -18,6 +17,8 @@ import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { CategoryDetails_category_backgroundImage } from "../../types/CategoryDetails";
 import { FormData } from "../CategoryUpdatePage";
+
+import CardTitle from "@ui/CardTitle";
 
 const styles = (theme: Theme) =>
   createStyles({

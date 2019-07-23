@@ -10,9 +10,9 @@ import TextField from "@material-ui/core/TextField";
 import { RawDraftContentState } from "draft-js";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import FormSpacer from "@saleor/components/FormSpacer";
 import RichTextEditor from "@saleor/components/RichTextEditor";
+import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
 
 const styles = (theme: Theme) =>

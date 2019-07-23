@@ -13,7 +13,6 @@ import TableRow from "@material-ui/core/TableRow";
 import DeleteIcon from "@material-ui/icons/Delete";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import {
   SortableTableBody,
   SortableTableRow
@@ -23,6 +22,7 @@ import i18n from "@saleor/i18n";
 import { maybe, renderCollection } from "@saleor/misc";
 import { ListActions, ReorderAction } from "@saleor/types";
 import { AttributeTypeEnum } from "@saleor/types/globalTypes";
+import CardTitle from "@ui/CardTitle";
 import {
   ProductTypeDetails_productType_productAttributes,
   ProductTypeDetails_productType_variantAttributes

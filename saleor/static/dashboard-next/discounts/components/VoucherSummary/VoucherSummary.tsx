@@ -4,12 +4,12 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import CardSpacer from "@saleor/components/CardSpacer";
-import CardTitle from "@saleor/components/CardTitle";
 import Date from "@saleor/components/Date";
 import FormSpacer from "@saleor/components/FormSpacer";
 import Hr from "@saleor/components/Hr";
 import Money from "@saleor/components/Money";
 import Percent from "@saleor/components/Percent";
+import CardTitle from "@ui/CardTitle";
 import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";

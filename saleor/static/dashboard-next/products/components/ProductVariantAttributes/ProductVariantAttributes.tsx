@@ -2,13 +2,13 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import Grid from "@saleor/components/Grid";
 import SingleAutocompleteSelectField, {
   SingleAutocompleteChoiceType
 } from "@saleor/components/SingleAutocompleteSelectField";
-import Skeleton from "@ui/Skeleton";
 import { FormsetAtomicData, FormsetChange } from "@saleor/hooks/useFormset";
+import CardTitle from "@ui/CardTitle";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { ProductVariant_attributes_attribute_values } from "../../types/ProductVariant";
 

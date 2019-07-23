@@ -6,8 +6,8 @@ import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import { DateTime } from "@saleor/components/Date";
+import CardTitle from "@ui/CardTitle";
 import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { renderCollection } from "../../../misc";

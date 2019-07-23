@@ -5,9 +5,9 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import AddressEdit from "@saleor/components/AddressEdit";
-import CardTitle from "@saleor/components/CardTitle";
 import { FormSpacer } from "@saleor/components/FormSpacer";
 import { SingleAutocompleteChoiceType } from "@saleor/components/SingleAutocompleteSelectField";
+import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
 import { FormErrors } from "../../../types";
 import { AddressTypeInput } from "../../types";

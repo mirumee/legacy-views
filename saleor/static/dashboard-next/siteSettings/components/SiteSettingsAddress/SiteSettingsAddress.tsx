@@ -4,7 +4,6 @@ import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import FormSpacer from "@saleor/components/FormSpacer";
 import Grid from "@saleor/components/Grid";
 import SingleAutocompleteSelectField, {
@@ -14,6 +13,7 @@ import { AddressTypeInput } from "@saleor/customers/types";
 import { ChangeEvent } from "@saleor/hooks/useForm";
 import i18n from "@saleor/i18n";
 import { FormErrors } from "@saleor/types";
+import CardTitle from "@ui/CardTitle";
 import { SiteSettingsPageFormData } from "../SiteSettingsPage";
 
 interface SiteSettingsAddressProps extends WithStyles<typeof styles> {

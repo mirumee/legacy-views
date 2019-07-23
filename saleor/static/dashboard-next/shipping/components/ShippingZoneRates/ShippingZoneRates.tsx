@@ -15,12 +15,12 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
 import IconButtonTableCell from "@saleor/components/IconButtonTableCell";
 import Money from "@saleor/components/Money";
 import MoneyRange from "@saleor/components/MoneyRange";
-import Skeleton from "@ui/Skeleton";
 import WeightRange from "@saleor/components/WeightRange";
+import CardTitle from "@ui/CardTitle";
+import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe, renderCollection } from "../../../misc";
 import { ICONBUTTON_SIZE } from "../../../theme";

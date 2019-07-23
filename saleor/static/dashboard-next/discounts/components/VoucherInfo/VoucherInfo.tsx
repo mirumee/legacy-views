@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import React from "react";
 
 import Button from "@material-ui/core/Button";
-import CardTitle from "@saleor/components/CardTitle";
+import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
 import { generateCode } from "../../../misc";
 import { FormErrors } from "../../../types";

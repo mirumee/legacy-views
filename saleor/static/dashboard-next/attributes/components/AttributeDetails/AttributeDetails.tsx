@@ -4,7 +4,6 @@ import TextField from "@material-ui/core/TextField";
 import React from "react";
 import slugify from "slugify";
 
-import CardTitle from "@saleor/components/CardTitle";
 import ControlledSwitch from "@saleor/components/ControlledSwitch";
 import FormSpacer from "@saleor/components/FormSpacer";
 import SingleSelectField from "@saleor/components/SingleSelectField";
@@ -12,6 +11,8 @@ import i18n from "@saleor/i18n";
 import { FormErrors } from "@saleor/types";
 import { AttributeInputTypeEnum } from "@saleor/types/globalTypes";
 import { AttributePageFormData } from "../AttributePage";
+
+import CardTitle from "@ui/CardTitle";
 
 export interface AttributeDetailsProps {
   canChangeType: boolean;

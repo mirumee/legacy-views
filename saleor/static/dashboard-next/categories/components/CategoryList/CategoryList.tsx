@@ -13,14 +13,15 @@ import TableFooter from "@material-ui/core/TableFooter";
 import TableRow from "@material-ui/core/TableRow";
 import React from "react";
 
-import CardTitle from "@saleor/components/CardTitle";
-import Checkbox from "@ui/Checkbox";
-import Skeleton from "@ui/Skeleton";
 import TableHead from "@saleor/components/TableHead";
 import TablePagination from "@saleor/components/TablePagination";
-import i18n from "../../../i18n";
-import { renderCollection } from "../../../misc";
-import { ListActions, ListProps } from "../../../types";
+import i18n from "@saleor/i18n";
+import { renderCollection } from "@saleor/misc";
+import { ListActions, ListProps } from "@saleor/types";
+
+import CardTitle from "@ui/CardTitle";
+import Checkbox from "@ui/Checkbox";
+import Skeleton from "@ui/Skeleton";
 
 const styles = (theme: Theme) =>
   createStyles({

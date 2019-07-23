@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import React from "react";
 import slugify from "slugify";
 
-import CardTitle from "@saleor/components/CardTitle";
+import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
 import { FormData } from "../PageDetailsPage";
 

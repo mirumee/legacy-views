@@ -5,13 +5,14 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import CardSpacer from "@saleor/components/CardSpacer";
-import CardTitle from "@saleor/components/CardTitle";
 import ControlledSwitch from "@saleor/components/ControlledSwitch";
 import FormSpacer from "@saleor/components/FormSpacer";
 import Hr from "@saleor/components/Hr";
 import i18n from "@saleor/i18n";
 import { FormErrors } from "@saleor/types";
 import { AttributePageFormData } from "../AttributePage";
+
+import CardTitle from "@ui/CardTitle";
 
 export interface AttributePropertiesProps {
   data: AttributePageFormData;
