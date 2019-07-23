@@ -15,16 +15,17 @@ import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import CardMenu from "@saleor/components/CardMenu";
 import CardTitle from "@saleor/components/CardTitle";
 import Money from "@saleor/components/Money";
-import Skeleton from "@ui/Skeleton";
 import StatusLabel from "@saleor/components/StatusLabel";
 import TableCellAvatar from "@saleor/components/TableCellAvatar";
-import i18n from "../../../i18n";
-import { maybe, renderCollection } from "../../../misc";
-import { FulfillmentStatus } from "../../../types/globalTypes";
+import i18n from "@saleor/i18n";
+import { maybe, renderCollection } from "@saleor/misc";
+import { FulfillmentStatus } from "@saleor/types/globalTypes";
 import { OrderDetails_order_fulfillments } from "../../types/OrderDetails";
+
+import CardMenu from "@ui/CardMenu";
+import Skeleton from "@ui/Skeleton";
 
 const styles = (theme: Theme) =>
   createStyles({

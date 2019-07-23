@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import AppHeader from "@saleor/components/AppHeader";
-import CardMenu from "@saleor/components/CardMenu";
 import { ConfirmButtonTransitionState } from "@saleor/components/ConfirmButton";
 import { Container } from "@saleor/components/Container";
 import { DateTime } from "@saleor/components/Date";
@@ -25,6 +24,8 @@ import OrderCustomer from "../OrderCustomer";
 import OrderDraftDetails from "../OrderDraftDetails/OrderDraftDetails";
 import { FormData as OrderDraftDetailsProductsFormData } from "../OrderDraftDetailsProducts";
 import OrderHistory, { FormData as HistoryFormData } from "../OrderHistory";
+
+import CardMenu from "@ui/CardMenu";
 
 const styles = (theme: Theme) =>
   createStyles({

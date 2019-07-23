@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import AppHeader from "@saleor/components/AppHeader";
-import CardMenu from "@saleor/components/CardMenu";
 import { CardSpacer } from "@saleor/components/CardSpacer";
 import { Container } from "@saleor/components/Container";
 import { DateTime } from "@saleor/components/Date";
@@ -25,6 +24,8 @@ import OrderFulfillment from "../OrderFulfillment";
 import OrderHistory, { FormData as HistoryFormData } from "../OrderHistory";
 import OrderPayment from "../OrderPayment/OrderPayment";
 import OrderUnfulfilledItems from "../OrderUnfulfilledItems/OrderUnfulfilledItems";
+
+import CardMenu from "@ui/CardMenu";
 
 const styles = (theme: Theme) =>
   createStyles({

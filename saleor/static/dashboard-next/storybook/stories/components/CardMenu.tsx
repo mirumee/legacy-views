@@ -1,8 +1,9 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import CardMenu, { CardMenuItem } from "@saleor/components/CardMenu";
 import Decorator from "../../Decorator";
+
+import CardMenu, { CardMenuItem } from "@ui/CardMenu";
 
 const menuItems: CardMenuItem[] = [
   { label: "Do this", onSelect: () => undefined },
