@@ -19,13 +19,13 @@ import InfiniteScroll from "react-infinite-scroller";
 import ConfirmButton, {
   ConfirmButtonTransitionState
 } from "@saleor/components/ConfirmButton";
+import { SearchAttributes_attributes_edges_node } from "@saleor/containers/SearchAttributes/types/SearchAttributes";
 import useSearchQuery from "@saleor/hooks/useSearchQuery";
+import i18n from "@saleor/i18n";
 import { maybe, renderCollection } from "@saleor/misc";
 import { FetchMoreProps } from "@saleor/types";
-import { SearchAttributes_attributes_edges_node } from "../../containers/SearchAttributes/types/SearchAttributes";
-import i18n from "../../i18n";
-import Checkbox from "../Checkbox";
 
+import Checkbox from "@ui/Checkbox";
 const useStyles = makeStyles((theme: Theme) => ({
   checkboxCell: {
     paddingLeft: 0

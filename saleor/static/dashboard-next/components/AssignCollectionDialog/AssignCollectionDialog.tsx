@@ -15,11 +15,12 @@ import React from "react";
 import useSearchQuery from "@saleor/hooks/useSearchQuery";
 import { SearchCollections_collections_edges_node } from "../../containers/SearchCollections/types/SearchCollections";
 import i18n from "../../i18n";
-import Checkbox from "../Checkbox";
 import ConfirmButton, {
   ConfirmButtonTransitionState
 } from "../ConfirmButton/ConfirmButton";
-import FormSpacer from "../FormSpacer";
+
+import Checkbox from "@ui/Checkbox";
+import FormSpacer from "@ui/utils/FormSpacer";
 
 export interface FormData {
   collections: SearchCollections_collections_edges_node[];

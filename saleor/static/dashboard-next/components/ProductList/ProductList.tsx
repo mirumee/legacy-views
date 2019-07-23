@@ -11,17 +11,17 @@ import TableFooter from "@material-ui/core/TableFooter";
 import TableRow from "@material-ui/core/TableRow";
 import React from "react";
 
+import { CategoryDetails_category_products_edges_node } from "@saleor/categories/types/CategoryDetails";
 import TableCellAvatar from "@saleor/components/TableCellAvatar";
-import { CategoryDetails_category_products_edges_node } from "../../categories/types/CategoryDetails";
-import i18n from "../../i18n";
-import { maybe, renderCollection } from "../../misc";
-import { ListActions, ListProps } from "../../types";
-import Checkbox from "../Checkbox";
+import i18n from "@saleor/i18n";
+import { maybe, renderCollection } from "@saleor/misc";
+import { ListActions, ListProps } from "@saleor/types";
 import Money from "../Money";
 import StatusLabel from "../StatusLabel";
 import TableHead from "../TableHead";
 import TablePagination from "../TablePagination";
 
+import Checkbox from "@ui/Checkbox";
 import Skeleton from "@ui/Skeleton";
 
 const styles = (theme: Theme) =>

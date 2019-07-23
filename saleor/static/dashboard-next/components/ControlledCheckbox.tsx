@@ -1,7 +1,7 @@
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import React from "react";
 
-import Checkbox from "./Checkbox";
+import Checkbox from "@ui/Checkbox";
 
 interface ControlledCheckboxProps {
   name: string;

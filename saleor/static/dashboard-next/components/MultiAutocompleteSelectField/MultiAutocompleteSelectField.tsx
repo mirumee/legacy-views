@@ -16,7 +16,7 @@ import React from "react";
 import { compareTwoStrings } from "string-similarity";
 
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import Checkbox from "@saleor/components/Checkbox";
+import Checkbox from "@ui/Checkbox";
 import Debounce, { DebounceProps } from "@saleor/components/Debounce";
 import i18n from "@saleor/i18n";
 import ArrowDropdownIcon from "@saleor/icons/ArrowDropdown";

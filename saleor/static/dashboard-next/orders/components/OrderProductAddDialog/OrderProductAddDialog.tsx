@@ -18,7 +18,7 @@ import TextField from "@material-ui/core/TextField";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
 
-import Checkbox from "@saleor/components/Checkbox";
+import Checkbox from "@ui/Checkbox";
 import ConfirmButton, {
   ConfirmButtonTransitionState
 } from "@saleor/components/ConfirmButton";

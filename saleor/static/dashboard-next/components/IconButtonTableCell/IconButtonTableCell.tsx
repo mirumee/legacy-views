@@ -8,8 +8,9 @@ import {
 import TableCell from "@material-ui/core/TableCell";
 import React from "react";
 
-import { stopPropagation } from "../../misc";
 import { ICONBUTTON_SIZE } from "../../theme";
+
+import { stopPropagation } from "@ui/utils/events";
 
 export interface IconButtonTableCellProps {
   children: React.ReactNode;

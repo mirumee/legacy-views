@@ -18,7 +18,7 @@ import Typography from "@material-ui/core/Typography";
 import { filter } from "fuzzaldrin";
 import React from "react";
 
-import Checkbox from "@saleor/components/Checkbox";
+import Checkbox from "@ui/Checkbox";
 import ConfirmButton, {
   ConfirmButtonTransitionState
 } from "@saleor/components/ConfirmButton";

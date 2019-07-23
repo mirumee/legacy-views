@@ -12,7 +12,7 @@ import TableFooter from "@material-ui/core/TableFooter";
 import TableRow from "@material-ui/core/TableRow";
 import React from "react";
 
-import Checkbox from "@saleor/components/Checkbox";
+import Checkbox from "@ui/Checkbox";
 import Date from "@saleor/components/Date";
 import Money from "@saleor/components/Money";
 import Percent from "@saleor/components/Percent";

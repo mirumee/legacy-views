@@ -17,11 +17,12 @@ import ConfirmButton, {
 } from "@saleor/components/ConfirmButton";
 import FormSpacer from "@saleor/components/FormSpacer";
 import TableCellAvatar from "@saleor/components/TableCellAvatar";
+import { SearchProducts_products_edges_node } from "@saleor/containers/SearchProducts/types/SearchProducts";
 import useSearchQuery from "@saleor/hooks/useSearchQuery";
-import { SearchProducts_products_edges_node } from "../../containers/SearchProducts/types/SearchProducts";
-import i18n from "../../i18n";
-import { maybe } from "../../misc";
-import Checkbox from "../Checkbox";
+import i18n from "@saleor/i18n";
+import { maybe } from "@saleor/misc";
+
+import Checkbox from "@ui/Checkbox";
 
 export interface FormData {
   products: SearchProducts_products_edges_node[];

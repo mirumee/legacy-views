@@ -13,7 +13,7 @@ import TableRow from "@material-ui/core/TableRow";
 import DeleteIcon from "@material-ui/icons/Delete";
 import React from "react";
 
-import Checkbox from "@saleor/components/Checkbox";
+import Checkbox from "@ui/Checkbox";
 import IconButtonTableCell from "@saleor/components/IconButtonTableCell";
 import Skeleton from "@ui/Skeleton";
 import TableHead from "@saleor/components/TableHead";

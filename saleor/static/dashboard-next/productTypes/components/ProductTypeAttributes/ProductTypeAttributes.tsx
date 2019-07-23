@@ -14,21 +14,23 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import React from "react";
 
 import CardTitle from "@saleor/components/CardTitle";
-import Checkbox from "@saleor/components/Checkbox";
-import Skeleton from "@ui/Skeleton";
 import {
   SortableTableBody,
   SortableTableRow
 } from "@saleor/components/SortableTable";
 import TableHead from "@saleor/components/TableHead";
 import i18n from "@saleor/i18n";
-import { maybe, renderCollection, stopPropagation } from "@saleor/misc";
+import { maybe, renderCollection } from "@saleor/misc";
 import { ListActions, ReorderAction } from "@saleor/types";
 import { AttributeTypeEnum } from "@saleor/types/globalTypes";
 import {
   ProductTypeDetails_productType_productAttributes,
   ProductTypeDetails_productType_variantAttributes
 } from "../../types/ProductTypeDetails";
+
+import Checkbox from "@ui/Checkbox";
+import Skeleton from "@ui/Skeleton";
+import { stopPropagation } from "@ui/utils/events";
 
 const styles = (theme: Theme) =>
   createStyles({

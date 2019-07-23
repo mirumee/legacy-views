@@ -12,8 +12,9 @@ import {
 } from "@material-ui/core/styles";
 import React from "react";
 
-import i18n from "../../i18n";
-import Checkbox from "../Checkbox";
+import i18n from "@saleor/i18n";
+
+import Checkbox from "@ui/Checkbox";
 
 const styles = (theme: Theme) =>
   createStyles({

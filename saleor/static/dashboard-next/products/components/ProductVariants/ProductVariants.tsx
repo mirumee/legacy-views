@@ -16,7 +16,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import CardTitle from "@saleor/components/CardTitle";
-import Checkbox from "@saleor/components/Checkbox";
+import Checkbox from "@ui/Checkbox";
 import Money from "@saleor/components/Money";
 import Skeleton from "@ui/Skeleton";
 import StatusLabel from "@saleor/components/StatusLabel";

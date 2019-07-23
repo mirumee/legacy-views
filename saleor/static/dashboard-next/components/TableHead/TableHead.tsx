@@ -14,10 +14,10 @@ import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import React from "react";
 
-import { Node } from "../../types";
+import i18n from "@saleor/i18n";
+import { Node } from "@saleor/types";
 
-import i18n from "../../i18n";
-import Checkbox from "../Checkbox";
+import Checkbox from "@ui/Checkbox";
 
 export interface TableHeadProps extends MuiTableHeadProps {
   disabled: boolean;

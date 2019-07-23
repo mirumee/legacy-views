@@ -11,15 +11,17 @@ import makeStyles from "@material-ui/styles/makeStyles";
 import React from "react";
 
 import CardTitle from "@saleor/components/CardTitle";
-import Skeleton from "@ui/Skeleton";
 import {
   SortableTableBody,
   SortableTableRow
 } from "@saleor/components/SortableTable";
 import i18n from "@saleor/i18n";
-import { maybe, renderCollection, stopPropagation } from "@saleor/misc";
+import { maybe, renderCollection } from "@saleor/misc";
 import { ReorderAction } from "@saleor/types";
 import { AttributeDetailsFragment_values } from "../../types/AttributeDetailsFragment";
+
+import Skeleton from "@ui/Skeleton";
+import { stopPropagation } from "@ui/utils/events";
 
 export interface AttributeValuesProps {
   disabled: boolean;

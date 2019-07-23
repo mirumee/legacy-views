@@ -16,10 +16,11 @@ import ConfirmButton, {
   ConfirmButtonTransitionState
 } from "@saleor/components/ConfirmButton";
 import FormSpacer from "@saleor/components/FormSpacer";
+import { SearchCategories_categories_edges_node } from "@saleor/containers/SearchCategories/types/SearchCategories";
 import useSearchQuery from "@saleor/hooks/useSearchQuery";
-import { SearchCategories_categories_edges_node } from "../../containers/SearchCategories/types/SearchCategories";
-import i18n from "../../i18n";
-import Checkbox from "../Checkbox";
+import i18n from "@saleor/i18n";
+
+import Checkbox from "@ui/Checkbox";
 
 export interface FormData {
   categories: SearchCategories_categories_edges_node[];
