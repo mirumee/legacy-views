@@ -27,6 +27,7 @@ function loadStories() {
   require("./stories/components/Percent");
   require("./stories/components/PhoneField");
   require("./stories/components/PriceField");
+  require("./stories/components/RadioGroupField");
   require("./stories/components/RichTextEditor");
   require("./stories/components/SaveButtonBar");
   require("./stories/components/SaveFilterTabDialog");
