@@ -1,9 +1,10 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import ExternalLink from "@saleor/components/ExternalLink";
 import CardDecorator from "../../CardDecorator";
 import Decorator from "../../Decorator";
+
+import ExternalLink from "@ui/ExternalLink";
 
 storiesOf("Generics / External Link", module)
   .addDecorator(CardDecorator)

@@ -10,20 +10,21 @@ import {
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import ExternalLink from "@saleor/components/ExternalLink";
 import Form from "@saleor/components/Form";
 import Hr from "@saleor/components/Hr";
 import Link from "@saleor/components/Link";
 import SingleAutocompleteSelectField from "@saleor/components/SingleAutocompleteSelectField";
+import { SearchCustomers_customers_edges_node } from "@saleor/containers/SearchCustomers/types/SearchCustomers";
+import { customerUrl } from "@saleor/customers/urls";
 import useStateFromProps from "@saleor/hooks/useStateFromProps";
+import i18n from "@saleor/i18n";
+import { createHref, maybe } from "@saleor/misc";
 import createSingleAutocompleteSelectHandler from "@saleor/utils/handlers/singleAutocompleteSelectChangeHandler";
 import CardTitle from "@ui/CardTitle";
 import Skeleton from "@ui/Skeleton";
-import { SearchCustomers_customers_edges_node } from "../../../containers/SearchCustomers/types/SearchCustomers";
-import { customerUrl } from "../../../customers/urls";
-import i18n from "../../../i18n";
-import { createHref, maybe } from "../../../misc";
 import { OrderDetails_order } from "../../types/OrderDetails";
+
+import ExternalLink from "@ui/ExternalLink";
 
 const styles = (theme: Theme) =>
   createStyles({
