@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import ArrowIcon from "@material-ui/icons/ArrowDropDown";
 import { ConfirmButtonTransitionState } from "@saleor/components/ConfirmButton";
 import Grid from "@saleor/components/Grid";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import CardTitle from "@ui/CardTitle";
 import Skeleton from "@ui/Skeleton";
 import classNames from "classnames";

@@ -11,7 +11,7 @@ import React from "react";
 
 import CardSpacer from "@saleor/components/CardSpacer";
 import { FormSpacer } from "@saleor/components/FormSpacer";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import MultiAutocompleteSelectField, {
   MultiAutocompleteChoiceType
 } from "@saleor/components/MultiAutocompleteSelectField";

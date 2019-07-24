@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core/styles";
 import React from "react";
 
-import { Hr } from "@saleor/components/Hr";
+import { Hr } from "@ui/Hr";
 import Money, { subtractMoney } from "@saleor/components/Money";
 import StatusLabel from "@saleor/components/StatusLabel";
 import CardTitle from "@ui/CardTitle";

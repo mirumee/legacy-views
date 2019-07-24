@@ -7,7 +7,7 @@ import React from "react";
 
 import ControlledSwitch from "@saleor/components/ControlledSwitch";
 import FormSpacer from "@saleor/components/FormSpacer";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
 import { FormData } from "../CountryListPage";

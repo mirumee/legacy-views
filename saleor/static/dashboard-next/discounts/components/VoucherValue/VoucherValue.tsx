@@ -5,7 +5,7 @@ import React from "react";
 
 import ControlledSwitch from "@saleor/components/ControlledSwitch";
 import { FormSpacer } from "@saleor/components/FormSpacer";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import RadioGroupField from "@saleor/components/RadioGroupField";
 import TextFieldWithChoice from "@saleor/components/TextFieldWithChoice";
 import CardTitle from "@ui/CardTitle";

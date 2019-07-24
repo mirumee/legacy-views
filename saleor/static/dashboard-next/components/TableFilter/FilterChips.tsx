@@ -9,8 +9,9 @@ import React from "react";
 
 import i18n from "../../i18n";
 import Filter, { FilterContentSubmitData, IFilter } from "../Filter";
-import Hr from "../Hr";
 import Link from "../Link";
+
+import Hr from "@ui/Hr";
 
 export interface Filter {
   label: string;

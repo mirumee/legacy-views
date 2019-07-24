@@ -20,7 +20,7 @@ import Debounce, { DebounceProps } from "@saleor/components/Debounce";
 import i18n from "@saleor/i18n";
 import ArrowDropdownIcon from "@saleor/icons/ArrowDropdown";
 import Checkbox from "@ui/Checkbox";
-import Hr from "../Hr";
+import Hr from "@ui/Hr";
 
 export interface MultiAutocompleteChoiceType {
   label: string;

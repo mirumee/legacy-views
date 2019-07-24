@@ -19,7 +19,7 @@ import ConfirmButton, {
 import ControlledSwitch from "@saleor/components/ControlledSwitch";
 import Form from "@saleor/components/Form";
 import FormSpacer from "@saleor/components/FormSpacer";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";

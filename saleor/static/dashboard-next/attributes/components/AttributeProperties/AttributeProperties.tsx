@@ -7,7 +7,7 @@ import React from "react";
 import CardSpacer from "@saleor/components/CardSpacer";
 import ControlledSwitch from "@saleor/components/ControlledSwitch";
 import FormSpacer from "@saleor/components/FormSpacer";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import i18n from "@saleor/i18n";
 import { FormErrors } from "@saleor/types";
 import { AttributePageFormData } from "../AttributePage";

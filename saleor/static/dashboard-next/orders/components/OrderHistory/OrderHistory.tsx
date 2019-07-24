@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import Form from "@saleor/components/Form";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import {
   Timeline,
   TimelineAddNote,

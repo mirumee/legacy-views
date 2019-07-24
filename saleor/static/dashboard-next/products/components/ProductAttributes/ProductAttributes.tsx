@@ -9,7 +9,7 @@ import classNames from "classnames";
 import * as React from "react";
 
 import Grid from "@saleor/components/Grid";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import MultiAutocompleteSelectField, {
   MultiAutocompleteChoiceType
 } from "@saleor/components/MultiAutocompleteSelectField";

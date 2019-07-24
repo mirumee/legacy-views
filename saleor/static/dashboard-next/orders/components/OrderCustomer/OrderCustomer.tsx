@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import Form from "@saleor/components/Form";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import Link from "@saleor/components/Link";
 import SingleAutocompleteSelectField from "@saleor/components/SingleAutocompleteSelectField";
 import { SearchCustomers_customers_edges_node } from "@saleor/containers/SearchCustomers/types/SearchCustomers";

@@ -10,7 +10,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import ImageTile from "@saleor/components/ImageTile";
 import ImageUpload from "@saleor/components/ImageUpload";
 import CardTitle from "@ui/CardTitle";

@@ -6,7 +6,7 @@ import React from "react";
 import CardSpacer from "@saleor/components/CardSpacer";
 import Date from "@saleor/components/Date";
 import FormSpacer from "@saleor/components/FormSpacer";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import Money from "@saleor/components/Money";
 import Percent from "@saleor/components/Percent";
 import CardTitle from "@ui/CardTitle";

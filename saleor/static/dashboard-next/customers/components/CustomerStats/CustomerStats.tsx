@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import { DateTime } from "@saleor/components/Date";
-import { Hr } from "@saleor/components/Hr";
+import { Hr } from "@ui/Hr";
 import CardTitle from "@ui/CardTitle";
 import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";

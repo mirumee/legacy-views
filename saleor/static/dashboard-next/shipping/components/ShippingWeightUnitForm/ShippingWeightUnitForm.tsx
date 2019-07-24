@@ -5,7 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import React from "react";
 
 import Form from "@saleor/components/Form";
-import Hr from "@saleor/components/Hr";
+import Hr from "@ui/Hr";
 import SingleSelectField from "@saleor/components/SingleSelectField";
 import CardTitle from "@ui/CardTitle";
 import i18n from "../../../i18n";
