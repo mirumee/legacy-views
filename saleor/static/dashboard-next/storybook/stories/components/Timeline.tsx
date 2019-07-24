@@ -49,13 +49,13 @@ storiesOf("Generics / Timeline", module)
       </TimelineEvent>
       <TimelineNote
         date="2018-05-07T16:58:02+00:00"
-        user={{ email: "admin@example.com" }}
+        email="admin@example.com"
         message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
         malesuada lacus ex, sit amet blandit leo lobortis eget."
       />
       <TimelineNote
         date="2018-05-07T16:58:02+00:00"
-        user={{ email: "ceo@example.com" }}
+        email="ceo@example.com"
         message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
         malesuada lacus ex, sit amet blandit leo lobortis eget."
       />

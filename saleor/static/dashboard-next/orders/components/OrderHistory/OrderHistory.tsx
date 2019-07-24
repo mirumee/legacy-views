@@ -8,13 +8,13 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import Form from "@saleor/components/Form";
-import Hr from "@ui/Hr";
 import {
   Timeline,
   TimelineAddNote,
   TimelineEvent,
   TimelineNote
 } from "@saleor/components/Timeline";
+import Hr from "@ui/Hr";
 import Skeleton from "@ui/Skeleton";
 import i18n from "../../../i18n";
 import {
@@ -183,7 +183,7 @@ const OrderHistory = withStyles(styles, { name: "OrderHistory" })(
                 return (
                   <TimelineNote
                     date={event.date}
-                    user={event.user}
+                    email={event.user.email}
                     message={event.message}
                     key={event.id}
                   />

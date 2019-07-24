@@ -1,20 +1,12 @@
-import Avatar from "@material-ui/core/Avatar";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import * as colors from "@material-ui/core/colors";
-import {
-  createStyles,
-  Theme,
-  withStyles,
-  WithStyles
-} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import PersonIcon from "@material-ui/icons/Person";
 import CRC from "crc-32";
 import React from "react";
 
 import { DateTime } from "../Date";
-import Hr from "../Hr";
+
+import SduiTimelineNote, {
+  TimelineNoteProps as SduiTimelineNoteProps
+} from "@ui/Timeline/TimelineNote";
 
 const palette = [
   colors.amber,
@@ -35,73 +27,28 @@ const palette = [
   colors.yellow
 ].map(color => color[500]);
 
-const styles = (theme: Theme) =>
-  createStyles({
-    avatar: {
-      left: -45,
-      position: "absolute",
-      top: 0
-    },
-    card: {
-      marginBottom: theme.spacing.unit * 3,
-      marginLeft: theme.spacing.unit * 3,
-      position: "relative"
-    },
-    cardContent: {
-      "&:last-child": {
-        paddingBottom: 16
-      }
-    },
-    content: {
-      marginTop: theme.spacing.unit * 2
-    },
-    root: {
-      position: "relative"
-    },
-    title: {
-      alignItems: "center",
-      display: "flex",
-      justifyContent: "space-between",
-      marginBottom: theme.spacing.unit
-    }
-  });
-
-interface TimelineNoteProps extends WithStyles<typeof styles> {
+export type TimelineNoteProps = Omit<
+  SduiTimelineNoteProps,
+  "avatarColor" | "avatarSrc" | "date"
+> & {
   date: string;
-  message: string | null;
-  user: {
-    email: string;
-  };
-}
+};
 
-export const TimelineNote = withStyles(styles, { name: "TimelineNote" })(
-  ({ classes, date, user, message }: TimelineNoteProps) => (
-    <div className={classes.root}>
-      <Avatar
-        className={classes.avatar}
-        style={{ background: palette[CRC.str(user.email) % palette.length] }}
-      >
-        <PersonIcon />
-      </Avatar>
-      <Card className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <div className={classes.title}>
-            <Typography>{user.email}</Typography>
-            <Typography>
-              <DateTime date={date} />
-            </Typography>
-          </div>
-          <Hr />
-          <Typography
-            className={classes.content}
-            dangerouslySetInnerHTML={{
-              __html: message.replace("\n", "<br />")
-            }}
-          />
-        </CardContent>
-      </Card>
-    </div>
-  )
-);
+export const TimelineNote: React.FC<TimelineNoteProps> = ({
+  date,
+  email,
+  ...props
+}) => {
+  const Date = <DateTime date={date} />;
+
+  return (
+    <SduiTimelineNote
+      avatarColor={palette[CRC.str(email) % palette.length]}
+      date={Date}
+      email={email}
+      {...props}
+    />
+  );
+};
 TimelineNote.displayName = "TimelineNote";
 export default TimelineNote;
