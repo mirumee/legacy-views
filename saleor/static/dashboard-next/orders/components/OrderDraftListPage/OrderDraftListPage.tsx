@@ -4,7 +4,7 @@ import AddIcon from "@material-ui/icons/Add";
 import React from "react";
 
 import Container from "@saleor/components/Container";
-import PageHeader from "@saleor/components/PageHeader";
+import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";
 import { ListActions, PageListProps } from "../../../types";
 import { OrderDraftList_draftOrders_edges_node } from "../../types/OrderDraftList";

@@ -7,7 +7,7 @@ import Container from "@saleor/components/Container";
 import { ControlledCheckbox } from "@saleor/components/ControlledCheckbox";
 import Form from "@saleor/components/Form";
 import Grid from "@saleor/components/Grid";
-import PageHeader from "@saleor/components/PageHeader";
+import PageHeader from "@ui/PageHeader";
 import SaveButtonBar from "@saleor/components/SaveButtonBar";
 import { ChangeEvent, FormChange } from "@saleor/hooks/useForm";
 import useStateFromProps from "@saleor/hooks/useStateFromProps";

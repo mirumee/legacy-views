@@ -4,7 +4,7 @@ import AppHeader from "@saleor/components/AppHeader";
 import CardSpacer from "@saleor/components/CardSpacer";
 import Container from "@saleor/components/Container";
 import LanguageSwitch from "@saleor/components/LanguageSwitch";
-import PageHeader from "@saleor/components/PageHeader";
+import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";
 import { LanguageCodeEnum } from "../../../types/globalTypes";

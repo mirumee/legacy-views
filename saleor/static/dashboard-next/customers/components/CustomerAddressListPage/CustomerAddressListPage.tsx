@@ -11,7 +11,7 @@ import React from "react";
 
 import AppHeader from "@saleor/components/AppHeader";
 import Container from "@saleor/components/Container";
-import PageHeader from "@saleor/components/PageHeader";
+import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";
 import { maybe, renderCollection } from "../../../misc";
 import { AddressTypeEnum } from "../../../types/globalTypes";

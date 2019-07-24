@@ -10,11 +10,12 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 import { IconProps } from "@material-ui/core/Icon";
-import { User } from "../auth/types/User";
-import Container from "../components/Container";
-import PageHeader from "../components/PageHeader";
-import i18n from "../i18n";
-import { PermissionEnum } from "../types/globalTypes";
+import { User } from "@saleor/auth/types/User";
+import Container from "@saleor/components/Container";
+import i18n from "@saleor/i18n";
+import { PermissionEnum } from "@saleor/types/globalTypes";
+
+import PageHeader from "@ui/PageHeader";
 
 export interface MenuItem {
   description: string;

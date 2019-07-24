@@ -3,7 +3,7 @@
 import React from "react";
 
 import Container from "@saleor/components/Container";
-import PageHeader from "@saleor/components/PageHeader";
+import PageHeader from "@ui/PageHeader";
 // tslint:disable no-submodule-imports
 import { ShopInfo_shop_languages } from "@saleor/components/Shop/types/ShopInfo";
 import i18n from "../../../i18n";
