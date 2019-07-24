@@ -16,8 +16,8 @@ import ConfirmButton, {
 } from "@saleor/components/ConfirmButton";
 import Form from "@saleor/components/Form";
 import Money from "@saleor/components/Money";
-import { SingleSelectField } from "@saleor/components/SingleSelectField";
-import i18n from "../../../i18n";
+import SingleSelectField from "@saleor/components/SingleSelectField";
+import i18n from "@saleor/i18n";
 import { OrderDetails_order_availableShippingMethods } from "../../types/OrderDetails";
 
 export interface FormData {
