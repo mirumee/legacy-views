@@ -8,8 +8,8 @@ import React from "react";
 
 import CardSpacer from "@saleor/components/CardSpacer";
 import Container from "@saleor/components/Container";
-import Grid from "@saleor/components/Grid";
 import Money from "@saleor/components/Money";
+import Grid from "@ui/Grid";
 import Skeleton from "@ui/Skeleton";
 import Orders from "../../../icons/Orders";
 import Sales from "../../../icons/Sales";

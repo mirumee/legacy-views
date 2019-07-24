@@ -11,9 +11,9 @@ import {
 import Typography from "@material-ui/core/Typography";
 import ArrowIcon from "@material-ui/icons/ArrowDropDown";
 import { ConfirmButtonTransitionState } from "@saleor/components/ConfirmButton";
-import Grid from "@saleor/components/Grid";
-import Hr from "@ui/Hr";
 import CardTitle from "@ui/CardTitle";
+import Grid from "@ui/Grid";
+import Hr from "@ui/Hr";
 import Skeleton from "@ui/Skeleton";
 import classNames from "classnames";
 import React from "react";

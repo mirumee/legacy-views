@@ -4,8 +4,8 @@ import AddIcon from "@material-ui/icons/Add";
 import React from "react";
 
 import Container from "@saleor/components/Container";
-import PageHeader from "@ui/PageHeader";
 import ProductList from "@saleor/components/ProductList";
+import PageHeader from "@ui/PageHeader";
 import { CategoryDetails_category_products_edges_node } from "../../../categories/types/CategoryDetails";
 import i18n from "../../../i18n";
 import { FilterPageProps, ListActions, PageListProps } from "../../../types";

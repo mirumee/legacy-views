@@ -4,8 +4,8 @@ import React from "react";
 
 import FormSpacer from "@saleor/components/FormSpacer";
 import MultiSelectField from "@saleor/components/MultiSelectField";
-import PageHeader from "@ui/PageHeader";
 import SingleSelectField from "@saleor/components/SingleSelectField";
+import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";
 
 interface ProductCategoryAndCollectionsFormProps {

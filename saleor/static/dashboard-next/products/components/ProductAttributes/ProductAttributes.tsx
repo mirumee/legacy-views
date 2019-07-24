@@ -8,8 +8,6 @@ import makeStyles from "@material-ui/styles/makeStyles";
 import classNames from "classnames";
 import * as React from "react";
 
-import Grid from "@saleor/components/Grid";
-import Hr from "@ui/Hr";
 import MultiAutocompleteSelectField, {
   MultiAutocompleteChoiceType
 } from "@saleor/components/MultiAutocompleteSelectField";
@@ -22,6 +20,8 @@ import { maybe } from "@saleor/misc";
 import { ProductDetails_product_attributes_attribute_values } from "@saleor/products/types/ProductDetails";
 import { AttributeInputTypeEnum } from "@saleor/types/globalTypes";
 import CardTitle from "@ui/CardTitle";
+import Grid from "@ui/Grid";
+import Hr from "@ui/Hr";
 
 export interface ProductAttributeInputData {
   inputType: AttributeInputTypeEnum;

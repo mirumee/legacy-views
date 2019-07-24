@@ -23,10 +23,10 @@ import ConfirmButton, {
 } from "@saleor/components/ConfirmButton";
 import Form from "@saleor/components/Form";
 import FormSpacer from "@saleor/components/FormSpacer";
-import Hr from "@ui/Hr";
 // tslint:disable no-submodule-imports
 import { ShopInfo_shop_countries } from "@saleor/components/Shop/types/ShopInfo";
 import Checkbox from "@ui/Checkbox";
+import Hr from "@ui/Hr";
 import i18n from "../../../i18n";
 
 interface FormData {

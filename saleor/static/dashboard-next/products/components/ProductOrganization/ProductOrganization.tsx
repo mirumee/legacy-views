@@ -11,7 +11,6 @@ import React from "react";
 
 import CardSpacer from "@saleor/components/CardSpacer";
 import { FormSpacer } from "@saleor/components/FormSpacer";
-import Hr from "@ui/Hr";
 import MultiAutocompleteSelectField, {
   MultiAutocompleteChoiceType
 } from "@saleor/components/MultiAutocompleteSelectField";
@@ -23,6 +22,7 @@ import i18n from "@saleor/i18n";
 import { maybe } from "@saleor/misc";
 import { FormErrors } from "@saleor/types";
 import CardTitle from "@ui/CardTitle";
+import Hr from "@ui/Hr";
 
 interface ProductType {
   hasVariants: boolean;

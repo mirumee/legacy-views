@@ -6,9 +6,7 @@ import CardSpacer from "@saleor/components/CardSpacer";
 import { ConfirmButtonTransitionState } from "@saleor/components/ConfirmButton";
 import Container from "@saleor/components/Container";
 import Form from "@saleor/components/Form";
-import Grid from "@saleor/components/Grid";
 import { MultiAutocompleteChoiceType } from "@saleor/components/MultiAutocompleteSelectField";
-import PageHeader from "@ui/PageHeader";
 import SaveButtonBar from "@saleor/components/SaveButtonBar";
 import SeoForm from "@saleor/components/SeoForm";
 import VisibilityCard from "@saleor/components/VisibilityCard";
@@ -23,6 +21,8 @@ import {
 } from "@saleor/products/utils/data";
 import createMultiAutocompleteSelectHandler from "@saleor/utils/handlers/multiAutocompleteSelectChangeHandler";
 import createSingleAutocompleteSelectHandler from "@saleor/utils/handlers/singleAutocompleteSelectChangeHandler";
+import Grid from "@ui/Grid";
+import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";
 import { UserError } from "../../../types";
 import { ProductCreateData_productTypes_edges_node_productAttributes } from "../../types/ProductCreateData";

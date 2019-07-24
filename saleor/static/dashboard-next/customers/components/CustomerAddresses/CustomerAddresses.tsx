@@ -10,8 +10,8 @@ import {
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import { Hr } from "@ui/Hr";
 import CardTitle from "@ui/CardTitle";
+import { Hr } from "@ui/Hr";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";
 import { CustomerDetails_user } from "../../types/CustomerDetails";

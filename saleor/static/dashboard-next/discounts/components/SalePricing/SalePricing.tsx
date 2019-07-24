@@ -10,9 +10,9 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import Hr from "@ui/Hr";
 import TextFieldWithChoice from "@saleor/components/TextFieldWithChoice";
 import CardTitle from "@ui/CardTitle";
+import Hr from "@ui/Hr";
 import i18n from "../../../i18n";
 import { FormErrors } from "../../../types";
 import { SaleType } from "../../../types/globalTypes";

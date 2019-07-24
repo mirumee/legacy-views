@@ -6,8 +6,6 @@ import { ConfirmButtonTransitionState } from "@saleor/components/ConfirmButton";
 import Container from "@saleor/components/Container";
 import { ControlledCheckbox } from "@saleor/components/ControlledCheckbox";
 import Form from "@saleor/components/Form";
-import Grid from "@saleor/components/Grid";
-import PageHeader from "@ui/PageHeader";
 import SaveButtonBar from "@saleor/components/SaveButtonBar";
 import { ChangeEvent, FormChange } from "@saleor/hooks/useForm";
 import useStateFromProps from "@saleor/hooks/useStateFromProps";
@@ -15,6 +13,8 @@ import i18n from "@saleor/i18n";
 import { maybe } from "@saleor/misc";
 import { ListActions, ReorderEvent, UserError } from "@saleor/types";
 import { AttributeTypeEnum, WeightUnitsEnum } from "@saleor/types/globalTypes";
+import Grid from "@ui/Grid";
+import PageHeader from "@ui/PageHeader";
 import {
   ProductTypeDetails_productType,
   ProductTypeDetails_taxTypes
