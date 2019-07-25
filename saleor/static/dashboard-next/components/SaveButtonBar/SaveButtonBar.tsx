@@ -10,13 +10,14 @@ import classNames from "classnames";
 import React from "react";
 
 import useScroll from "@saleor/hooks/useScroll";
-import i18n from "../../i18n";
-import { maybe } from "../../misc";
-import AppActionContext from "../AppLayout/AppActionContext";
+import i18n from "@saleor/i18n";
+import { maybe } from "@saleor/misc";
 import ConfirmButton, {
   ConfirmButtonTransitionState
 } from "../ConfirmButton/ConfirmButton";
-import Container from "../Container";
+
+import Container from "@ui/Container";
+import useAppLayout from "@ui/hooks/useAppLayout";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -82,65 +83,58 @@ export const SaveButtonBar = withStyles(styles, { name: "SaveButtonBar" })(
     onSave,
     ...props
   }: SaveButtonBarProps) => {
+    const { action: anchor } = useAppLayout();
     const scrollPosition = useScroll();
     const scrolledToBottom =
       scrollPosition.y + window.innerHeight >= document.body.scrollHeight;
 
-    return (
-      <AppActionContext.Consumer>
-        {anchor =>
-          anchor ? (
-            <Portal container={anchor.current}>
-              <div
-                className={classNames(classes.root, {
-                  [classes.stop]: scrolledToBottom
-                })}
-                {...props}
+    return anchor ? (
+      <Portal container={anchor.current}>
+        <div
+          className={classNames(classes.root, {
+            [classes.stop]: scrolledToBottom
+          })}
+          {...props}
+        >
+          <Container className={classes.container}>
+            {!!onDelete && (
+              <Button
+                variant="contained"
+                onClick={onDelete}
+                className={classes.deleteButton}
               >
-                <Container className={classes.container}>
-                  {!!onDelete && (
-                    <Button
-                      variant="contained"
-                      onClick={onDelete}
-                      className={classes.deleteButton}
-                    >
-                      {labels && labels.delete
-                        ? labels.delete
-                        : i18n.t("Remove")}
-                    </Button>
-                  )}
-                  <div className={classes.spacer} />
-                  <Button
-                    className={classes.cancelButton}
-                    variant="text"
-                    onClick={onCancel}
-                  >
-                    {maybe(
-                      () => labels.cancel,
-                      i18n.t("Cancel", {
-                        context: "button"
-                      })
-                    )}
-                  </Button>
-                  <ConfirmButton
-                    disabled={disabled}
-                    onClick={onSave}
-                    transitionState={state}
-                  >
-                    {maybe(
-                      () => labels.save,
-                      i18n.t("Save", {
-                        context: "button"
-                      })
-                    )}
-                  </ConfirmButton>
-                </Container>
-              </div>
-            </Portal>
-          ) : null
-        }
-      </AppActionContext.Consumer>
-    );
+                {labels && labels.delete ? labels.delete : i18n.t("Remove")}
+              </Button>
+            )}
+            <div className={classes.spacer} />
+            <Button
+              className={classes.cancelButton}
+              variant="text"
+              onClick={onCancel}
+            >
+              {maybe(
+                () => labels.cancel,
+                i18n.t("Cancel", {
+                  context: "button"
+                })
+              )}
+            </Button>
+            <ConfirmButton
+              disabled={disabled}
+              onClick={onSave}
+              transitionState={state}
+            >
+              {maybe(
+                () => labels.save,
+                i18n.t("Save", {
+                  context: "button"
+                })
+              )}
+            </ConfirmButton>
+          </Container>
+        </div>
+      </Portal>
+    ) : null;
   }
 );
 SaveButtonBar.displayName = "SaveButtonBar";

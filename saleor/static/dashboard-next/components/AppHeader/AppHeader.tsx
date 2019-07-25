@@ -8,8 +8,8 @@ import {
 import Typography from "@material-ui/core/Typography";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import React from "react";
-import AppHeaderContext from "../AppLayout/AppHeaderContext";
 
+import useAppLayout from "@ui/hooks/useAppLayout";
 import Skeleton from "@ui/Skeleton";
 
 export interface AppHeaderProps {
@@ -52,24 +52,22 @@ const AppHeader = withStyles(styles, { name: "AppHeader" })(
     children,
     classes,
     onBack
-  }: AppHeaderProps & WithStyles<typeof styles>) => (
-    <AppHeaderContext.Consumer>
-      {anchor =>
-        anchor ? (
-          <Portal container={anchor.current}>
-            <div className={classes.root} onClick={onBack}>
-              <ArrowBackIcon />
-              {children ? (
-                <Typography className={classes.title}>{children}</Typography>
-              ) : (
-                <Skeleton className={classes.skeleton} />
-              )}
-            </div>
-          </Portal>
-        ) : null
-      }
-    </AppHeaderContext.Consumer>
-  )
+  }: AppHeaderProps & WithStyles<typeof styles>) => {
+    const { header: anchor } = useAppLayout();
+
+    return anchor ? (
+      <Portal container={anchor.current}>
+        <div className={classes.root} onClick={onBack}>
+          <ArrowBackIcon />
+          {children ? (
+            <Typography className={classes.title}>{children}</Typography>
+          ) : (
+            <Skeleton className={classes.skeleton} />
+          )}
+        </div>
+      </Portal>
+    ) : null;
+  }
 );
 AppHeader.displayName = "AppHeader";
 export default AppHeader;

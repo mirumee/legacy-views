@@ -7,6 +7,9 @@ import { VerifyToken, VerifyTokenVariables } from "./types/VerifyToken";
 export const fragmentUser = gql`
   fragment User on User {
     id
+    avatar {
+      url
+    }
     email
     firstName
     lastName

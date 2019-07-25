@@ -14,6 +14,11 @@ export interface TokenAuth_tokenCreate_errors {
   message: string | null;
 }
 
+export interface TokenAuth_tokenCreate_user_avatar {
+  __typename: "Image";
+  url: string;
+}
+
 export interface TokenAuth_tokenCreate_user_permissions {
   __typename: "PermissionDisplay";
   code: PermissionEnum;
@@ -23,6 +28,7 @@ export interface TokenAuth_tokenCreate_user_permissions {
 export interface TokenAuth_tokenCreate_user {
   __typename: "User";
   id: string;
+  avatar: TokenAuth_tokenCreate_user_avatar | null;
   email: string;
   firstName: string;
   lastName: string;
