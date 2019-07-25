@@ -7,8 +7,8 @@ import {
 import React from "react";
 
 import CardSpacer from "@saleor/components/CardSpacer";
-import Container from "@saleor/components/Container";
 import Money from "@saleor/components/Money";
+import Container from "@ui/Container";
 import Grid from "@ui/Grid";
 import Skeleton from "@ui/Skeleton";
 import Orders from "../../../icons/Orders";

@@ -3,9 +3,9 @@ import Card from "@material-ui/core/Card";
 import AddIcon from "@material-ui/icons/Add";
 import React from "react";
 
-import Container from "@saleor/components/Container";
 import i18n from "@saleor/i18n";
 import { FilterPageProps, ListActions, PageListProps } from "@saleor/types";
+import Container from "@ui/Container";
 import PageHeader from "@ui/PageHeader";
 import { OrderList_orders_edges_node } from "../../types/OrderList";
 import { OrderListUrlFilters } from "../../urls";

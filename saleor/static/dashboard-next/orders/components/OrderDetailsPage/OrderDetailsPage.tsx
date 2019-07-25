@@ -9,8 +9,8 @@ import React from "react";
 
 import AppHeader from "@saleor/components/AppHeader";
 import { CardSpacer } from "@saleor/components/CardSpacer";
-import { Container } from "@saleor/components/Container";
 import { DateTime } from "@saleor/components/Date";
+import { Container } from "@ui/Container";
 import Grid from "@ui/Grid";
 import PageHeader from "@ui/PageHeader";
 import Skeleton from "@ui/Skeleton";

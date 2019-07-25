@@ -4,7 +4,6 @@ import React from "react";
 import AppHeader from "@saleor/components/AppHeader";
 import CardSpacer from "@saleor/components/CardSpacer";
 import { ConfirmButtonTransitionState } from "@saleor/components/ConfirmButton";
-import Container from "@saleor/components/Container";
 import Form from "@saleor/components/Form";
 import { MultiAutocompleteChoiceType } from "@saleor/components/MultiAutocompleteSelectField";
 import SaveButtonBar from "@saleor/components/SaveButtonBar";
@@ -21,6 +20,7 @@ import {
 } from "@saleor/products/utils/data";
 import createMultiAutocompleteSelectHandler from "@saleor/utils/handlers/multiAutocompleteSelectChangeHandler";
 import createSingleAutocompleteSelectHandler from "@saleor/utils/handlers/singleAutocompleteSelectChangeHandler";
+import Container from "@ui/Container";
 import Grid from "@ui/Grid";
 import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";

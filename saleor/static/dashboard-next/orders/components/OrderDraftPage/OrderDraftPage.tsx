@@ -9,9 +9,9 @@ import React from "react";
 
 import AppHeader from "@saleor/components/AppHeader";
 import { ConfirmButtonTransitionState } from "@saleor/components/ConfirmButton";
-import { Container } from "@saleor/components/Container";
 import { DateTime } from "@saleor/components/Date";
 import SaveButtonBar from "@saleor/components/SaveButtonBar";
+import { Container } from "@ui/Container";
 import Grid from "@ui/Grid";
 import PageHeader from "@ui/PageHeader";
 import Skeleton from "@ui/Skeleton";

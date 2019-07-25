@@ -3,7 +3,6 @@ import React from "react";
 import AppHeader from "@saleor/components/AppHeader";
 import CardSpacer from "@saleor/components/CardSpacer";
 import { ConfirmButtonTransitionState } from "@saleor/components/ConfirmButton";
-import Container from "@saleor/components/Container";
 import { ControlledCheckbox } from "@saleor/components/ControlledCheckbox";
 import Form from "@saleor/components/Form";
 import SaveButtonBar from "@saleor/components/SaveButtonBar";
@@ -13,6 +12,7 @@ import i18n from "@saleor/i18n";
 import { maybe } from "@saleor/misc";
 import { ListActions, ReorderEvent, UserError } from "@saleor/types";
 import { AttributeTypeEnum, WeightUnitsEnum } from "@saleor/types/globalTypes";
+import Container from "@ui/Container";
 import Grid from "@ui/Grid";
 import PageHeader from "@ui/PageHeader";
 import {

@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import React from "react";
 
 import AppHeader from "@saleor/components/AppHeader";
-import { Container } from "@saleor/components/Container";
+import { Container } from "@ui/Container";
 import Grid from "@ui/Grid";
 import PageHeader from "@ui/PageHeader";
 import Skeleton from "@ui/Skeleton";

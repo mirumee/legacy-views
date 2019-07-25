@@ -2,9 +2,9 @@
 // import AddIcon from "@material-ui/icons/Add";
 import React from "react";
 
-import Container from "@saleor/components/Container";
 // tslint:disable no-submodule-imports
 import { ShopInfo_shop_languages } from "@saleor/components/Shop/types/ShopInfo";
+import Container from "@ui/Container";
 import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";
 import TranslationsLanguageList from "../TranslationsLanguageList";

@@ -3,8 +3,8 @@ import Card from "@material-ui/core/Card";
 import AddIcon from "@material-ui/icons/Add";
 import React from "react";
 
-import Container from "@saleor/components/Container";
 import ProductList from "@saleor/components/ProductList";
+import Container from "@ui/Container";
 import PageHeader from "@ui/PageHeader";
 import { CategoryDetails_category_products_edges_node } from "../../../categories/types/CategoryDetails";
 import i18n from "../../../i18n";

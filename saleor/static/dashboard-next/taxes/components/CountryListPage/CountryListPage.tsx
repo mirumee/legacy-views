@@ -1,8 +1,8 @@
 import React from "react";
 
 import AppHeader from "@saleor/components/AppHeader";
-import { Container } from "@saleor/components/Container";
 import Form from "@saleor/components/Form";
+import { Container } from "@ui/Container";
 import Grid from "@ui/Grid";
 import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";

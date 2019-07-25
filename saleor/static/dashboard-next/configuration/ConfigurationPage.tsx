@@ -11,9 +11,9 @@ import React from "react";
 
 import { IconProps } from "@material-ui/core/Icon";
 import { User } from "@saleor/auth/types/User";
-import Container from "@saleor/components/Container";
 import i18n from "@saleor/i18n";
 import { PermissionEnum } from "@saleor/types/globalTypes";
+import Container from "@ui/Container";
 
 import PageHeader from "@ui/PageHeader";
 

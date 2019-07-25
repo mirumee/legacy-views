@@ -2,8 +2,8 @@ import React from "react";
 
 import AppHeader from "@saleor/components/AppHeader";
 import CardSpacer from "@saleor/components/CardSpacer";
-import Container from "@saleor/components/Container";
 import LanguageSwitch from "@saleor/components/LanguageSwitch";
+import Container from "@ui/Container";
 import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";

@@ -3,8 +3,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-import Container from "@saleor/components/Container";
 import CardTitle from "@ui/CardTitle";
+import Container from "@ui/Container";
 import PageHeader from "@ui/PageHeader";
 import i18n from "../../i18n";
 

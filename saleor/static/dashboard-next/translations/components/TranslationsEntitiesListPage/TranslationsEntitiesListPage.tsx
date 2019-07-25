@@ -2,10 +2,10 @@ import Card from "@material-ui/core/Card";
 import React from "react";
 
 import AppHeader from "@saleor/components/AppHeader";
-import Container from "@saleor/components/Container";
 // tslint:disable no-submodule-imports
 import { ShopInfo_shop_languages } from "@saleor/components/Shop/types/ShopInfo";
 import FilterTabs, { FilterTab } from "@saleor/components/TableFilter";
+import Container from "@ui/Container";
 import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";
 import { maybe } from "../../../misc";

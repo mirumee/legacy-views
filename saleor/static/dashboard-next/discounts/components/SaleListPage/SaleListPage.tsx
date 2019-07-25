@@ -2,7 +2,7 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import React from "react";
 
-import Container from "@saleor/components/Container";
+import Container from "@ui/Container";
 import PageHeader from "@ui/PageHeader";
 import i18n from "../../../i18n";
 import { ListActions, PageListProps } from "../../../types";
