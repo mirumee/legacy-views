@@ -484,10 +484,9 @@ class AttributeAssignmentMixin:
     """Handles cleaning of the attribute input and creating the proper relations.
 
     1. You should first call ``clean_input``, to transform and attempt to resolve
-       the provided input into actual objects.
-    2. You should then call ``is_valid`` with the cleaned input to perform a few
+       the provided input into actual objects. It will then perform a few
        checks to validate the operations supplied by the user are possible and allowed.
-    3. Once everything is ready and all your data is saved inside a transaction,
+    2. Once everything is ready and all your data is saved inside a transaction,
        you shall call ``save`` with the cleaned input to build all the required
        relations. Once the ``save`` call is done, you are safe from continuing working
        or to commit the transaction.
@@ -590,11 +589,27 @@ class AttributeAssignmentMixin:
             validate_attribute_input_for_variant(attribute, values)
 
     @classmethod
-    def clean_input(cls, raw_input: dict, attributes_qs: QuerySet) -> T_INPUT_MAP:
+    def _validate_input(
+        cls, cleaned_input: T_INPUT_MAP, attribute_qs, is_variant: bool
+    ):
+        """Check if no invalid operations were supplied.
+
+        :raises ValidationError: when an invalid operation was found.
+        """
+        if is_variant:
+            return cls._check_input_for_variant(cleaned_input, attribute_qs)
+        else:
+            return cls._check_input_for_product(cleaned_input, attribute_qs)
+
+    @classmethod
+    def clean_input(
+        cls, raw_input: dict, attributes_qs: QuerySet, is_variant: bool
+    ) -> T_INPUT_MAP:
         """Resolve and prepare the input for further checks.
 
         :param raw_input: The user's attributes input.
         :param attributes_qs: A queryset of attributes, must prefetch attribute values.
+        :param is_variant: Whether the input is for a variant or a product.
 
         :raises ValidationError: contain the message.
         :return: The resolved data
@@ -632,18 +647,8 @@ class AttributeAssignmentMixin:
                 key = slugs[attribute.slug]
 
             cleaned_input.append((attribute, key))
+        cls._validate_input(cleaned_input, attributes_qs, is_variant)
         return cleaned_input
-
-    @classmethod
-    def validate_input(cls, cleaned_input: T_INPUT_MAP, attribute_qs, is_variant: bool):
-        """Check if no invalid operations were supplied.
-
-        :raises ValidationError: when an invalid operation was found.
-        """
-        if is_variant:
-            return cls._check_input_for_variant(cleaned_input, attribute_qs)
-        else:
-            return cls._check_input_for_product(cleaned_input, attribute_qs)
 
     @classmethod
     def save(cls, instance: T_INSTANCE, cleaned_input: T_INPUT_MAP):
@@ -675,8 +680,7 @@ class ProductCreate(ModelMutation):
         cls, attributes: dict, product_type: models.ProductType
     ) -> T_INPUT_MAP:
         attributes_qs = product_type.product_attributes
-        attributes = AttributeAssignmentMixin.clean_input(attributes, attributes_qs)
-        AttributeAssignmentMixin.validate_input(
+        attributes = AttributeAssignmentMixin.clean_input(
             attributes, attributes_qs, is_variant=False
         )
         return attributes
@@ -920,8 +924,7 @@ class ProductVariantCreate(ModelMutation):
         cls, attributes: dict, product_type: models.ProductType
     ) -> T_INPUT_MAP:
         attributes_qs = product_type.variant_attributes
-        attributes = AttributeAssignmentMixin.clean_input(attributes, attributes_qs)
-        AttributeAssignmentMixin.validate_input(
+        attributes = AttributeAssignmentMixin.clean_input(
             attributes, attributes_qs, is_variant=True
         )
         return attributes
