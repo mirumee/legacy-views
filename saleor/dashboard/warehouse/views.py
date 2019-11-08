@@ -42,8 +42,14 @@ def warehouse_create(request: "HttpRequest") -> "HttpResponse":
 
 
 @staff_member_required
-@permission_required("warehouse.manage_orders")
+@permission_required("warehouse.manage_warehouses")
 def warehouse_update(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
     warehouse = get_object_or_404(Warehouse, pk=uuid)
-    ctx = {"warehouse": warehouse}
+    form = WarehouseForm(request.POST or None, instance=warehouse)
+    if form.is_valid():
+        form.save()
+        msg = pgettext_lazy("Dashboard message", "Warehouse updated")
+        messages.success(request, msg)
+        return redirect("dashboard:warehouse-index")
+    ctx = {"warehouse": warehouse, "form": form}
     return TemplateResponse(request, "dashboard/warehouse/form.html", ctx)
