@@ -176,7 +176,7 @@
                 </ul>
               </li>
             {% endif %}
-            {% if perms.site.manage_settings or perms.shipping.manage_shipping or perms.product.manage_products or perms.page.manage_pages or perms.extensions.manage_plugins %}
+            {% if perms.site.manage_settings or perms.shipping.manage_shipping or perms.product.manage_products or perms.page.manage_pages or perms.extensions.manage_plugins or perms.warehouse.manage_warehouses %}
               <li class="side-nav-section">
                 <p>
                   {% trans "Configuration"  context "Dashboard configuration" %}
@@ -233,6 +233,13 @@
                         {% trans "Payments configuration" context "Dashboard static pages" %}
                       </a>
                     </li>
+                  {% endif %}
+                  {% if perms.warehouse.manage_warehouses %}
+                  <li class="{% block menu_warehouses_class %}{% endblock %}">
+                    <a href="{% url "dashboard:warehouse-index" %}">
+                      {% trans "Warehouses" context "Dashboard static page" %}
+                    </a>
+                  </li>
                   {% endif %}
                 </ul>
               </li>
