@@ -53,3 +53,13 @@ def warehouse_update(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
         return redirect("dashboard:warehouse-index")
     ctx = {"warehouse": warehouse, "form": form}
     return TemplateResponse(request, "dashboard/warehouse/form.html", ctx)
+
+
+@staff_member_required
+@permission_required("warehouse.manage_warehouses")
+def warehouse_delete(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
+    warehouse = get_object_or_404(Warehouse, pk=uuid)
+    warehouse.delete()
+    msg = pgettext_lazy("Dashboard message", "Warehouse deleted")
+    messages.success(request, msg)
+    return redirect("dashboard-warehouse-index")

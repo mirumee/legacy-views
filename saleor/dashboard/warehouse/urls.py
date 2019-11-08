@@ -10,4 +10,9 @@ urlpatterns = [
         views.warehouse_update,
         name="warehouse-update",
     ),
+    url(
+        r"^delete/(?P<uuid>[0-9a-f-]+)$",
+        views.warehouse_delete,
+        name="warehouse-delete",
+    ),
 ]
