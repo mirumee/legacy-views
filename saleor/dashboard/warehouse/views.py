@@ -65,7 +65,8 @@ def warehouse_form(
 @staff_member_required
 @permission_required("warehouse.manage_warehouses")
 def warehouse(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
-    ctx = {"warehouse": get_object_or_404(Warehouse, pk=uuid)}
+    qs = Warehouse.objects.select_related("address").prefetch_related("shipping_zones")
+    ctx = {"warehouse": get_object_or_404(qs, pk=uuid)}
     return TemplateResponse(request, "dashboard/warehouse/detail.html", ctx)
 
 
