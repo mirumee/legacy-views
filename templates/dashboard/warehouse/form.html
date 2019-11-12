@@ -4,7 +4,11 @@
 {% load static %}
 
 {% block title %}
+  {% if warehouse.pk %}
+    {% trans "Update warehouse" context "Dashboard update warehouse" %} - {{ warehouse }}
+  {% else %}
     {% trans "Add new warehouse" context "Dashboard add warehouse" %}
+  {% endif %}
     - {% trans "Warehouse" context "Dashboard warehouse" %} - {{ block.super }}
 {% endblock %}
 
@@ -28,7 +32,16 @@
         <svg data-src="{% static "dashboard/images/arrow_left.svg" %}" fill="#fff" width="20px" height="20px" />
       </a>
     </li>
+    {% if warehouse.pk %}
+    <li>
+      <a href="{% url "dashboard:warehouse-detail" warehouse.pk %}">
+        {{ warehouse }}
+      </a>
+    </li>
+    <li><span class="breadcrumbs--elipsed-item">{% trans 'Update warehouse' context 'Dashboard update warehouse action' %}</span></li>
+    {% else %}
     <li><span class="breadcrumbs--elipsed-item">{% trans 'Add warehouse' context 'Dashboard add warehouse action' %}</span></li>
+    {% endif %}
   </ul>
 {% endblock %}
 
@@ -38,12 +51,15 @@
       <form class="card" method="post">
         <div class="card-content">
           <span class="card-title">
-            {% trans 'Warehouse details' context 'Warehouse details header' %}
+            {% if warehouse.pk %}
+              {% trans "Update warehouse" context "Warehouse form header" %}
+            {% else %}
+              {% trans "Create warehouse" context "Warehouse form header" %}
+            {% endif %}
           </span>
           <div class="data">
             {% csrf_token %}
             <div class="row">
-              {{warehouse}}
               {{ warehouse_form|materializecss }}
               {{ address_form|materializecss }}
             </div>

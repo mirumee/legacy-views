@@ -35,7 +35,9 @@ def warehouse_form(
     request: "HttpRequest", uuid: Optional["UUID"] = None
 ) -> "HttpResponse":
     if uuid is not None:
-        qs = Warehouse.objects.select_related("address")
+        qs = Warehouse.objects.select_related("address").prefetch_related(
+            "shipping_zones"
+        )
         warehouse = get_object_or_404(qs, pk=uuid)
         address = warehouse.address
     else:
