@@ -36,7 +36,7 @@ def warehouse_create(request: "HttpRequest") -> "HttpResponse":
         form.save()
         msg = pgettext_lazy("Dashboard message", "Warehouse created")
         messages.success(request, msg)
-        return redirect("dashboard:warehouse-index")
+        return redirect("dashboard:warehouse-list")
     ctx = {"form": form}
     return TemplateResponse(request, "dashboard/warehouse/form.html", ctx)
 
@@ -45,7 +45,7 @@ def warehouse_create(request: "HttpRequest") -> "HttpResponse":
 @permission_required("warehouse.manage_warehouses")
 def warehouse(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
     ctx = {"warehouse": get_object_or_404(Warehouse, pk=uuid)}
-    return TemplateResponse(request, "dashboard/warehouse/form.html", ctx)
+    return TemplateResponse(request, "dashboard/warehouse/detail.html", ctx)
 
 
 @staff_member_required
@@ -57,7 +57,7 @@ def warehouse_update(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
         form.save()
         msg = pgettext_lazy("Dashboard message", "Warehouse updated")
         messages.success(request, msg)
-        return redirect("dashboard:warehouse-index")
+        return redirect("dashboard:warehouse-list")
     ctx = {"warehouse": warehouse, "form": form}
     return TemplateResponse(request, "dashboard/warehouse/form.html", ctx)
 
@@ -69,4 +69,4 @@ def warehouse_delete(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
     warehouse.delete()
     msg = pgettext_lazy("Dashboard message", "Warehouse deleted")
     messages.success(request, msg)
-    return redirect("dashboard-warehouse-index")
+    return redirect("dashboard:warehouse-list")

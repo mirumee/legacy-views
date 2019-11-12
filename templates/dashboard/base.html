@@ -236,7 +236,7 @@
                   {% endif %}
                   {% if perms.warehouse.manage_warehouses %}
                   <li class="{% block menu_warehouses_class %}{% endblock %}">
-                    <a href="{% url "dashboard:warehouse-index" %}">
+                    <a href="{% url "dashboard:warehouse-list" %}">
                       {% trans "Warehouses" context "Dashboard static page" %}
                     </a>
                   </li>
