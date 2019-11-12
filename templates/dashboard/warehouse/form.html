@@ -4,7 +4,7 @@
 {% load static %}
 
 {% block title %}
-  {% if warehouse.pk %}
+  {% if warehouse %}
     {% trans "Update warehouse" context "Dashboard update warehouse" %} - {{ warehouse }}
   {% else %}
     {% trans "Add new warehouse" context "Dashboard add warehouse" %}
@@ -32,7 +32,7 @@
         <svg data-src="{% static "dashboard/images/arrow_left.svg" %}" fill="#fff" width="20px" height="20px" />
       </a>
     </li>
-    {% if warehouse.pk %}
+    {% if warehouse %}
     <li>
       <a href="{% url "dashboard:warehouse-detail" warehouse.pk %}">
         {{ warehouse }}
@@ -51,7 +51,7 @@
       <form class="card" method="post">
         <div class="card-content">
           <span class="card-title">
-            {% if warehouse.pk %}
+            {% if warehouse %}
               {% trans "Update warehouse" context "Warehouse form header" %}
             {% else %}
               {% trans "Create warehouse" context "Warehouse form header" %}

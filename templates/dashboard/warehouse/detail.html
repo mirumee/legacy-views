@@ -44,7 +44,7 @@
       </div>
       <div class="card-action">
         <a href="{% url "dashboard:warehouse-update" warehouse.pk %}" class="btn-flat waves-effect">{% trans "Edit warehouse" context "Warehouse action button" %}</a>
-        <a href="#base-modal" class="modal-trigger-custom btn-flat waves-effect">{% trans "Delete warehouse" context "Warehouse action button" %}</a>
+        <a href="#base-modal" data-href="{% url "dashboard:warehouse-delete" warehouse.pk %}" class="modal-trigger-custom btn-flat waves-effect">{% trans "Delete warehouse" context "Warehouse action button" %}</a>
       </div>
     </div>
   </div>

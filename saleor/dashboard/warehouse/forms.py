@@ -29,3 +29,10 @@ class WarehouseForm(forms.ModelForm):
         self.instance.address = address
         self.save(commit)
         return self.instance
+
+
+def save_warehouse_from_forms(
+    warehouse_form: WarehouseForm, address_form: WarehouseAddressForm
+) -> Warehouse:
+    address = address_form.save()
+    return warehouse_form.save_with_address(address)
