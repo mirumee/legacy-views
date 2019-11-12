@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 
 @staff_member_required
 @permission_required("warehouse.manage_warehouses")
-def index(request: "HttpRequest"):
+def index(request: "HttpRequest") -> "HttpResponse":
     warehouses_qs = Warehouse.objects.all()
     warehouses = get_paginator_items(
         warehouses_qs, settings.DASHBOARD_PAGINATE_BY, request.GET.get("page")
@@ -38,6 +38,13 @@ def warehouse_create(request: "HttpRequest") -> "HttpResponse":
         messages.success(request, msg)
         return redirect("dashboard:warehouse-index")
     ctx = {"form": form}
+    return TemplateResponse(request, "dashboard/warehouse/form.html", ctx)
+
+
+@staff_member_required
+@permission_required("warehouse.manage_warehouses")
+def warehouse(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
+    ctx = {"warehouse": get_object_or_404(Warehouse, pk=uuid)}
     return TemplateResponse(request, "dashboard/warehouse/form.html", ctx)
 
 
