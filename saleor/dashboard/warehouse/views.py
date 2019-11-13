@@ -24,11 +24,11 @@ if TYPE_CHECKING:
 @staff_member_required
 @permission_required("warehouse.manage_warehouses")
 def index(request: "HttpRequest") -> "HttpResponse":
-    warehouses_qs = Warehouse.objects.all()
+    warehouses_qs = Warehouse.objects.prefetch_data()
     warehouses = get_paginator_items(
         warehouses_qs, settings.DASHBOARD_PAGINATE_BY, request.GET.get("page")
     )
-    ctx = {"warehouses": warehouses}
+    ctx = {"warehouses": warehouses, "is_empty": not warehouses_qs.exists()}
     return TemplateResponse(request, "dashboard/warehouse/list.html", ctx)
 
 
@@ -49,7 +49,7 @@ def warehouse_create(request: "HttpRequest") -> "HttpResponse":
 @staff_member_required
 @permission_required("warehouse.manage_warehouses")
 def warehouse_update(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
-    qs = Warehouse.objects.select_related("address").prefetch_related("shipping_zones")
+    qs = Warehouse.objects.prefetch_data()
     warehouse = get_object_or_404(qs, pk=uuid)
     warehouse_form = WarehouseForm(request.POST or None, instance=warehouse)
     address_form = WarehouseAddressForm(
@@ -71,7 +71,7 @@ def warehouse_update(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
 @staff_member_required
 @permission_required("warehouse.manage_warehouses")
 def warehouse(request: "HttpRequest", uuid: "UUID") -> "HttpResponse":
-    qs = Warehouse.objects.select_related("address").prefetch_related("shipping_zones")
+    qs = Warehouse.objects.prefetch_data()
     ctx = {"warehouse": get_object_or_404(qs, pk=uuid)}
     return TemplateResponse(request, "dashboard/warehouse/detail.html", ctx)
 

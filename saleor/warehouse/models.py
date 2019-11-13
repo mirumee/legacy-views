@@ -7,6 +7,11 @@ from saleor.account.models import Address
 from saleor.shipping.models import ShippingZone
 
 
+class WarehouseQueryset(models.QuerySet):
+    def prefetch_data(self):
+        return self.select_related("address").prefetch_related("shipping_zones")
+
+
 class Warehouse(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4, primary_key=True)
     name = models.CharField(
@@ -25,6 +30,8 @@ class Warehouse(models.Model):
         blank=True,
         default="",
     )
+
+    objects = WarehouseQueryset.as_manager()
 
     def __str__(self):
         return self.name
