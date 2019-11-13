@@ -74,6 +74,7 @@ from saleor.shipping.models import (
 )
 from saleor.site import AuthenticationBackends
 from saleor.site.models import AuthorizationKey, SiteSettings
+from saleor.warehouse.models import Warehouse
 from saleor.webhook import WebhookEventType
 from saleor.webhook.models import Webhook
 from tests.utils import create_image
@@ -576,6 +577,11 @@ def permission_manage_plugins():
 @pytest.fixture
 def permission_manage_service_accounts():
     return Permission.objects.get(codename="manage_service_accounts")
+
+
+@pytest.fixture
+def permission_manage_warehouses():
+    return Permission.objects.get(codename="manage_warehouses")
 
 
 @pytest.fixture
@@ -1743,3 +1749,13 @@ def mock_get_manager(mocker, fake_payment_interface):
     )
     yield fake_payment_interface
     mgr.assert_called_once()
+
+
+@pytest.fixture
+def warehouse(address, shipping_zone):
+    warehouse = Warehouse.objects.create(
+        address=address, name="Example Warehouse", email="test@example.com"
+    )
+    warehouse.shipping_zones.add(shipping_zone)
+    warehouse.save()
+    return warehouse

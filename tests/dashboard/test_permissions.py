@@ -1,3 +1,4 @@
+import pytest
 from django.urls import reverse
 
 from saleor.account.models import User
@@ -1032,3 +1033,61 @@ def test_only_staff_user_with_permission_can_update_payment_gateway(
     staff_user.user_permissions.add(permission_manage_plugins)
     response = staff_client.get(url)
     assert response.status_code == 200
+
+
+@pytest.mark.parametrize(
+    "url_name", ["dashboard:warehouse-list", "dashboard:warehouse-create"]
+)
+def test_warehouse_views_can_accessed_by_staff_user_with_permission(
+    staff_client, staff_user, permission_manage_warehouses, url_name
+):
+    url = reverse(url_name)
+    staff_user.user_permissions.add(permission_manage_warehouses)
+    response = staff_client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.parametrize(
+    "url_name", ["dashboard:warehouse-list", "dashboard:warehouse-create"]
+)
+def test_staff_user_without_permission_cannot_access_warehouse_views(
+    staff_client, staff_user, url_name
+):
+    url = reverse(url_name)
+    assert not staff_user.has_perm("warehouse.manage_warehouses")
+    response = staff_client.get(url)
+    assert response.status_code == 302
+
+
+@pytest.mark.parametrize(
+    "url_name",
+    [
+        "dashboard:warehouse-detail",
+        "dashboard:warehouse-update",
+        "dashboard:warehouse-delete",
+    ],
+)
+def test_staff_with_permission_can_access_warehouse_views(
+    staff_client, staff_user, permission_manage_warehouses, warehouse, url_name
+):
+    url = reverse(url_name, args=[warehouse.pk])
+    staff_user.user_permissions.add(permission_manage_warehouses)
+    response = staff_client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.parametrize(
+    "url_name",
+    [
+        "dashboard:warehouse-detail",
+        "dashboard:warehouse-update",
+        "dashboard:warehouse-delete",
+    ],
+)
+def test_staff_without_permission_dont_access_warehouses(
+    staff_client, staff_user, warehouse, url_name
+):
+    url = reverse(url_name, args=[warehouse.pk])
+    assert not staff_user.has_perm("warehouse.manage_warehouses")
+    response = staff_client.get(url)
+    assert response.status_code == 302
