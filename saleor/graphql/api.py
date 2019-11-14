@@ -15,6 +15,7 @@ from .product.schema import ProductMutations, ProductQueries
 from .shipping.schema import ShippingMutations, ShippingQueries
 from .shop.schema import ShopMutations, ShopQueries
 from .translations.schema import TranslationQueries
+from .warehouse.schema import WarehouseQueries
 from .webhook.schema import WebhookMutations, WebhookQueries
 
 
@@ -33,6 +34,7 @@ class Query(
     ShippingQueries,
     ShopQueries,
     TranslationQueries,
+    WarehouseQueries,
     WebhookQueries,
 ):
     node = graphene.Node.Field()

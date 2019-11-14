@@ -3441,6 +3441,7 @@ type Query {
   webhooks(filter: WebhookFilterInput, before: String, after: String, first: Int, last: Int): WebhookCountableConnection
   webhookEvents: [WebhookEvent]
   webhookSamplePayload(eventType: WebhookEventTypeEnum!): JSONString
+  warehouse(id: ID!): Warehouse
   translations(kind: TranslatableKinds!, before: String, after: String, first: Int, last: Int): TranslatableItemConnection
   translation(id: ID!, kind: TranslatableKinds!): DefaultTranslationItem
   shop: Shop
@@ -4399,6 +4400,16 @@ enum VoucherTypeEnum {
 type VoucherUpdate {
   errors: [Error!]
   voucher: Voucher
+}
+
+type Warehouse implements Node {
+  uuid: UUID!
+  name: String!
+  companyName: String!
+  shippingZones(before: String, after: String, first: Int, last: Int): ShippingZoneCountableConnection!
+  address: Address!
+  email: String!
+  id: ID!
 }
 
 type Webhook implements Node {
