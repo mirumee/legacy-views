@@ -3442,6 +3442,7 @@ type Query {
   webhookEvents: [WebhookEvent]
   webhookSamplePayload(eventType: WebhookEventTypeEnum!): JSONString
   warehouse(id: ID!): Warehouse
+  warehouses(before: String, after: String, first: Int, last: Int): WarehouseCountableConnection
   translations(kind: TranslatableKinds!, before: String, after: String, first: Int, last: Int): TranslatableItemConnection
   translation(id: ID!, kind: TranslatableKinds!): DefaultTranslationItem
   shop: Shop
@@ -4410,6 +4411,17 @@ type Warehouse implements Node {
   address: Address!
   email: String!
   id: ID!
+}
+
+type WarehouseCountableConnection {
+  pageInfo: PageInfo!
+  edges: [WarehouseCountableEdge!]!
+  totalCount: Int
+}
+
+type WarehouseCountableEdge {
+  node: Warehouse!
+  cursor: String!
 }
 
 type Webhook implements Node {
