@@ -4,6 +4,7 @@ from graphql_jwt.decorators import login_required
 
 from saleor.graphql.core.fields import PrefetchingConnectionField
 from saleor.graphql.decorators import permission_required
+from saleor.graphql.warehouse.mutations import WarehouseCreate
 from saleor.graphql.warehouse.types import Warehouse
 from saleor.warehouse import models
 
@@ -34,3 +35,7 @@ class WarehouseQueries(graphene.ObjectType):
     def resolve_warehouses(self, _info, **kwargs):
         qs = models.Warehouse.objects.all()
         return gql_optimizer.query(qs, _info)
+
+
+class WarehouseMutations(graphene.ObjectType):
+    create_warehouse = WarehouseCreate.Field()

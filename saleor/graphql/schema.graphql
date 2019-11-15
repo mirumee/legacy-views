@@ -2070,6 +2070,7 @@ type Mutation {
   webhookCreate(input: WebhookCreateInput!): WebhookCreate
   webhookDelete(id: ID!): WebhookDelete
   webhookUpdate(id: ID!, input: WebhookUpdateInput!): WebhookUpdate
+  createWarehouse(input: WarehouseInput!): WarehouseCreate
   authorizationKeyAdd(input: AuthorizationKeyInput!, keyType: AuthorizationKeyType!): AuthorizationKeyAdd
   authorizationKeyDelete(keyType: AuthorizationKeyType!): AuthorizationKeyDelete
   homepageCollectionUpdate(collection: ID): HomepageCollectionUpdate
@@ -4413,6 +4414,17 @@ type Warehouse implements Node {
   id: ID!
 }
 
+input WarehouseAddressInput {
+  streetAddress1: String!
+  streetAddress2: String
+  city: String!
+  cityArea: String
+  postalCode: String
+  country: CountryCode!
+  countryArea: String
+  phone: String
+}
+
 type WarehouseCountableConnection {
   pageInfo: PageInfo!
   edges: [WarehouseCountableEdge!]!
@@ -4422,6 +4434,19 @@ type WarehouseCountableConnection {
 type WarehouseCountableEdge {
   node: Warehouse!
   cursor: String!
+}
+
+type WarehouseCreate {
+  errors: [Error!]
+  warehouse: Warehouse
+}
+
+input WarehouseInput {
+  name: String!
+  companyName: String
+  shippingZonesInput: [ID]
+  email: String
+  address: WarehouseAddressInput!
 }
 
 type Webhook implements Node {
