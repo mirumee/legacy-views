@@ -1,12 +1,25 @@
+import graphene
+
 from saleor.account.models import Address
 from saleor.graphql.core.mutations import ModelMutation
-from saleor.graphql.warehouse.types import WarehouseInput
+from saleor.graphql.warehouse.types import WarehouseCreateInput, WarehouseUpdateInput
 from saleor.warehouse import models
+
+ADDRESS_FIELDS = [
+    "street_address_1",
+    "street_address_2",
+    "city",
+    "city_area",
+    "postal_code",
+    "country",
+    "country_area",
+    "phone",
+]
 
 
 class WarehouseCreate(ModelMutation):
     class Arguments:
-        input = WarehouseInput(
+        input = WarehouseCreateInput(
             required=True, description="Fields required to create warehouse."
         )
 
@@ -17,18 +30,8 @@ class WarehouseCreate(ModelMutation):
 
     @classmethod
     def create_address(cls, clean_data):
-        address_fields = [
-            "street_address_1",
-            "street_address_2",
-            "city",
-            "city_area",
-            "postal_code",
-            "country",
-            "country_area",
-            "phone",
-        ]
         address_data = {}
-        for field in address_fields:
+        for field in ADDRESS_FIELDS:
             field_value = clean_data.get(field)
             if field_value is not None:
                 address_data[field] = field_value
@@ -39,4 +42,31 @@ class WarehouseCreate(ModelMutation):
     def clean_input(cls, info, instance, data, input_cls=None):
         cleaned_data = super().clean_input(info, instance, data, input_cls=input_cls)
         cleaned_data["address"] = cls.create_address(cleaned_data)
+        return cleaned_data
+
+
+class WarehouseUpdate(ModelMutation):
+    class Meta:
+        model = models.Warehouse
+        permissions = ("warehouse.manage_warehouses",)
+        description = "Update given warehouse."
+
+    class Arguments:
+        id = graphene.ID(description="ID of a warehouse to update.", required=True)
+        input = WarehouseUpdateInput()
+
+    @classmethod
+    def update_address(cls, instance, cleaned_data):
+        address = instance.address
+        for field in ADDRESS_FIELDS:
+            field_value = cleaned_data.get(field)
+            if field_value is not None:
+                setattr(address, field, field_value)
+        address.save()
+        return address
+
+    @classmethod
+    def clean_input(cls, info, instance, data, input_cls=None):
+        cleaned_data = super().clean_input(info, instance, data, input_cls=input_cls)
+        cleaned_data["address"] = cls.update_address(instance, cleaned_data)
         return cleaned_data

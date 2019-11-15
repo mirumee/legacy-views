@@ -23,8 +23,17 @@ class WarehouseInput(graphene.InputObjectType):
         graphene.ID, description="Shipping zones supported by the warehouse."
     )
     email = graphene.String(description="The email address of the warehouse.")
+
+
+class WarehouseCreateInput(WarehouseInput):
     address = WarehouseAddressInput(
         description="Address of the warehouse.", required=True
+    )
+
+
+class WarehouseUpdateInput(WarehouseInput):
+    address = WarehouseAddressInput(
+        description="Address of the warehouse.", required=False
     )
 
 

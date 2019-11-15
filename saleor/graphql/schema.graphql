@@ -2070,7 +2070,8 @@ type Mutation {
   webhookCreate(input: WebhookCreateInput!): WebhookCreate
   webhookDelete(id: ID!): WebhookDelete
   webhookUpdate(id: ID!, input: WebhookUpdateInput!): WebhookUpdate
-  createWarehouse(input: WarehouseInput!): WarehouseCreate
+  createWarehouse(input: WarehouseCreateInput!): WarehouseCreate
+  updateWarehouse(id: ID!, input: WarehouseUpdateInput): WarehouseUpdate
   authorizationKeyAdd(input: AuthorizationKeyInput!, keyType: AuthorizationKeyType!): AuthorizationKeyAdd
   authorizationKeyDelete(keyType: AuthorizationKeyType!): AuthorizationKeyDelete
   homepageCollectionUpdate(collection: ID): HomepageCollectionUpdate
@@ -4441,12 +4442,25 @@ type WarehouseCreate {
   warehouse: Warehouse
 }
 
-input WarehouseInput {
+input WarehouseCreateInput {
   name: String!
   companyName: String
   shippingZonesInput: [ID]
   email: String
   address: WarehouseAddressInput!
+}
+
+type WarehouseUpdate {
+  errors: [Error!]
+  warehouse: Warehouse
+}
+
+input WarehouseUpdateInput {
+  name: String!
+  companyName: String
+  shippingZonesInput: [ID]
+  email: String
+  address: WarehouseAddressInput
 }
 
 type Webhook implements Node {
