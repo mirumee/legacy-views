@@ -12,7 +12,7 @@ class I18nMixin:
     """
 
     @classmethod
-    def validate_address(cls, address_data: dict, instance=None):
+    def validate_address_form(cls, address_data: dict, instance=None):
         phone = address_data.get("phone", None)
         if phone:
             try:
@@ -26,11 +26,16 @@ class I18nMixin:
                     }
                 ) from exc
 
-        address_form, _ = get_address_form(address_data, address_data.get("country"))
-
+        address_form, _ = get_address_form(
+            address_data, address_data.get("country"), instance=instance
+        )
         if not address_form.is_valid():
             raise ValidationError(address_form.errors.as_data())
+        return address_form
 
+    @classmethod
+    def validate_address(cls, address_data: dict, instance=None):
+        address_form = cls.validate_address_form(address_data)
         if not instance:
             instance = Address()
 
