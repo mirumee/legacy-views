@@ -3445,7 +3445,7 @@ type Query {
   webhookEvents: [WebhookEvent]
   webhookSamplePayload(eventType: WebhookEventTypeEnum!): JSONString
   warehouse(id: ID!): Warehouse
-  warehouses(before: String, after: String, first: Int, last: Int): WarehouseCountableConnection
+  warehouses(filter: WarehouseFilterInput, query: String, before: String, after: String, first: Int, last: Int): WarehouseCountableConnection
   translations(kind: TranslatableKinds!, before: String, after: String, first: Int, last: Int): TranslatableItemConnection
   translation(id: ID!, kind: TranslatableKinds!): DefaultTranslationItem
   shop: Shop
@@ -4461,6 +4461,13 @@ type WarehouseError {
   field: String
   message: String
   code: ExtensionsErrorCode
+}
+
+input WarehouseFilterInput {
+  name: String
+  companyName: String
+  email: String
+  address: String
 }
 
 type WarehouseUpdate {
