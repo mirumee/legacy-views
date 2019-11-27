@@ -23,8 +23,8 @@ class Stock(models.Model):
     product_variant = models.ForeignKey(
         ProductVariant, null=False, on_delete=models.CASCADE
     )
-    quantity = models.PositiveIntegerField()
-    quantity_allocated = models.PositiveIntegerField()
+    quantity = models.PositiveIntegerField(default=0)
+    quantity_allocated = models.PositiveIntegerField(default=0)
 
     objects = StockQuerySet.as_manager()
 
