@@ -34,6 +34,7 @@ def checkout_request_factory(rf, monkeypatch):
             request.user = user
         request.discounts = Sale.objects.all()
         request.extensions = None
+        request.country = "US"
         monkeypatch.setattr(request, "get_signed_cookie", Mock(return_value=token))
         return request
 
@@ -397,14 +398,25 @@ def test_get_prices_of_discounted_specific_product_all_products(
     assert prices == excepted_value
 
 
-def test_contains_unavailable_variants():
-    missing_variant = Mock(check_quantity=Mock(side_effect=InsufficientStock("")))
+def test_contains_unavailable_variants_gets_unavailable_variant(monkeypatch):
+    missing_variant = Mock()
     checkout = MagicMock()
+    checkout.country = "US"
     checkout.__iter__ = Mock(return_value=iter([Mock(variant=missing_variant)]))
+
+    def mock_function(*args):
+        raise InsufficientStock("")
+
+    monkeypatch.setattr("saleor.checkout.utils.check_stock_quantity", mock_function)
     assert utils.contains_unavailable_variants(checkout)
 
+
+def test_contains_unavailable_variants_gets_available_variant(monkeypatch):
     variant = Mock(check_quantity=Mock())
+    checkout = MagicMock()
+    checkout.country = "US"
     checkout.__iter__ = Mock(return_value=iter([Mock(variant=variant)]))
+    monkeypatch.setattr("saleor.checkout.utils.check_stock_quantity", lambda *x: None)
     assert not utils.contains_unavailable_variants(checkout)
 
 
