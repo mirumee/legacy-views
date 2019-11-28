@@ -15,6 +15,7 @@ from saleor.checkout.models import Checkout
 from saleor.checkout.utils import (
     add_variant_to_checkout,
     change_checkout_user,
+    check_variant_in_stock,
     find_open_checkout_for_user,
     get_shipping_price_estimate,
 )
@@ -22,6 +23,7 @@ from saleor.checkout.views import clear_checkout, update_checkout_line
 from saleor.core.exceptions import InsufficientStock
 from saleor.discount.models import Sale
 from saleor.product.models import Category
+from saleor.stock.models import Stock
 
 
 @pytest.fixture()
@@ -418,6 +420,27 @@ def test_contains_unavailable_variants_gets_available_variant(monkeypatch):
     checkout.__iter__ = Mock(return_value=iter([Mock(variant=variant)]))
     monkeypatch.setattr("saleor.checkout.utils.check_stock_quantity", lambda *x: None)
     assert not utils.contains_unavailable_variants(checkout)
+
+
+def test_check_variant_in_stock_variant_not_in_stock(checkout_with_item):
+    stock = Stock.objects.get()
+    quantity_available = stock.quantity_available
+    line = checkout_with_item.lines.first()
+    variant = line.variant
+    new_quantity = quantity_available + line.quantity + 1
+    with pytest.raises(InsufficientStock):
+        check_variant_in_stock(checkout_with_item, variant, new_quantity)
+
+
+def test_check_variant_in_stock_variant_available(checkout_with_item):
+    line = checkout_with_item.lines.first()
+    variant = line.variant
+    quantity = line.quantity - 1
+    new_quantity, new_line = check_variant_in_stock(
+        checkout_with_item, variant, quantity, replace=True
+    )
+    assert quantity == new_quantity
+    assert line.id == new_line.id
 
 
 def test_remove_unavailable_variants(checkout, product):
