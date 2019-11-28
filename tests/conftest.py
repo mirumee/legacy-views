@@ -204,7 +204,9 @@ def site_settings(db, settings) -> SiteSettings:
 
 @pytest.fixture
 def checkout(db):
-    return Checkout.objects.create()
+    checkout = Checkout.objects.create()
+    checkout.set_country("US")
+    return checkout
 
 
 @pytest.fixture
