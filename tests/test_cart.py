@@ -500,19 +500,18 @@ def test_add_to_checkout_form(checkout, product):
 
 
 @pytest.mark.parametrize("track_inventory", (True, False))
-def test_add_to_checkout_form_when_insufficient_stock(product, track_inventory):
-    variant = product.variants.first()
+def test_add_to_checkout_form_when_insufficient_stock(
+    product, track_inventory, checkout_with_item
+):
+    line = checkout_with_item.lines.first()
+    line.quantity = 49
+    line.save()
+    variant = line.variant
     variant.track_inventory = track_inventory
     variant.save()
 
-    checkout_lines = []
-    checkout = Mock(
-        add=lambda variant, quantity: checkout_lines.append(variant),
-        get_line=Mock(return_value=Mock(quantity=49)),
-    )
-
     form = forms.AddToCheckoutForm(
-        data={"quantity": 1}, checkout=checkout, product=Mock()
+        data={"quantity": 1}, checkout=checkout_with_item, product=Mock()
     )
     form.get_variant = Mock(return_value=variant)
 
@@ -539,13 +538,16 @@ def test_replace_checkout_line_form_when_insufficient_stock(
     monkeypatch, checkout, product
 ):
     variant = product.variants.get()
+    stock = Stock.objects.get()
+    stock.quantity = 3
+    stock.save()
     initial_quantity = 1
     replaced_quantity = 4
 
     add_variant_to_checkout(checkout, variant, initial_quantity)
     exception_mock = InsufficientStock(Mock(quantity_available=2))
     monkeypatch.setattr(
-        "saleor.product.models.ProductVariant.check_quantity",
+        "saleor.stock.stock_management.check_stock_quantity",
         Mock(side_effect=exception_mock),
     )
     data = {"quantity": replaced_quantity}
@@ -704,6 +706,7 @@ def test_checkout_line_state(product, checkout_with_single_item):
 
 def test_update_view_must_be_ajax(customer_user, rf):
     request = rf.post(reverse("home"))
+    request.country = "US"
     request.user = customer_user
     request.discounts = None
     result = update_checkout_line(request, 1)
@@ -755,10 +758,12 @@ def test_get_checkout_context_no_shipping(checkout_with_single_item, address):
     checkout = checkout_with_single_item
     checkout.shipping_address = address
     checkout.save(update_fields=["shipping_address"])
+    assert Stock.objects.for_country("PL").exists()
 
     shipment_option = get_shipping_price_estimate(
         checkout, discounts=None, country_code="PL"
     )
+    assert shipment_option is None
     checkout_data = utils.get_checkout_context(
         checkout, None, currency="USD", shipping_range=shipment_option
     )
@@ -773,6 +778,7 @@ def test_clear_checkout_must_be_ajax(rf, customer_user):
     request = rf.post(reverse("home"))
     request.user = customer_user
     request.discounts = None
+    request.country = "US"
     response = clear_checkout(request)
     assert response.status_code == 302
 

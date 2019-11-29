@@ -16,6 +16,7 @@ from ..core.utils import format_money
 from ..discount.models import NotApplicable, Voucher
 from ..extensions.manager import get_extensions_manager
 from ..shipping.models import ShippingMethod, ShippingZone
+from ..stock.stock_management import check_stock_quantity, get_available_quantity
 from .models import Checkout
 
 
@@ -103,9 +104,12 @@ class AddToCheckoutForm(forms.Form):
                 return cleaned_data
 
             try:
-                variant.check_quantity(new_quantity)
+                check_stock_quantity(variant, self.checkout.country, new_quantity)
             except InsufficientStock as e:
-                remaining = e.item.quantity_available - used_quantity
+                remaining = (
+                    get_available_quantity(e.item, self.checkout.country)
+                    - used_quantity
+                )
                 if remaining:
                     self.add_error_i18n("quantity", "insufficient-stock", remaining)
                 else:
@@ -152,10 +156,13 @@ class ReplaceCheckoutLineForm(AddToCheckoutForm):
         """
         quantity = self.cleaned_data["quantity"]
         try:
-            self.variant.check_quantity(quantity)
+            check_stock_quantity(self.variant, self.checkout.country, quantity)
         except InsufficientStock as e:
             msg = self.error_messages["insufficient-stock"]
-            raise forms.ValidationError(msg % e.item.quantity_available, code=e.code)
+            available_quantity = get_available_quantity(
+                self.variant, self.checkout.country
+            )
+            raise forms.ValidationError(msg % available_quantity, code=e.code)
         return quantity
 
     def clean(self):

@@ -44,6 +44,7 @@ from ..order.actions import order_created
 from ..order.emails import send_order_confirmation
 from ..order.models import Order, OrderLine
 from ..shipping.models import ShippingMethod
+from ..stock.stock_management import check_stock_quantity, get_available_quantity
 from . import AddressType, logger
 from .forms import (
     AddressChoiceForm,
@@ -67,7 +68,7 @@ def contains_unavailable_variants(checkout):
     """Return `True` if checkout contains any unfulfillable lines."""
     try:
         for line in checkout:
-            line.variant.check_quantity(line.quantity)
+            check_stock_quantity(line.variant, checkout.country, line.quantity)
     except InsufficientStock:
         return True
     return False
@@ -92,7 +93,7 @@ def remove_unavailable_variants(checkout):
         try:
             add_variant_to_checkout(checkout, line.variant, line.quantity, replace=True)
         except InsufficientStock as e:
-            quantity = e.item.quantity_available
+            quantity = get_available_quantity(e.item, checkout.country)
             add_variant_to_checkout(checkout, line.variant, quantity, replace=True)
 
 
@@ -163,6 +164,7 @@ def find_and_assign_anonymous_checkout(queryset=Checkout.objects.all()):
             )
             if checkout is None:
                 return response
+            checkout.set_country(request.country)
             if request.user.is_authenticated:
                 with transaction.atomic():
                     change_checkout_user(checkout, request.user)
@@ -215,9 +217,15 @@ def get_or_create_checkout_from_request(
 ) -> Checkout:
     """Fetch checkout from database or create a new one based on cookie."""
     if request.user.is_authenticated:
-        return get_user_checkout(request.user, checkout_queryset, auto_create=True)[0]
+        checkout = get_user_checkout(request.user, checkout_queryset, auto_create=True)[
+            0
+        ]
+        checkout.set_country(request.country)
+        return checkout
     token = request.get_signed_cookie(COOKIE_NAME, default=None)
-    return get_or_create_anonymous_checkout_from_token(token, checkout_queryset)
+    checkout = get_or_create_anonymous_checkout_from_token(token, checkout_queryset)
+    checkout.set_country(request.country)
+    return checkout
 
 
 def get_checkout_from_request(request, checkout_queryset=Checkout.objects.all()):
@@ -229,11 +237,13 @@ def get_checkout_from_request(request, checkout_queryset=Checkout.objects.all())
         token = request.get_signed_cookie(COOKIE_NAME, default=None)
         checkout = get_anonymous_checkout_from_token(token, checkout_queryset)
         user = None
-    if checkout is not None:
-        return checkout
-    if user:
-        return Checkout(user=user)
-    return Checkout()
+    if checkout is None:
+        if user:
+            checkout = Checkout(user=user)
+        else:
+            checkout = Checkout()
+    checkout.set_country(request.country)
+    return checkout
 
 
 def get_or_empty_db_checkout(checkout_queryset=Checkout.objects.all()):
@@ -306,7 +316,7 @@ def check_variant_in_stock(
         )
 
     if new_quantity > 0 and check_quantity:
-        variant.check_quantity(new_quantity)
+        check_stock_quantity(variant, checkout.country, new_quantity)
 
     return new_quantity, line
 
@@ -1039,7 +1049,8 @@ def create_line_for_order(checkout_line: "CheckoutLine", discounts) -> OrderLine
     quantity = checkout_line.quantity
     variant = checkout_line.variant
     product = variant.product
-    variant.check_quantity(quantity)
+    country = checkout_line.checkout.country
+    check_stock_quantity(variant, country, quantity)
 
     product_name = str(product)
     variant_name = str(variant)
