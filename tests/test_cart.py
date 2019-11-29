@@ -446,8 +446,9 @@ def test_check_variant_in_stock_variant_available(checkout_with_item):
 def test_remove_unavailable_variants(checkout, product):
     variant = product.variants.get()
     add_variant_to_checkout(checkout, variant)
-    variant.quantity = 0
-    variant.save()
+    stock = Stock.objects.get()
+    stock.quantity = 0
+    stock.save()
     utils.remove_unavailable_variants(checkout)
     assert len(checkout) == 0
 
