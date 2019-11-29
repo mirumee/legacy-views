@@ -408,17 +408,9 @@ class ProductVariantForm(MoneyModelForm, AttributesMixin):
 
     class Meta:
         model = ProductVariant
-        fields = [
-            "sku",
-            "price_override",
-            "weight",
-            "quantity",
-            "cost_price",
-            "track_inventory",
-        ]
+        fields = ["sku", "price_override", "weight", "cost_price", "track_inventory"]
         labels = {
             "sku": pgettext_lazy("SKU", "SKU"),
-            "quantity": pgettext_lazy("Integer number", "Number in stock"),
             "track_inventory": pgettext_lazy(
                 "Track inventory field", "Track inventory"
             ),
