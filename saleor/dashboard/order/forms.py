@@ -32,8 +32,8 @@ from ...order.utils import (
 )
 from ...payment import ChargeStatus, CustomPaymentChoices, PaymentError, gateway
 from ...product.models import Product, ProductVariant
-from ...product.utils import allocate_stock, deallocate_stock
 from ...shipping.models import ShippingMethod
+from ...stock.stock_management import allocate_stock, deallocate_stock
 from ..forms import AjaxSelect2ChoiceField
 from ..widgets import PhonePrefixWidget
 from .utils import remove_customer_from_order, update_order_with_user_addresses

@@ -2,7 +2,6 @@ from urllib.parse import urlencode
 
 from django.conf import settings
 from django.db import transaction
-from django.db.models import F
 
 from ...core.taxes import TaxedMoney, zero_taxed_money
 from ...core.utils import get_paginator_items
@@ -76,32 +75,6 @@ def get_variant_url(variant):
         for attribute in variant.product.product_type.variant_attributes.all()
     }
     return get_variant_url_from_product(variant.product, attributes)
-
-
-def allocate_stock(variant, quantity):
-    variant.quantity_allocated = F("quantity_allocated") + quantity
-    variant.save(update_fields=["quantity_allocated"])
-
-
-def deallocate_stock(variant, quantity):
-    variant.quantity_allocated = F("quantity_allocated") - quantity
-    variant.save(update_fields=["quantity_allocated"])
-
-
-def decrease_stock(variant, quantity):
-    variant.quantity = F("quantity") - quantity
-    variant.quantity_allocated = F("quantity_allocated") - quantity
-    variant.save(update_fields=["quantity", "quantity_allocated"])
-
-
-def increase_stock(variant, quantity, allocate=False):
-    """Return given quantity of product to a stock."""
-    variant.quantity = F("quantity") + quantity
-    update_fields = ["quantity"]
-    if allocate:
-        variant.quantity_allocated = F("quantity_allocated") + quantity
-        update_fields.append("quantity_allocated")
-    variant.save(update_fields=update_fields)
 
 
 def get_product_list_context(request, filter_set):

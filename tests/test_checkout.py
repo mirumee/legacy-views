@@ -38,6 +38,7 @@ from saleor.extensions.manager import ExtensionsManager, get_extensions_manager
 from saleor.order import OrderEvents, OrderEventsEmails
 from saleor.order.models import OrderEvent
 from saleor.shipping.models import ShippingZone
+from saleor.stock.models import Stock
 
 from .utils import get_redirect_location
 
@@ -527,7 +528,6 @@ def test_view_checkout_place_order_with_item_out_of_stock(
 ):
 
     checkout = request_checkout_with_item
-    variant = product.variants.get()
 
     # add shipping information to the checkout
     checkout.shipping_address = address
@@ -536,8 +536,9 @@ def test_view_checkout_place_order_with_item_out_of_stock(
     checkout.save()
 
     # make the variant be out of stock
-    variant.quantity = 0
-    variant.save()
+    stock = Stock.objects.get()
+    stock.quantity = 0
+    stock.save()
 
     checkout_url = reverse("checkout:summary")
     redirect_url = reverse("checkout:index")

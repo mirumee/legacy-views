@@ -29,17 +29,17 @@ from saleor.product.models import (
     Product,
 )
 from saleor.product.thumbnails import create_product_thumbnails
-from saleor.product.utils import (
-    allocate_stock,
-    deallocate_stock,
-    decrease_stock,
-    increase_stock,
-)
 from saleor.product.utils.attributes import associate_attribute_values_to_instance
 from saleor.product.utils.availability import get_product_availability_status
 from saleor.product.utils.costs import get_margin_for_variant
 from saleor.product.utils.digital_products import increment_download_count
 from saleor.product.utils.variants_picker import get_variant_picker_data
+from saleor.stock.stock_management import (
+    allocate_stock,
+    deallocate_stock,
+    decrease_stock,
+    increase_stock,
+)
 
 
 @pytest.mark.parametrize(

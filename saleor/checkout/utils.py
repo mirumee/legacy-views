@@ -44,7 +44,11 @@ from ..order.actions import order_created
 from ..order.emails import send_order_confirmation
 from ..order.models import Order, OrderLine
 from ..shipping.models import ShippingMethod
-from ..stock.stock_management import check_stock_quantity, get_available_quantity
+from ..stock.stock_management import (
+    allocate_stock,
+    check_stock_quantity,
+    get_available_quantity,
+)
 from . import AddressType, logger
 from .forms import (
     AddressChoiceForm,
@@ -1153,7 +1157,6 @@ def create_order(*, checkout: Checkout, order_data: dict, user: User) -> Order:
     Current user's language is saved in the order so we can later determine
     which language to use when sending email.
     """
-    from ..product.utils import allocate_stock
     from ..order.utils import add_gift_card_to_order
 
     order = Order.objects.filter(checkout_token=checkout.token).first()
@@ -1170,7 +1173,7 @@ def create_order(*, checkout: Checkout, order_data: dict, user: User) -> Order:
     for line in order_lines:  # type: OrderLine
         variant = line.variant
         if variant.track_inventory:
-            allocate_stock(variant, line.quantity)
+            allocate_stock(variant, checkout.country, line.quantity)
 
     # Add gift cards to the order
     for gift_card in checkout.gift_cards.select_for_update():
