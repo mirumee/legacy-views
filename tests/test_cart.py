@@ -547,7 +547,7 @@ def test_replace_checkout_line_form_when_insufficient_stock(
     add_variant_to_checkout(checkout, variant, initial_quantity)
     exception_mock = InsufficientStock(Mock(quantity_available=2))
     monkeypatch.setattr(
-        "saleor.stock.stock_management.check_stock_quantity",
+        "saleor.stock.utils.availability.check_stock_quantity",
         Mock(side_effect=exception_mock),
     )
     data = {"quantity": replaced_quantity}
