@@ -1266,6 +1266,11 @@ def permission_manage_webhooks():
 
 
 @pytest.fixture
+def permission_manage_stocks():
+    return Permission.objects.get(codename="manage_stocks")
+
+
+@pytest.fixture
 def collection(db):
     collection = Collection.objects.create(
         name="Collection",
