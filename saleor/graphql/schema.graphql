@@ -3452,6 +3452,7 @@ type Query {
   translations(kind: TranslatableKinds!, before: String, after: String, first: Int, last: Int): TranslatableItemConnection
   translation(id: ID!, kind: TranslatableKinds!): DefaultTranslationItem
   stock(id: ID!): Stock
+  stocks(filter: StockFilterInput, query: String, before: String, after: String, first: Int, last: Int): StockCountableConnection
   shop: Shop
   shippingZone(id: ID!): ShippingZone
   shippingZones(before: String, after: String, first: Int, last: Int): ShippingZoneCountableConnection
@@ -4092,6 +4093,13 @@ type StockError {
   field: String
   message: String
   code: StockErorrCode
+}
+
+input StockFilterInput {
+  quantity: Float
+  quantityAllocated: Float
+  productVariant: String
+  warehouse: String
 }
 
 input StockInput {
