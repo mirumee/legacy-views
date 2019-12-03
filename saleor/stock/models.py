@@ -8,6 +8,9 @@ from ..warehouse.models import Warehouse
 
 
 class StockQuerySet(models.QuerySet):
+    def annotate_available_quantity(self):
+        return self.annotate(available_quantity=F("quantity") - F("quantity_allocated"))
+
     def for_country(self, country_code: str):
         query_warehouse = models.Subquery(
             Warehouse.objects.filter(
@@ -55,7 +58,7 @@ class Stock(models.Model):
         return self.quantity > 0
 
     def check_quantity(self, quantity: int):
-        if quantity > self.quantity_available:
+        if quantity > self.quantity_available():
             raise InsufficientStock(self)
 
     def allocate_stock(self, quantity: int, commit: bool = True):
