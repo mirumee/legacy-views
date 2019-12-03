@@ -62,6 +62,24 @@ mutation bulkDeleteStock($ids: [ID]!) {
 """
 
 
+QUERY_STOCK = """
+query stock($id: ID!) {
+    stock(id: $id) {
+        warehouse {
+            name
+        }
+        productVariant {
+            product {
+                name
+            }
+        }
+        quantity
+        quantityAllocated
+    }
+}
+"""
+
+
 def test_stock_cannot_be_created_without_permission(
     staff_api_client, variant, warehouse
 ):
@@ -197,3 +215,25 @@ def test_bulk_delete_bulk_stock_mutation(staff_api_client, permission_manage_sto
     content_count = content["data"]["bulkDeleteStock"]["count"]
     assert content_count == initial_stock_count
     assert not Stock.objects.all().exists()
+
+
+def test_query_stock_requires_permission(staff_api_client, stock):
+    assert not staff_api_client.user.has_perm("stock.manage_stocks")
+    stock_id = graphene.Node.to_global_id("Stock", stock.pk)
+    response = staff_api_client.post_graphql(QUERY_STOCK, variables={"id": stock_id})
+    assert_no_permission(response)
+
+
+def test_query_stock(staff_api_client, stock, permission_manage_stocks):
+    staff_api_client.user.user_permissions.add(permission_manage_stocks)
+    stock_id = graphene.Node.to_global_id("Stock", stock.pk)
+    response = staff_api_client.post_graphql(QUERY_STOCK, variables={"id": stock_id})
+    content = get_graphql_content(response)
+    content_stock = content["data"]["stock"]
+    assert (
+        content_stock["productVariant"]["product"]["name"]
+        == stock.product_variant.product.name
+    )
+    assert content_stock["warehouse"]["name"] == stock.warehouse.name
+    assert content_stock["quantity"] == stock.quantity
+    assert content_stock["quantityAllocated"] == stock.quantity_allocated

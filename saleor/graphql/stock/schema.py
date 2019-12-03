@@ -14,9 +14,11 @@ class StockQueries(graphene.ObjectType):
     # TODO: Add stocks query
 
     @permission_required("stock.manage_stocks")
-    def resolve_warehouse(self, info, **kwargs):
+    def resolve_stock(self, info, **kwargs):
         stock_pk = kwargs.get("id")
-        return graphene.Node.get_node_from_global_id(info, stock_pk, Stock)
+        stock = graphene.Node.get_node_from_global_id(info, stock_pk, Stock)
+        print(stock)
+        return stock
 
 
 class StockMutations(graphene.ObjectType):
