@@ -106,7 +106,7 @@ def product_details(request, slug, product_id, form=None):
     show_variant_picker = all(
         [v["attributes"] for v in variant_picker_data["variants"]]
     )
-    json_ld_data = product_json_ld(product)
+    json_ld_data = product_json_ld(product, request.country)
     ctx = {
         "description_json": product.translated.description_json,
         "description_html": product.translated.description,

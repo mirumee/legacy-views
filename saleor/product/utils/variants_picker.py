@@ -10,6 +10,7 @@ from ...core.utils import to_local_currency
 from ...discount import DiscountInfo
 from ...extensions.manager import get_extensions_manager
 from ...seo.schema.product import variant_json_ld
+from ...stock.utils.availability import is_variant_in_stock
 from ..models import AssignedVariantAttribute, ProductVariant
 from .availability import get_product_availability
 
@@ -70,7 +71,7 @@ def get_variant_picker_data(
             price_local_currency = to_local_currency(price, local_currency)
         else:
             price_local_currency = None
-        in_stock = variant.is_in_stock()
+        in_stock = is_variant_in_stock(variant, country)
         schema_data = variant_json_ld(price.net, variant, in_stock)
         attributes_map = _attributes_to_map(variant)
         variant_data = {
