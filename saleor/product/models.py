@@ -325,10 +325,6 @@ class Product(SeoModel, ModelWithMetadata, PublishableModel):
             return json_content_to_raw_text(self.description_json)
         return strip_tags(self.description)
 
-    @property
-    def is_available(self):
-        return self.is_visible and self.is_in_stock()
-
     def get_absolute_url(self):
         return reverse(
             "product:details", kwargs={"slug": self.get_slug(), "product_id": self.id}
