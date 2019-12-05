@@ -34,7 +34,7 @@ from saleor.product.utils.availability import get_product_availability_status
 from saleor.product.utils.costs import get_margin_for_variant
 from saleor.product.utils.digital_products import increment_download_count
 from saleor.product.utils.variants_picker import get_variant_picker_data
-from saleor.stock.utils.management import (
+from saleor.stock.management import (
     allocate_stock,
     deallocate_stock,
     decrease_stock,

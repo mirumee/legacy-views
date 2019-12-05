@@ -16,7 +16,7 @@ from ..core.utils import format_money
 from ..discount.models import NotApplicable, Voucher
 from ..extensions.manager import get_extensions_manager
 from ..shipping.models import ShippingMethod, ShippingZone
-from ..stock.utils.availability import check_stock_quantity, get_available_quantity
+from ..stock.availability import check_stock_quantity, get_available_quantity
 from .models import Checkout
 
 

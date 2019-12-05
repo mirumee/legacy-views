@@ -10,7 +10,7 @@ from ...core.utils import to_local_currency
 from ...discount import DiscountInfo
 from ...extensions.manager import get_extensions_manager
 from ...seo.schema.product import variant_json_ld
-from ...stock.utils.availability import is_variant_in_stock
+from ...stock.availability import is_variant_in_stock
 from ..models import AssignedVariantAttribute, ProductVariant
 from .availability import get_product_availability
 

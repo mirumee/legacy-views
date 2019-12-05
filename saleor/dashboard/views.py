@@ -9,7 +9,7 @@ from ..order.models import Order
 from ..payment import ChargeStatus
 from ..payment.models import Payment
 from ..product.models import Product
-from ..stock.utils.availability import products_with_low_stock
+from ..stock.availability import products_with_low_stock
 
 
 def staff_member_required(f):

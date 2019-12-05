@@ -4,7 +4,7 @@ from django.db.models import Q, QuerySet
 from django.utils.encoding import smart_text
 
 from ...product.models import Product
-from ...stock.utils.availability import is_variant_in_stock
+from ...stock.availability import is_variant_in_stock
 
 IN_STOCK = "http://schema.org/InStock"
 OUT_OF_STOCK = "http://schema.org/OutOfStock"
