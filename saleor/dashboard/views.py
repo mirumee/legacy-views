@@ -1,16 +1,15 @@
-from django.conf import settings
 from django.contrib.admin.views.decorators import (
     staff_member_required as _staff_member_required,
     user_passes_test,
 )
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.db.models import Q, Sum
 from django.template.response import TemplateResponse
 
 from ..order.models import Order
 from ..payment import ChargeStatus
 from ..payment.models import Payment
 from ..product.models import Product
+from ..stock.utils.availability import products_with_low_stock
 
 
 def staff_member_required(f):
@@ -61,6 +60,7 @@ def styleguide(request):
 
 
 def get_low_stock_products():
-    threshold = getattr(settings, "LOW_STOCK_THRESHOLD", 10)
-    products = Product.objects.annotate(total_stock=Sum("variants__quantity"))
-    return products.filter(Q(total_stock__lte=threshold)).distinct()
+    low_stocks = products_with_low_stock().values_list(
+        "product_variant__product_id", flat=True
+    )
+    return Product.objects.filter(id__in=low_stocks)
