@@ -34,6 +34,7 @@ from saleor.product.utils.availability import get_product_availability_status
 from saleor.product.utils.costs import get_margin_for_variant
 from saleor.product.utils.digital_products import increment_download_count
 from saleor.product.utils.variants_picker import get_variant_picker_data
+from saleor.stock.models import Stock
 
 
 def test_product_page_redirects_to_correct_slug(client, product):
@@ -208,8 +209,10 @@ def test_view_add_to_checkout_invalid_variant(client, product, request_checkout)
     assert request_checkout.quantity == 0
 
 
-def test_view_add_to_checkout(authorized_client, product, user_checkout):
-    variant = product.variants.first()
+def test_view_add_to_checkout(authorized_client, stock, user_checkout):
+    variant = stock.product_variant
+    product = variant.product
+    user_checkout.set_country("PL")
 
     # Ignore stock
     variant.track_inventory = False
@@ -550,18 +553,26 @@ def test_product_filter_sorted_by_wrong_parameter(authorized_client, product, ca
     assert not response.context["products"]
 
 
-def test_get_variant_picker_data_proper_variant_count(product):
+def test_get_variant_picker_data_proper_variant_count(stock, settings):
+    product = stock.product_variant.product
     data = get_variant_picker_data(
-        product, discounts=None, extensions=None, local_currency=None
+        product,
+        discounts=None,
+        extensions=None,
+        local_currency=None,
+        country=settings.DEFAULT_COUNTRY,
     )
 
     assert len(data["variantAttributes"][0]["values"]) == 1
 
 
-def test_get_variant_picker_data_no_nested_attributes(variant, product_type, category):
+def test_get_variant_picker_data_no_nested_attributes(
+    stock, product_type, category, settings
+):
     """Ensures that if someone bypassed variant attributes checks (e.g. a raw SQL query)
     and inserted an attribute with multiple values, it doesn't return invalid data
     to the storefront that would crash it."""
+    variant = stock.product_variant
 
     variant_attr = Attribute.objects.create(
         slug="modes", name="Available Modes", input_type=AttributeInputType.MULTISELECT
@@ -582,17 +593,22 @@ def test_get_variant_picker_data_no_nested_attributes(variant, product_type, cat
     )
 
     product = variant.product
-    data = get_variant_picker_data(product, discounts=None, local_currency=None)
+    data = get_variant_picker_data(
+        product, discounts=None, local_currency=None, country=settings.DEFAULT_COUNTRY
+    )
 
     assert len(data["variantAttributes"]) == 0
 
 
-def test_render_product_page_with_no_variant(unavailable_product, admin_client):
+def test_render_product_page_with_no_variant(
+    unavailable_product, admin_client, settings
+):
     product = unavailable_product
     product.is_published = True
     product.product_type.has_variants = True
     product.save()
-    status = get_product_availability_status(product)
+
+    status = get_product_availability_status(product, settings.DEFAULT_COUNTRY)
     assert status == ProductAvailabilityStatus.VARIANTS_MISSSING
     url = reverse(
         "product:details", kwargs={"product_id": product.pk, "slug": product.get_slug()}
@@ -836,7 +852,9 @@ def test_variant_picker_data_with_translations(
     product, translated_variant_fr, settings
 ):
     settings.LANGUAGE_CODE = "fr"
-    variant_picker_data = get_variant_picker_data(product)
+    variant_picker_data = get_variant_picker_data(
+        product, country=settings.DEFAULT_COUNTRY
+    )
     attribute = variant_picker_data["variantAttributes"][0]
     assert attribute["name"] == translated_variant_fr.name
 
@@ -943,18 +961,22 @@ def test_digital_product_view_url_expired(client, digital_content):
     assert response.status_code == 404
 
 
-def test_variant_picker_data_price_range(product_type, category):
+def test_variant_picker_data_price_range(product_type, category, warehouse):
     product = models.Product.objects.create(
         product_type=product_type, category=category, price=Money("15.00", "USD")
     )
     product.variants.create(sku="1")
     product.variants.create(sku="2", price_override=Money("20.00", "USD"))
     product.variants.create(sku="3", price_override=Money("11.00", "USD"))
+    for variant in product.variants.all():
+        Stock.objects.create(product_variant=variant, warehouse=warehouse, quantity=1)
 
     start = TaxedMoney(net=Money("11.00", "USD"), gross=Money("11.00", "USD"))
     stop = TaxedMoney(net=Money("20.00", "USD"), gross=Money("20.00", "USD"))
 
-    picker_data = get_variant_picker_data(product, discounts=None, local_currency=None)
+    picker_data = get_variant_picker_data(
+        product, discounts=None, local_currency=None, country="US"
+    )
 
     min_price = picker_data["availability"]["priceRange"]["minPrice"]
     min_price = TaxedMoney(
