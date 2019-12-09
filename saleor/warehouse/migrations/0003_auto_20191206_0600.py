@@ -19,7 +19,7 @@ def forward(apps, schema_editor):
         Please create Warehouse in the dashboard or at add company address in dashboard.
         """
         print(msg)
-        sys.exit(3)
+        sys.exit(1)
     address = company_address
     address.pk = None
     address.save()
