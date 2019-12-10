@@ -2937,7 +2937,7 @@ type Product implements Node {
   thumbnail(size: Int): Image
   availability: ProductPricingInfo @deprecated(reason: "DEPRECATED: Will be removed in Saleor 2.10, Has been renamed to `pricing`.")
   pricing: ProductPricingInfo
-  isAvailable: Boolean
+  isAvailableInCountry: Boolean
   basePrice: Money
   price: Money @deprecated(reason: "DEPRECATED: Will be removed in Saleor 2.10, has been replaced by `basePrice`")
   minimalVariantPrice: Money
