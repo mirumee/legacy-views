@@ -239,10 +239,7 @@ def get_checkout_from_request(request, checkout_queryset=Checkout.objects.all())
         checkout = get_anonymous_checkout_from_token(token, checkout_queryset)
         user = None
     if checkout is None:
-        if user:
-            checkout = Checkout(user=user)
-        else:
-            checkout = Checkout()
+        checkout = Checkout(user=user)
     checkout.set_country(request.country)
     return checkout
 
