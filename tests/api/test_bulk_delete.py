@@ -235,7 +235,7 @@ def test_delete_categories_with_subcategories_and_products(
     ).exists()
 
     mock_update_products_minimal_variant_prices_task.delay.assert_called_once_with(
-        product_ids=[p.pk for p in product_list]
+        product_ids=[product.pk, parent_product.pk]
     )
 
     for product in product_list:
