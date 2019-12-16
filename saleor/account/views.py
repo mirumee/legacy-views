@@ -105,7 +105,9 @@ def details(request):
 
 
 def get_or_process_password_form(request):
-    form = ChangePasswordForm(data=request.POST or None, user=request.user)
+    password_changed = "new_password1" in request.POST or "old_password" in request.POST
+    form_data = request.POST if password_changed else None
+    form = ChangePasswordForm(data=form_data, user=request.user)
     if form.is_valid():
         form.save()
         logout_on_password_change(request, form.user)
@@ -116,7 +118,9 @@ def get_or_process_password_form(request):
 
 
 def get_or_process_name_form(request):
-    form = NameForm(data=request.POST or None, instance=request.user)
+    name_data_changed = "first_name" in request.POST or "last_name" in request.POST
+    form_data = request.POST if name_data_changed else None
+    form = NameForm(data=form_data, instance=request.user)
     if form.is_valid():
         form.save()
         messages.success(
