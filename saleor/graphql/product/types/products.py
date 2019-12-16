@@ -326,7 +326,7 @@ class ProductVariant(CountableDjangoObjectType, MetadataObjectType):
     @permission_required("stock.manage_stocks")
     def resolve_stock_for_country(root: models.ProductVariant, info):
         country = info.context.country
-        return stock_models.Stock.get_variant_stock_for_country(country, root)
+        return stock_models.Stock.objects.get_variant_stock_for_country(country, root)
 
     @staticmethod
     @permission_required("product.manage_products")
