@@ -455,3 +455,15 @@ def test_view_add_names_to_user(customer_user, authorized_client):
     updated_user = User.objects.get(pk=customer_user.pk)
     assert updated_user.first_name == "Jan"
     assert updated_user.last_name == "Nowak"
+
+
+def test_view_change_password_left_name_data_unchanged(
+    customer_user, authorized_client
+):
+    url = reverse("account:details")
+    response = authorized_client.post(
+        url, data={"new_password1": "test", "old_password": "test2"}
+    )
+    assert response.status_code == 200
+    assert customer_user.first_name in response.content.decode()
+    assert customer_user.last_name in response.content.decode()
