@@ -1011,22 +1011,18 @@ def test_product_variant_bulk_create_many_errors(
     variants = [
         {
             "sku": str(uuid4())[:12],
-            "quantity": -1000,
             "attributes": [{"id": size_attribute_id, "values": ["Test-value1"]}],
         },
         {
             "sku": str(uuid4())[:12],
-            "quantity": 100,
             "attributes": [{"id": size_attribute_id, "values": ["Test-value4"]}],
         },
         {
             "sku": sku,
-            "quantity": 100,
             "attributes": [{"id": size_attribute_id, "values": ["Test-value2"]}],
         },
         {
             "sku": str(uuid4())[:12],
-            "quantity": 100,
             "attributes": [{"id": invalid_attribute_id, "values": ["Test-value3"]}],
         },
     ]
@@ -1038,15 +1034,9 @@ def test_product_variant_bulk_create_many_errors(
     )
     content = get_graphql_content(response)
     data = content["data"]["productVariantBulkCreate"]
-    assert len(data["bulkProductErrors"]) == 3
+    assert len(data["bulkProductErrors"]) == 2
     errors = data["bulkProductErrors"]
     expected_errors = [
-        {
-            "field": "quantity",
-            "index": 0,
-            "code": ProductErrorCode.INVALID.name,
-            "message": ANY,
-        },
         {
             "field": "sku",
             "index": 2,
