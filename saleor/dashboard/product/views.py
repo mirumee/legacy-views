@@ -20,6 +20,7 @@ from ...product.models import (
 from ...product.tasks import update_product_minimal_variant_price_task
 from ...product.utils.availability import get_product_availability
 from ...product.utils.costs import get_margin_for_variant, get_product_costs_data
+from ...stock.models import Stock
 from ..stock.forms import get_stock_formset_for_variant
 from ..views import staff_member_required
 from . import forms
@@ -320,6 +321,9 @@ def variant_details(request, product_pk, variant_pk):
     if not product.product_type.has_variants:
         return redirect("dashboard:product-details", pk=product.pk)
 
+    stocks = Stock.objects.select_related("warehouse").filter(
+        product_variant_id=variant_pk
+    )
     images = variant.images.all()
     margin = get_margin_for_variant(variant)
     discounted_price = request.extensions.apply_taxes_to_product(
@@ -331,6 +335,7 @@ def variant_details(request, product_pk, variant_pk):
         "variant": variant,
         "margin": margin,
         "discounted_price": discounted_price,
+        "stocks": stocks,
     }
     return TemplateResponse(
         request, "dashboard/product/product_variant/detail.html", ctx
