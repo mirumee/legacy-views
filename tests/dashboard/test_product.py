@@ -637,7 +637,14 @@ def test_view_product_variant_create(admin_client, product):
     product_type.has_variants = True
     product_type.save()
     url = reverse("dashboard:variant-add", kwargs={"product_pk": product.pk})
-    data = {"sku": "ABC", "price_override": "", "quantity": 10, "cost_price": ""}
+    data = {
+        "sku": "ABC",
+        "price_override": "",
+        "cost_price": "",
+        "form-INITIAL_FORMS": "0",
+        "form-TOTAL_FORMS": "0",
+        "form-MAX_NUM_FORMS": "",
+    }
 
     response = admin_client.post(url, data)
 
@@ -657,7 +664,15 @@ def test_view_product_variant_edit(admin_client, product):
         "dashboard:variant-update",
         kwargs={"product_pk": product.pk, "variant_pk": variant.pk},
     )
-    data = {"sku": "ABC", "price_override": "", "quantity": 10, "cost_price": ""}
+    data = {
+        "sku": "ABC",
+        "price_override": "",
+        "quantity": 10,
+        "cost_price": "",
+        "form-INITIAL_FORMS": "0",
+        "form-TOTAL_FORMS": "0",
+        "form-MAX_NUM_FORMS": "",
+    }
 
     response = admin_client.post(url, data)
 
@@ -887,6 +902,7 @@ def test_view_ajax_reorder_product_images(admin_client, product_with_images):
 def test_view_ajax_reorder_product_images_invalid(admin_client, product_with_images):
     order_before = [img.pk for img in product_with_images.images.all()]
     ordered_images = list(reversed(order_before))
+    assert not ProductImage.objects.filter(pk=3).exists()
     ordered_images.append(3)
     url = reverse(
         "dashboard:product-images-reorder",

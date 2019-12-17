@@ -25,6 +25,7 @@ from saleor.order.utils import add_variant_to_order, change_order_line_quantity
 from saleor.payment import ChargeStatus, TransactionKind
 from saleor.product.models import ProductVariant
 from saleor.shipping.models import ShippingZone
+from saleor.stock.models import Stock
 from tests.utils import get_form_errors, get_redirect_location
 
 
@@ -289,7 +290,10 @@ def test_view_cancel_order_line(admin_client, draft_order, track_inventory, admi
     lines_before_count = lines_before.count()
     line = lines_before.first()
     line_quantity = line.quantity
-    quantity_allocated_before = line.variant.quantity_allocated
+    variant = line.variant
+    stock = Stock.objects.get(product_variant=variant)
+
+    quantity_allocated_before = stock.quantity_allocated
 
     line.variant.track_inventory = track_inventory
     line.variant.save()
@@ -313,14 +317,12 @@ def test_view_cancel_order_line(admin_client, draft_order, track_inventory, admi
     assert lines_before_count - 1 == lines_after.count()
 
     # check stock deallocation
-    line.variant.refresh_from_db()
+    stock.refresh_from_db()
 
     if track_inventory:
-        assert line.variant.quantity_allocated == (
-            quantity_allocated_before - line_quantity
-        )
+        assert stock.quantity_allocated == (quantity_allocated_before - line_quantity)
     else:
-        assert line.variant.quantity_allocated == quantity_allocated_before
+        assert stock.quantity_allocated == quantity_allocated_before
 
     removed_items_event = OrderEvent.objects.last()
     assert removed_items_event.type == OrderEvents.DRAFT_REMOVED_PRODUCTS
@@ -356,6 +358,7 @@ def test_view_change_order_line_quantity(
 
     line.variant.track_inventory = track_inventory
     line.variant.save()
+    stock = Stock.objects.get(product_variant=line.variant)
 
     assert not OrderEvent.objects.exists()
 
@@ -377,13 +380,13 @@ def test_view_change_order_line_quantity(
     lines_after = Order.objects.get().lines.all()
     # order should have the same lines
     assert lines_before_quantity_change_count == lines_after.count()
-    line.variant.refresh_from_db()
+    stock.refresh_from_db()
 
     if track_inventory:
         # stock allocation should be 2 now
-        assert line.variant.quantity_allocated == 2
+        assert stock.quantity_allocated == 2
     else:
-        assert line.variant.quantity_allocated == 3
+        assert stock.quantity_allocated == 3
 
     removed_items_event = OrderEvent.objects.last()
     assert removed_items_event.type == OrderEvents.DRAFT_REMOVED_PRODUCTS
@@ -413,7 +416,8 @@ def test_dashboard_change_quantity_form(request_checkout_with_item, order):
     for line in request_checkout_with_item:
         add_variant_to_order(order, line.variant, line.quantity)
     order_line = order.lines.get()
-    quantity_before = order_line.variant.quantity_allocated
+    stock = Stock.objects.get(product_variant=order_line.variant)
+    quantity_before = stock.quantity_allocated
     # Check max quantity validation
     form = ChangeQuantityForm({"quantity": 9999}, instance=order_line)
     assert not form.is_valid()
@@ -422,35 +426,35 @@ def test_dashboard_change_quantity_form(request_checkout_with_item, order):
     # Check minimum quantity validation
     form = ChangeQuantityForm({"quantity": 0}, instance=order_line)
     assert not form.is_valid()
-    assert order.lines.get().variant.quantity_allocated == quantity_before
+    assert stock.quantity_allocated == quantity_before
     assert "quantity" in form.errors
 
     # Check available quantity validation
     form = ChangeQuantityForm({"quantity": 20}, instance=order_line)
     assert not form.is_valid()
-    assert order.lines.get().variant.quantity_allocated == quantity_before
+    assert stock.quantity_allocated == quantity_before
     assert "quantity" in form.errors
 
     # Save same quantity
     form = ChangeQuantityForm({"quantity": 1}, instance=order_line)
     assert form.is_valid()
     form.save(None)
-    order_line.variant.refresh_from_db()
-    assert order_line.variant.quantity_allocated == quantity_before
+    stock.refresh_from_db()
+    assert stock.quantity_allocated == quantity_before
 
     # Increase quantity
     form = ChangeQuantityForm({"quantity": 2}, instance=order_line)
     assert form.is_valid()
     form.save(None)
-    order_line.variant.refresh_from_db()
-    assert order_line.variant.quantity_allocated == quantity_before + 1
+    stock.refresh_from_db()
+    assert stock.quantity_allocated == quantity_before + 1
 
     # Decrease quantity
     form = ChangeQuantityForm({"quantity": 1}, instance=order_line)
     assert form.is_valid()
     form.save(None)
-    order_line.variant.refresh_from_db()
-    assert order_line.variant.quantity_allocated == quantity_before
+    stock.refresh_from_db()
+    assert stock.quantity_allocated == quantity_before
 
 
 def test_ordered_item_change_quantity(transactional_db, order_with_lines):

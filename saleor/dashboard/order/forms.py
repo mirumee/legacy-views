@@ -28,11 +28,13 @@ from ...order.models import Fulfillment, FulfillmentLine, Order, OrderLine
 from ...order.utils import (
     add_variant_to_order,
     change_order_line_quantity,
+    get_order_country,
     recalculate_order,
 )
 from ...payment import ChargeStatus, CustomPaymentChoices, PaymentError, gateway
 from ...product.models import Product, ProductVariant
 from ...shipping.models import ShippingMethod
+from ...stock.availability import check_stock_quantity, get_available_quantity
 from ...stock.management import allocate_stock, deallocate_stock
 from ..forms import AjaxSelect2ChoiceField
 from ..widgets import PhonePrefixWidget
@@ -415,9 +417,10 @@ class CancelOrderLineForm(forms.Form):
         super().__init__(*args, **kwargs)
 
     def cancel_line(self, user):
-        if self.line.variant and self.line.variant.track_inventory:
-            deallocate_stock(self.line.variant, self.line.quantity)
         order = self.line.order
+        if self.line.variant and self.line.variant.track_inventory:
+            country = get_order_country(order)
+            deallocate_stock(self.line.variant, country, self.line.quantity)
         change_order_line_quantity(user, self.line, self.line.quantity, 0)
         recalculate_order(order)
 
@@ -440,8 +443,10 @@ class ChangeQuantityForm(forms.ModelForm):
     def clean_quantity(self):
         quantity = self.cleaned_data["quantity"]
         delta = quantity - self.initial_quantity
+        country = get_order_country(self.instance.order)
         variant = self.instance.variant
-        if variant and delta > variant.quantity_available:
+        available_quantity = get_available_quantity(variant, country)
+        if variant and delta > available_quantity:
             raise forms.ValidationError(
                 npgettext_lazy(
                     "Change quantity form error",
@@ -449,17 +454,18 @@ class ChangeQuantityForm(forms.ModelForm):
                     "Only %(remaining)d remaining in stock.",
                     number="remaining",
                 )
-                % {"remaining": (self.initial_quantity + variant.quantity_available)}
+                % {"remaining": (self.initial_quantity + available_quantity)}
             )  # noqa
         return quantity
 
     def save(self, user):
         quantity = self.cleaned_data["quantity"]
         variant = self.instance.variant
+        country = get_order_country(self.instance.order)
         if variant and variant.track_inventory:
             # update stock allocation
             delta = quantity - self.initial_quantity
-            allocate_stock(variant, delta)
+            allocate_stock(variant, country, delta)
         change_order_line_quantity(user, self.instance, self.initial_quantity, quantity)
         recalculate_order(self.instance.order)
         return self.instance
@@ -611,15 +617,17 @@ class AddVariantToOrderForm(forms.Form):
         variant = cleaned_data.get("variant")
         quantity = cleaned_data.get("quantity")
         if variant and quantity is not None:
+            country = get_order_country(self.order)
             try:
-                variant.check_quantity(quantity)
+                check_stock_quantity(variant, country, quantity)
             except InsufficientStock as e:
+                available_quantity = get_available_quantity(e.item, country)
                 error = forms.ValidationError(
                     pgettext_lazy(
                         "Add item form error",
                         "Could not add item. "
                         "Only %(remaining)d remaining in stock."
-                        % {"remaining": e.item.quantity_available},
+                        % {"remaining": available_quantity},
                     )
                 )
                 self.add_error("quantity", error)

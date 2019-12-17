@@ -218,6 +218,9 @@ def test_dashboard_product_variant_create_view_updates_minimal_variant_price(
         "price_override_0": "4.99",
         "price_override_1": product.currency,
         "quantity": 1,
+        "form-INITIAL_FORMS": "0",
+        "form-TOTAL_FORMS": "0",
+        "form-MAX_NUM_FORMS": "",
     }
 
     response = admin_client.post(url, data)
