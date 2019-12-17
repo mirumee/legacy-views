@@ -51,11 +51,6 @@
             <br>
             {% trans "SKU" context "Dashboard variant details view" %} {{ variant.sku }}
           </div>
-          <div class="row">
-            <div class="col s12">
-              <h5>{% render_variant_availability_status variant %}</h5>
-            </div>
-          </div>
         </div>
         <div class="card-action">
           <a class="btn-flat waves-effect" href="{% url 'dashboard:variant-update' product_pk=product.pk variant_pk=variant.pk %}">

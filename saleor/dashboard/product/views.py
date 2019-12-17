@@ -20,6 +20,7 @@ from ...product.models import (
 from ...product.tasks import update_product_minimal_variant_price_task
 from ...product.utils.availability import get_product_availability
 from ...product.utils.costs import get_margin_for_variant, get_product_costs_data
+from ..stock.forms import get_stock_formset_for_variant
 from ..views import staff_member_required
 from . import forms
 from .filters import AttributeFilter, ProductFilter, ProductTypeFilter
@@ -343,8 +344,10 @@ def variant_create(request, product_pk):
     product = get_object_or_404(Product.objects.all(), pk=product_pk)
     variant = ProductVariant(product=product, track_inventory=track_inventory)
     form = forms.ProductVariantForm(request.POST or None, instance=variant)
-    if form.is_valid():
+    formset = get_stock_formset_for_variant(variant, request.POST or None)
+    if form.is_valid() and formset.is_valid():
         form.save()
+        formset.save()
         msg = pgettext_lazy("Dashboard message", "Saved variant %s") % (variant.name,)
         messages.success(request, msg)
         return redirect(
@@ -367,14 +370,17 @@ def variant_edit(request, product_pk, variant_pk):
         pk=variant_pk,
     )
     form = forms.ProductVariantForm(request.POST or None, instance=variant)
-    if form.is_valid():
+
+    formset = get_stock_formset_for_variant(variant, request.POST or None)
+    if form.is_valid() and formset.is_valid():
         form.save()
+        formset.save()
         msg = pgettext_lazy("Dashboard message", "Saved variant %s") % (variant.name,)
         messages.success(request, msg)
         return redirect(
             "dashboard:variant-details", product_pk=product.pk, variant_pk=variant.pk
         )
-    ctx = {"form": form, "product": product, "variant": variant}
+    ctx = {"form": form, "product": product, "variant": variant, "formset": formset}
     return TemplateResponse(request, "dashboard/product/product_variant/form.html", ctx)
 
 
