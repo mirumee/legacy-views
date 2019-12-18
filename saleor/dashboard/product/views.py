@@ -179,18 +179,28 @@ def product_edit(request, pk):
             request.POST or None, instance=variant, prefix="variant"
         )
         variant_errors = not variant_form.is_valid()
+        formset = get_stock_formset_for_variant(variant, request.POST or None)
     else:
         variant_form = None
         variant_errors = False
+        formset = None
 
-    if form.is_valid() and not variant_errors:
+    is_formset_valid = formset.is_valid() if formset else True
+    if form.is_valid() and not variant_errors and is_formset_valid:
         product = form.save()
         if edit_variant:
             variant_form.save()
+            for stock_form in formset:
+                stock_form.save(variant)
         msg = pgettext_lazy("Dashboard message", "Updated product %s") % (product,)
         messages.success(request, msg)
         return redirect("dashboard:product-details", pk=product.pk)
-    ctx = {"product": product, "product_form": form, "variant_form": variant_form}
+    ctx = {
+        "product": product,
+        "product_form": form,
+        "variant_form": variant_form,
+        "formset": formset,
+    }
     return TemplateResponse(request, "dashboard/product/form.html", ctx)
 
 
@@ -359,7 +369,8 @@ def variant_create(request, product_pk):
     formset = get_stock_formset_for_variant(variant, request.POST or None)
     if form.is_valid() and formset.is_valid():
         form.save()
-        formset.save()
+        for stock_form in formset:
+            stock_form.save(variant)
         msg = pgettext_lazy("Dashboard message", "Saved variant %s") % (variant.name,)
         messages.success(request, msg)
         return redirect(

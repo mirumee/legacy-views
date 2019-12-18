@@ -147,6 +147,7 @@
                   <th>{% trans "Warehouse" %}</th>
                   <th> {% trans "Number in stock" context "Dashboard variant details view" %}</th>
                   <th>{% trans "Allocated" context "Dashboard variant details view" %}</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -154,7 +155,12 @@
                   <tr>
                     <td>{{ stock.warehouse }}</td>
                     <td>{{ stock.quantity }}</td>
-                    <td>{{ stock.quantity_available }}</td>
+                    <td>{{ stock.quantity_allocated }}</td>
+                    <td>
+                    <a class="btn-flat waves-effect modal-trigger-custom" data-href="{% url 'dashboard:stock-delete' stock_pk=stock.pk %}">
+                      {% trans "Remove stock" context "Dashboard action" %}
+                      </a>
+                    </td>
                   </tr>
                 {% empty %}
                   <tr>
