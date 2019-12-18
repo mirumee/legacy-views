@@ -70,6 +70,12 @@ def product_details(request, pk):
     # management.
     no_variants = not product.product_type.has_variants
     only_variant = variants.first() if no_variants else None
+    if no_variants:
+        stocks = Stock.objects.select_related("warehouse").filter(
+            product_variant_id=only_variant.pk
+        )
+    else:
+        stocks = None
     ctx = {
         "product": product,
         "tax_rate_code": get_product_tax_rate(product),
@@ -82,6 +88,7 @@ def product_details(request, pk):
         "purchase_cost": purchase_cost,
         "margin": margin,
         "is_empty": not variants.exists(),
+        "stocks": stocks,
     }
     return TemplateResponse(request, "dashboard/product/detail.html", ctx)
 
@@ -379,12 +386,14 @@ def variant_edit(request, product_pk, variant_pk):
     formset = get_stock_formset_for_variant(variant, request.POST or None)
     if form.is_valid() and formset.is_valid():
         form.save()
-        formset.save()
+        for stock_form in formset:
+            stock_form.save(variant)
         msg = pgettext_lazy("Dashboard message", "Saved variant %s") % (variant.name,)
         messages.success(request, msg)
         return redirect(
             "dashboard:variant-details", product_pk=product.pk, variant_pk=variant.pk
         )
+
     ctx = {"form": form, "product": product, "variant": variant, "formset": formset}
     return TemplateResponse(request, "dashboard/product/product_variant/form.html", ctx)
 

@@ -135,6 +135,36 @@
             </table>
           </div>
         </div>
+        {% else %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">{% trans "Inventory" context "Product variant inventory card header" %}</span>
+          </div>
+          <div class="data-table-container">
+            <table class="bordered highlight responsive data-table">
+              <thead>
+                <tr>
+                  <th>{% trans "Warehouse" %}</th>
+                  <th> {% trans "Number in stock" context "Dashboard variant details view" %}</th>
+                  <th>{% trans "Allocated" context "Dashboard variant details view" %}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for stock in stocks %}
+                  <tr>
+                    <td>{{ stock.warehouse }}</td>
+                    <td>{{ stock.quantity }}</td>
+                    <td>{{ stock.quantity_available }}</td>
+                  </tr>
+                {% empty %}
+                  <tr>
+                    <td colspan="5">{% trans "No stocks found" context "Dashboard product details page" %}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
       {% endif %}
     </div>
     <div class="col s12 l4">
@@ -218,39 +248,6 @@
               </table>
             </div>
           </div>
-          {% if no_variants %}
-            <div class="card">
-              <div class="data-table-header">
-                <div class="data-table-title">
-                  <h5>
-                    {% trans "Inventory" context "Product variant inventory card header" %}
-                  </h5>
-                </div>
-              </div>
-              <div class="data-table-container">
-                <table class="data-table bordered highlight">
-                  <tbody>
-                    <tr>
-                      <td>
-                        {% trans "Number in stock" context "Dashboard variant details view" %}
-                      </td>
-                      <td class="right-align">
-                        {{ only_variant.quantity }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {% trans "Allocated" context "Dashboard variant details view" %}
-                      </td>
-                      <td class="right-align">
-                        {{ only_variant.quantity_allocated }}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          {% endif %}
           <div class="card">
             <div class="card-content">
               <span class="card-title">{% trans "Images" %}</span>
