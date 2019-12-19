@@ -403,7 +403,7 @@ def test_get_prices_of_discounted_specific_product_all_products(
 def test_contains_unavailable_variants_gets_unavailable_variant(monkeypatch):
     missing_variant = Mock()
     checkout = MagicMock()
-    checkout.country = "US"
+    checkout.get_country = Mock(return_value="US")
     checkout.__iter__ = Mock(return_value=iter([Mock(variant=missing_variant)]))
 
     def mock_function(*args):
@@ -416,7 +416,7 @@ def test_contains_unavailable_variants_gets_unavailable_variant(monkeypatch):
 def test_contains_unavailable_variants_gets_available_variant(monkeypatch):
     variant = Mock(check_quantity=Mock())
     checkout = MagicMock()
-    checkout.country = "US"
+    checkout.get_country = Mock(return_value="US")
     checkout.__iter__ = Mock(return_value=iter([Mock(variant=variant)]))
     monkeypatch.setattr("saleor.checkout.utils.check_stock_quantity", lambda *x: None)
     assert not utils.contains_unavailable_variants(checkout)

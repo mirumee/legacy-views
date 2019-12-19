@@ -104,10 +104,10 @@ class AddToCheckoutForm(forms.Form):
                 return cleaned_data
 
             try:
-                check_stock_quantity(variant, self.checkout.country, new_quantity)
+                check_stock_quantity(variant, self.checkout.get_country(), new_quantity)
             except InsufficientStock as e:
                 remaining = (
-                    get_available_quantity(e.item, self.checkout.country)
+                    get_available_quantity(e.item, self.checkout.get_country())
                     - used_quantity
                 )
                 if remaining:
@@ -156,11 +156,11 @@ class ReplaceCheckoutLineForm(AddToCheckoutForm):
         """
         quantity = self.cleaned_data["quantity"]
         try:
-            check_stock_quantity(self.variant, self.checkout.country, quantity)
+            check_stock_quantity(self.variant, self.checkout.get_country(), quantity)
         except InsufficientStock as e:
             msg = self.error_messages["insufficient-stock"]
             available_quantity = get_available_quantity(
-                self.variant, self.checkout.country
+                self.variant, self.checkout.get_country()
             )
             raise forms.ValidationError(msg % available_quantity, code=e.code)
         return quantity
