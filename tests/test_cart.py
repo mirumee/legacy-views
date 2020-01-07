@@ -23,6 +23,7 @@ from saleor.checkout.views import clear_checkout, update_checkout_line
 from saleor.core.exceptions import InsufficientStock
 from saleor.discount.models import Sale
 from saleor.product.models import Category
+from saleor.shipping.models import ShippingMethod
 from saleor.stock.models import Stock
 
 
@@ -754,9 +755,8 @@ def test_get_checkout_context(checkout_with_single_item, shipping_zone, address)
     )
 
 
-# FIXME
-@pytest.mark.skip(reason="Don't know how I broke this.")
 def test_get_checkout_context_no_shipping(checkout_with_single_item, address):
+    ShippingMethod.objects.all().delete()
     checkout = checkout_with_single_item
     checkout.shipping_address = address
     checkout.save(update_fields=["shipping_address"])
