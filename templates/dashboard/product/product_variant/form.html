@@ -106,6 +106,7 @@
                 <p class="card-title">{% trans "Stock" %}</p>
               </div>
             </div>
+            {% if formset %}
             {{ formset.management_form }}
             {% for stock_form in formset %}
               {% for hidden in stock_form.hidden_fields %}
@@ -116,6 +117,7 @@
               <div class="col s6 l4">{{ stock_form.quantity|materializecss }}</div>
             </div>
             {% endfor %}
+            {% endif %}
           </div>
           <div class="card-action right-align">
             {% if variant.pk %}

@@ -190,8 +190,7 @@ def product_edit(request, pk):
         product = form.save()
         if edit_variant:
             variant_form.save()
-            for stock_form in formset:
-                stock_form.save(variant)
+            formset.save()
         msg = pgettext_lazy("Dashboard message", "Updated product %s") % (product,)
         messages.success(request, msg)
         return redirect("dashboard:product-details", pk=product.pk)
@@ -369,8 +368,7 @@ def variant_create(request, product_pk):
     formset = get_stock_formset_for_variant(variant, request.POST or None)
     if form.is_valid() and formset.is_valid():
         form.save()
-        for stock_form in formset:
-            stock_form.save(variant)
+        formset.save()
         msg = pgettext_lazy("Dashboard message", "Saved variant %s") % (variant.name,)
         messages.success(request, msg)
         return redirect(
@@ -397,8 +395,7 @@ def variant_edit(request, product_pk, variant_pk):
     formset = get_stock_formset_for_variant(variant, request.POST or None)
     if form.is_valid() and formset.is_valid():
         form.save()
-        for stock_form in formset:
-            stock_form.save(variant)
+        formset.save()
         msg = pgettext_lazy("Dashboard message", "Saved variant %s") % (variant.name,)
         messages.success(request, msg)
         return redirect(
