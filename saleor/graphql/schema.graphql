@@ -2937,7 +2937,7 @@ type Product implements Node {
   thumbnail(size: Int): Image
   availability: ProductPricingInfo @deprecated(reason: "DEPRECATED: Will be removed in Saleor 2.10, Has been renamed to `pricing`.")
   pricing: ProductPricingInfo
-  isAvailableInCountry: Boolean
+  isAvailable: Boolean
   basePrice: Money
   price: Money @deprecated(reason: "DEPRECATED: Will be removed in Saleor 2.10, has been replaced by `basePrice`")
   minimalVariantPrice: Money
@@ -3323,8 +3323,7 @@ type ProductVariant implements Node {
   images: [ProductImage]
   translation(languageCode: LanguageCodeEnum!): ProductVariantTranslation
   digitalContent: DigitalContent
-  stocks: Stock
-  stockForCountry: Stock
+  stock(country: String): Stock
 }
 
 type ProductVariantBulkCreate {
