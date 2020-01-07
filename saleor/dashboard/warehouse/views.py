@@ -13,6 +13,7 @@ from ..views import staff_member_required
 from .forms import WarehouseAddressForm, WarehouseForm, save_warehouse_from_forms
 
 if TYPE_CHECKING:
+    # pylint: disable=unused-import
     from uuid import UUID
     from django.http import HttpRequest, HttpResponse
 

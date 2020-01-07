@@ -7,6 +7,7 @@ from ..core.exceptions import InsufficientStock
 from .models import Stock
 
 if TYPE_CHECKING:
+    # pylint: disable=unused-import
     from ...product.models import Product, ProductVariant
 
 

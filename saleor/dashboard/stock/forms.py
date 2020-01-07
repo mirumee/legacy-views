@@ -5,6 +5,7 @@ from django import forms
 from ...stock.models import Stock
 
 if TYPE_CHECKING:
+    # pylint: disable=unused-import
     from ...product.models import ProductVariant
 
 

@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING
 from .models import Stock
 
 if TYPE_CHECKING:
+    # pylint: disable=unused-import
     from ..product.models import ProductVariant
 
 
