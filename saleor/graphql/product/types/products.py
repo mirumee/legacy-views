@@ -242,7 +242,6 @@ class ProductVariant(CountableDjangoObjectType, MetadataObjectType):
             "only meant for displaying."
         ),
     )
-    # FIXME
     is_available = graphene.Boolean(
         description="Whether the variant is in stock and visible or not."
     )
