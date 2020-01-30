@@ -15,6 +15,17 @@ You can find the latest version of Saleor, storefront and dashboard in their ind
 - https://github.com/mirumee/saleor-storefront
 
 
-If you have any questions or feedback, do not hesitate to contact us via Spectrum or Gitter.
+If you have any questions or feedback, do not hesitate to contact us via Spectrum or Gitter:
 
-Saleor Team - 
+- https://spectrum.chat/saleor
+- https://gitter.im/mirumee/saleor
+
+## License
+
+Disclaimer: Everything you see here is open and free to use as long as you comply with the [license](https://github.com/mirumee/saleor/blob/master/LICENSE). There are no hidden charges. We promise to do our best to fix bugs and improve the code.
+
+Some situations do call for extra code; we can cover exotic use cases or build you a custom e-commerce appliance.
+
+#### Crafted with ❤️ by [Mirumee Software](http://mirumee.com)
+
+hello@mirumee.com
