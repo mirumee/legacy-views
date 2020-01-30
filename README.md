@@ -5,6 +5,7 @@
 <br>
 
 <div align="center">
+  Join our active, engaged community: <br>
   <a href="https://saleor.io/">Website</a>
   <span> | </span>
   <a href="https://medium.com/saleor">Blog</a>
@@ -32,6 +33,8 @@
     <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black">
   </a>
 </div>
+
+<hr>
 
 
 This repository contains a legacy version of Saleor with its former Storefront 1.0 and Dashboard 1.0 (Django views and HTML templates).
