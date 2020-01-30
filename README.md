@@ -1,144 +1,24 @@
-![github_saleor_readmew_header_01](https://user-images.githubusercontent.com/5421321/47800694-19bec680-dd2d-11e8-8625-2ed7c690bc13.jpg)
+# Saleor
 
-<div align="center">
-  <h1>Saleor Commerce</h1>
-</div>
+This repository contains a legacy version of Saleor with its former Storefront 1.0 and Dashboard 1.0 (Django views and HTML templates).
 
-<div align="center">
-  <strong>Customer-centric e-commerce on a modern stack</strong>
-</div>
+NOTE: We do not currently maintain the legacy version — we provide limited support only as resources are concentrated on the current version. If you would like to maintain the legacy version please open a pull request, we would be happy to review it.
 
-<div align="center">
-  A headless e-commerce platform delivering ultra-fast, dynamic, personalized shopping experiences. Beautiful online stores, anywhere, on any device.
-</div>
+Development of Saleor 2.0+ continues, including the new storefront and dashboard. You can check out the roadmap of how we are achieving here [https://saleor.io/open-source/#roadmap]; a service-based headless approach to utilise best-in-class APIs of the future. Innovate through integrations such as multi-currency, multi-channel and many more. 
 
-<br>
+ *New updates and improvements will not be available on the legacy version.*
 
-<div align="center">
-  Join our active, engaged community: <br>
-  <a href="https://saleor.io/">Website</a>
-  <span> | </span>
-  <a href="https://medium.com/saleor">Blog</a>
-  <span> | </span>
-  <a href="https://twitter.com/getsaleor">Twitter</a>
-  <span> | </span>
-  <a href="https://gitter.im/mirumee/saleor">Gitter</a>
-  <span> | </span>
-  <a href="https://spectrum.chat/saleor">Spectrum</a>
-</div>
+You can find the latest version of Saleor, storefront and dashboard in their individual repositories:
 
-<br>
+- https://github.com/mirumee/saleor
+- https://github.com/mirumee/saleor-dashboard
+- https://github.com/mirumee/saleor-storefront
 
-<div align="center">
-  <a href="https://circleci.com/gh/mirumee/saleor">
-    <img src="https://circleci.com/gh/mirumee/saleor.svg?style=svg" alt="Build status" />
-  </a>
-  <a href="http://codecov.io/github/mirumee/saleor?branch=master">
-    <img src="http://codecov.io/github/mirumee/saleor/coverage.svg?branch=master" alt="Codecov" />
-  </a>
-  <a href="https://docs.saleor.io/">
-    <img src="https://img.shields.io/badge/docs-docs.getsaleor.com-brightgreen.svg" alt="Documentation" />
-  </a>
-  <a href="https://github.com/python/black">
-    <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black">
-  </a>
-</div>
 
-## Table of Contents
+If you have any questions or feedback, do not hesitate to contact us via Spectrum or Gitter:
 
-- [What makes Saleor special?](#what-makes-saleor-special)
-- [Features](#features)
-- [Installation](#installation)
-- [Documentation](#documentation)
-- [Demo](#demo)
-- [Contributing](#contributing)
-- [Translations](#translations)
-- [Your feedback](#your-feedback)
-- [License](#license)
-
-## What makes Saleor special?
-
-Saleor is a rapidly-growing open source e-commerce platform that has served high-volume companies from branches like publishing and apparel since 2012. Based on Python and Django, the latest major update introduces a modular front end powered by a GraphQL API and written with React and TypeScript.
-
-## Features
-
-- **PWA**: End users can shop offline for better sales and shopping experiences
-- **GraphQL API**: Access all data from any web or mobile client using the latest technology
-- **Headless commerce**: Build mobile apps, customize storefronts and externalize processes
-- **UX and UI**: Designed for a user experience that rivals even the top commercial platforms
-- **Dashboard**: Administrators have total control of users, processes, and products
-- **Orders**: A comprehensive system for orders, dispatch, and refunds
-- **Cart**: Advanced payment and tax options, with full control over discounts and promotions
-- **Payments**: Flexible API architecture allows integration of any payment method. It comes with Braintree support out of the box.
-- **Geo-adaptive**: Automatic localized pricing. Over 20 local languages. Localized checkout experience by country.
-- **SEO**: Packed with features that get stores to a wider audience
-- **Cloud**: Optimized for deployments using Docker
-- **Analytics**: Server-side Google Analytics to report e-commerce metrics without affecting privacy
-
-Saleor is free and always will be.
-Help us out… If you love free stuff and great software, give us a star! 🌟
-
-![1 copy 2x](https://user-images.githubusercontent.com/5421321/47798207-30aeea00-dd28-11e8-9398-3d8426836a83.png)
-![group 2 2x](https://user-images.githubusercontent.com/5421321/47799917-8afd7a00-dd2b-11e8-88c7-63588e25bcea.png)
-
-## Installation
-
-Saleor requires Python 3.6+, Node.js 10.0+, PostgreSQL and OS-specific dependency tools.
-
-[See the Saleor docs](https://docs.saleor.io/docs/getting-started/intro/) for step-by-step installation and deployment instructions.
-
-## Documentation
-
-Saleor documentation is available here: [docs.saleor.io](https://docs.saleor.io)
-
-To contribute, please see the [`mirumee/saleor-docs` repository](https://github.com/mirumee/saleor-docs/).
-
-## PWA Storefront
-
-For PWA, single-page Storefront 2.0 go to the [saleor-storefront](https://github.com/mirumee/saleor-storefront) repository.
-
-[View Storefront 2.0 demo](https://pwa.saleor.io/)
-
-## Dashboard 2.0
-
-For Dashboard 2.0 go to the [saleor-dashboard](https://github.com/mirumee/saleor-dashboard) repository.
-
-[View Dashboard 2.0 demo](https://pwa.saleor.io/dashboard/)
-
-## Demo
-
-Want to see Saleor in action?
-
-[View Storefront](https://pwa.saleor.io/) | [View Dashboard (admin area)](https://pwa.saleor.io/dashboard/)
-
-Or launch the demo on a free Heroku instance.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-Login credentials: `admin@example.com`/`admin`
-
-## Contributing
-
-We love your contributions and do our best to provide you with mentorship and support. If you are looking for an issue to tackle, take a look at issues labeled [`Help Wanted`](https://github.com/mirumee/saleor/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22).
-
-If nothing grabs your attention, check [our roadmap](https://github.com/mirumee/saleor/projects/6) or come up with your feature. Just drop us a line or [open an issue](https://github.com/mirumee/saleor/issues/new) and we’ll work out how to handle it.
-
-Get more details in our [Contributing Guide](https://docs.getsaleor.com/docs/contributing/intro/).
-
-## Translations
-
-Did you know that Saleor is available in more than 30 languages, translated entirely by our community?
-
-If you'd like to help us, you can join one of our translation teams on [the localization platform Transifex](https://www.transifex.com/mirumee/saleor-1/languages/).
-
-The repository gets synchronized weekly with the latest contributions.
-
-## Your feedback
-
-Do you use Saleor as an e-commerce platform?
-Fill out this short survey and help us grow. It will take just a minute, but mean a lot!
-
-[Take a survey](https://mirumee.typeform.com/to/sOIJbJ)
+- https://spectrum.chat/saleor
+- https://gitter.im/mirumee/saleor
 
 ## License
 
