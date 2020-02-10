@@ -20,6 +20,14 @@ If you have any questions or feedback, do not hesitate to contact us via Spectru
 - https://spectrum.chat/saleor
 - https://gitter.im/mirumee/saleor
 
+## Translations
+
+Did you know that Saleor is available in more than 30 languages, translated entirely by our community?
+
+If you'd like to help us, you can join one of our translation teams on [the localization platform Transifex](https://www.transifex.com/mirumee/saleor-1/languages/).
+
+The repository gets synchronized weekly with the latest contributions.
+
 ## License
 
 Disclaimer: Everything you see here is open and free to use as long as you comply with the [license](https://github.com/mirumee/saleor/blob/master/LICENSE). There are no hidden charges. We promise to do our best to fix bugs and improve the code.
