@@ -22,7 +22,7 @@
     "detect-passive-events": "^1.0.4",
     "draftjs-to-html": "^0.8.4",
     "dropzone": "^5.5.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery.cookie": "^1.4.1",
     "lazysizes": "^4.1.8",
     "lodash": "^4.17.14",
