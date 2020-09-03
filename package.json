@@ -24,7 +24,7 @@
     "dropzone": "^5.5.1",
     "jquery": "^3.5.0",
     "jquery.cookie": "^1.4.1",
-    "lazysizes": "^4.1.8",
+    "lazysizes": "^5.2.1",
     "lodash": "^4.17.14",
     "materialize-css": "^0.100.2",
     "medium-editor": "^5.23.3",
